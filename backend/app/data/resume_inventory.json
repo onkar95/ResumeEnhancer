@@ -1,0 +1,485 @@
+{
+  "professional_summaries": [
+    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production.",
+    "Mendix Developer with 2.5+ years of hands-on experience and 4+ years of overall professional experience building enterprise-scale applications across logistics, compliance, and transport domains. Strong expertise in Mendix domain modeling, microflows, security, integrations, workflow automation, and UI/UX using Atlas Design System, with a solid full-stack foundation in JavaScript, REST APIs, and cloud platforms. Proven ability to own features end-to-end, collaborate with global stakeholders, and support production systems in regulated enterprise environments, delivering scalable and maintainable solutions across low-code and pro-code architectures "
+  ],
+  "skills": [
+    {
+      "name": "JavaScript (ES6+)",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "TypeScript",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Java",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Python",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "React.js",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Next.js",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "React Native",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Expo",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Tailwind CSS",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Redux Toolkit",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "TanStack Query",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Node.js",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Express.js",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "MongoDB",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "PostgreSQL",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "REST APIs",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "GraphQL",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "JWT",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "OAuth",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Azure DevOps",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "CI/CD",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Docker",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Git",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "GitHub",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Firebase",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Appwrite",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Jest",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Basic Unit Testing",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "langGraph",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "LLM Integration",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Prompt Engineering",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Agentic Workflows",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Mendix",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Postman",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Figma",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Capgemini",
+      "role": "Associate Consultant (Software Engineer \u2013 Backend & Full-Stack)",
+      "location": "Pune, India",
+      "start_date": "Jul 2023",
+      "end_date": "Present",
+      "responsibilities": [
+        "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
+        "Architected backend integrations and REST API layers for scalable communication across services",
+        "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
+        "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
+      ],
+      "projects": [
+        {
+          "title": "Document Management System (ShareSpace)",
+          "bullet_points": [
+            "Hierarchical file storage with optimized data modeling",
+            "Secure upload/download pipelines with access control",
+            "Soft delete (trash), restore & lifecycle management"
+          ]
+        },
+        {
+          "title": "Export Control system",
+          "bullet_points": [
+            "Converted rigid logic into config-driven architecture",
+            "Improved maintainability and reduced manual effort"
+          ]
+        },
+        {
+          "title": "AI-Powered Investment Insights System",
+          "bullet_points": [
+            "Designed LLM-based pipelines to generate structured investment reports",
+            "Implemented prompt engineering and response validation for consistent and reliable outputs",
+            "Built dynamic frontend components to render UI based on API-driven responses",
+            "Integrated AI-generated insights into applications for real-time user consumption"
+          ]
+        },
+        {
+          "title": "Dangerous Goods Transport System",
+          "bullet_points": [
+            "Slot booking system with workflow orchestration",
+            "Real-time notifications and approval pipelines"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "BITCS | DigitalFlow | KnockOnce",
+      "role": "Software Developer (Backend & Full-Stack)",
+      "location": null,
+      "start_date": "Jun 2021",
+      "end_date": "Oct 2022",
+      "responsibilities": [
+        "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+        "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+        "Optimized frontend performance using: Efficient state management and component reusability (React, Redux Toolkit). Data fetching and caching strategies (TanStack Query). Reduced unnecessary re-renders and improved UI responsiveness.",
+        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
+      ],
+      "projects": [
+        {
+          "title": "Expense Management System",
+          "bullet_points": [
+            "Designed and developed a production-grade expense management system handling multi-user financial transactions",
+            "Implemented: Transaction-safe balance updates ensuring data consistency across users",
+            "Real-time expense tracking and settlement logic",
+            "Designed optimized data models and aggregation pipelines for analytics and reporting",
+            "Enhanced performance using compound indexes for high-frequency queries",
+            "Built the system with focus on scalability, concurrency handling, and data integrity"
+          ]
+        },
+        {
+          "title": "Additional Systems Built",
+          "bullet_points": [
+            "Built real-time communication features using event-driven architecture (Socket.IO)",
+            "Developed modular frontend systems with optimized data fetching & caching"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Capgemini",
+      "role": "Associate Consultant (Software Engineer \u2013 Mendix & Full-Stack)",
+      "location": "Pune, India",
+      "start_date": "Jul 2023",
+      "end_date": "Present",
+      "responsibilities": [
+        "Designed and delivered enterprise-scale applications using Mendix and React, supporting complex business workflows and compliance-driven systems",
+        "Built end-to-end Mendix applications including domain models, microflows, nanoflows, integrations, and Mendix security",
+        "Integrated external REST APIs and backend services into Mendix applications"
+      ],
+      "projects": [
+        {
+          "title": "ShareSpace - Document Management System",
+          "bullet_points": [
+            "Developed ShareSpace, a Mendix-based enterprise document management system for secure file storage and collaboration from scratch",
+            "Implemented a hierarchical folder and file structure to organize documents across business units",
+            "Built secure file upload and download functionality using Mendix FileDocument with role-based access control",
+            "Implemented Soft Delete (Trash) functionality to support restore and permanent delete, ensuring an audit-friendly document lifecycle",
+            "Applied entity and attribute-level security with XPath to control document visibility and access",
+            "Contributed actively to refinement sessions and sprint planning, collaborating with business and technical stakeholders",
+            "Integrated the application into CI/CD pipelines, enabling reliable builds and controlled deployments across environments"
+          ]
+        },
+        {
+          "title": "Export Control",
+          "bullet_points": [
+            "Enhanced And Implemented an Export Control Compliance system in Mendix to automate regulatory validations",
+            "Refactored existing ECCN logic into a configuration-driven design, making ECCNs and COO rules easy to understand, modify, and maintain",
+            "Built dynamic validation microflows for export restrictions with secure, auditable, and role-based access control"
+          ]
+        },
+        {
+          "title": "Resource & Industrials \u2013 Dangerous Goods Transport Management System (R&I DG TMS)",
+          "bullet_points": [
+            "Developed a customer-facing Mendix application for booking dangerous goods transport slots",
+            "Implemented: Time-slot booking & approval workflows, Role-based access for customers, schedulers, and admins, In-app and email notifications, Authentication and user management",
+            "Built scalable domain models, microflow-driven workflows, and secure entity access",
+            "Delivered as a Hackathon MVP in 1 day, later expanded into a production-ready system with"
+          ]
+        },
+        {
+          "title": "Support & SPOC Role",
+          "bullet_points": [
+            "Acted as technical SPOC for multiple Mendix applications",
+            "Responsibilities included: UI enhancements and design system rollout, Azure Active Directory & SSO integration, UAT support, post-production fixes, and hypercare",
+            "Resolved production issues and established best practices for Mendix development and support handover"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "BITCS | DigitalFlow | KnockOnce",
+      "role": "Software Developer (Backend & React)",
+      "location": "Remote",
+      "start_date": "Jun 2021",
+      "end_date": "Oct 2022",
+      "responsibilities": [
+        "Built scalable full-stack features using Node.js, Express.js, and MongoDB, handling complex CRUD operations and relational data modeling",
+        "Designed and consumed RESTful APIs, enabling seamless communication between frontend and backend services",
+        "Implemented JWT-based authentication and authorization, ensuring secure access control across applications",
+        "Developed responsive React and Next.js components from Figma designs using Tailwind CSS",
+        "Improved application performance through API optimizations, efficient state management, and MongoDB indexing",
+        "Ensured cross-browser and mobile compatibility, resolving UI/UX bottlenecks"
+      ],
+      "projects": [
+        {
+          "title": "Expense Tracker (Mobile Application)",
+          "bullet_points": [
+            "Designed a shared-expense system with REST APIs and real-time balance calculation",
+            "Implemented transaction-safe updates to ensure data consistency across users and groups",
+            "Built analytics dashboards using aggregated expense data for spending insights",
+            "Modeled normalized schemas for users, groups, expenses, and balances"
+          ]
+        },
+        {
+          "title": "Jira Clone (Project Management Tool)",
+          "bullet_points": [
+            "Implemented task workflows, project boards, and real-time updates",
+            "Designed modular UI components and optimized data fetching with caching strategies"
+          ]
+        },
+        {
+          "title": "Real-Time Chat Application",
+          "bullet_points": [
+            "Built group chat functionality with join/leave support using Socket.IO",
+            "Handled real-time message delivery and user presence updates"
+          ]
+        }
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Microsoft Certified: Azure Developer Associate (AZ-204)"
+    },
+    {
+      "name": "Microsoft Certified: Azure AI Engineer Associate (AI-104)"
+    },
+    {
+      "name": "Microsoft GenAI Practitioner (AI-900)"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering (B.E.)",
+      "institution": "Bharati Vidyapeeth College of Engineering, Pune",
+      "start_year": "2019",
+      "end_year": "2023"
+    }
+  ],
+  "resume_versions": [
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T19:34:52.658783"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T19:48:42.283668"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:08:21.395039"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:10:26.371408"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:17:11.017478"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:17:51.118058"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:22:07.392023"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:22:48.626212"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:29:06.983736"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:36:20.101649"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T20:37:58.229986"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T21:04:53.767715"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T21:06:31.971887"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T21:10:56.218386"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-09T21:11:43.265633"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-10T06:13:51.346903"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-10T06:14:53.956473"
+    },
+    {
+      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+      "uploaded_at": "2026-07-10T06:28:31.422774"
+    }
+  ],
+  "evidence": [],
+  "updated_at": "2026-07-10T06:28:31.422911"
+}

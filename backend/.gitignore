@@ -1,0 +1,8 @@
+# tree /f > structure.txt
+# .gitignore
+__pycache__/
+*.pyc
+./*env
+
+venv
+.env

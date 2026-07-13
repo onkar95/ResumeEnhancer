@@ -1,3 +1,4 @@
+from app.utils.skill_normalizer import normalize_skill
 from app.workflows.state import (
     ResumeTailorState
 )
@@ -5,6 +6,7 @@ from app.workflows.state import (
 from app.schemas.gap_analysis import (
     GapAnalysis
 )
+from app.core.logger import logger
 
 
 def extract_resume_skills(resume):
@@ -17,8 +19,11 @@ def extract_resume_skills(resume):
 
         for skill in category.skills:
 
+            # skills.add(
+            #     skill.strip().lower()
+            # )
             skills.add(
-                skill.strip().lower()
+                normalize_skill(skill)
             )
 
     return skills
@@ -29,7 +34,7 @@ def extract_inventory_skills(
 ):
 
     return {
-        skill.name.strip().lower()
+        normalize_skill(skill.name)
         for skill in inventory.skills
     }
 
@@ -37,6 +42,7 @@ def extract_inventory_skills(
 def gap_analysis_node(
     state: ResumeTailorState
 ):
+    logger.info("started gap_analysis-agent")
 
     resume = state[
         "parsed_resume"
@@ -55,16 +61,23 @@ def gap_analysis_node(
             resume
         )
     )
+    logger.info(
+        "resume_skills=%s",
+        sorted(resume_skills)
+    )
 
     inventory_skills = (
         extract_inventory_skills(
             inventory
         )
     )
+    logger.info(
+        "inventory_skills=%s",
+        sorted(inventory_skills)
+    )
 
     jd_skills = {
-
-        skill.strip().lower()
+        normalize_skill(skill)
 
         for skill in (
             jd.required_skills
@@ -74,6 +87,10 @@ def gap_analysis_node(
         if skill.strip()
     }
 
+    logger.info(
+        "jd_skills=%s",
+        sorted(jd_skills)
+    )
     already_present = []
 
     available_in_inventory = []
@@ -106,9 +123,12 @@ def gap_analysis_node(
 
     for keyword in jd.keywords:
 
-        keyword = (
-            keyword.strip()
-            .lower()
+        # keyword = (
+        #     keyword.strip()
+        #     .lower()
+        # )
+        keyword = normalize_skill(
+            keyword
         )
 
         if (
@@ -126,49 +146,25 @@ def gap_analysis_node(
                 keyword
             )
 
-    total_keywords = (
-        len(jd_skills)
-        + len(jd.keywords)
-    )
 
-    matched = (
-        len(already_present)
-        + len(available_in_inventory)
-        + len(matched_keywords)
-    )
-
-    ats_before = 0
-
-    if total_keywords:
-
-        ats_before = int(
-            (matched / total_keywords)
-            * 100
-        )
 
     result = GapAnalysis(
 
-        already_present=
-            already_present,
+        already_present=already_present,
 
-        available_in_inventory=
-            available_in_inventory,
+        available_in_inventory=available_in_inventory,
 
-        missing_and_unknown=
-            missing_and_unknown,
+        missing_and_unknown=missing_and_unknown,
 
-        matched_keywords=
-            matched_keywords,
+        matched_keywords=matched_keywords,
 
-        missing_keywords=
-            missing_keywords,
+        missing_keywords=missing_keywords,
 
-        ats_before=
-            ats_before,
-
-        ats_after=
-            ats_before
     )
+
+    print("gap_analysis ", "=" * 100)
+    print("", result)  # Print the last 3000 characters
+    print("=" * 100)
 
     return {
         "gap_analysis":

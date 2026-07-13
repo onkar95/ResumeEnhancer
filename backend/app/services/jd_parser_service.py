@@ -1,3 +1,5 @@
+import json
+
 from app.utils.jd_normalizer import normalize_jd
 from app.core.logger import logger
 
@@ -23,7 +25,8 @@ class JDParserService:
     def __init__(self):
         # self.groq_service = GroqService()
        self.llm_service = LLMService()
-    async def parse(self, job_description_text: str) -> JobDescription:
+
+    def parse(self, job_description_text: str) -> JobDescription:
 
         logger.info("Starting job description parsing")
 
@@ -31,8 +34,24 @@ class JDParserService:
 
             prompt = build_job_description_prompt(job_description_text)
             logger.info("JD parsing prompt generated")
+        
+        
+            response =  self.llm_service.generate(prompt)
 
-            response = self.llm_service.generate(prompt)
+            print("\n")
+            print("=" * 120)
+            print("RAW JD RESPONSE")
+            print(repr(response))
+            print("=" * 120)
+            print("\n")
+
+            # parsed_json = json.loads(response)
+            
+            # parsed_json = extract_json(response)
+
+
+            # response = self.llm_service.generate(prompt)
+            
             logger.info("Response received from LLM")
 
             parsed_json = extract_json(response)

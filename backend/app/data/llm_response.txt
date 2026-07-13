@@ -1,16 +1,17 @@
+```json
 {
   "name": "ONKAR KOTULE",
-  "headline": "Full Stack Developer | React Native Expert | Mendix Developer",
+  "headline": "Full Stack Developer | Expertise in React, Java, and Cloud Platforms",
   "contact_info": {
     "location": "Pune, India",
     "phone": "9511860767",
     "email": "kotuleonkar101@gmail.com",
-    "github": "",
-    "linkedin": "",
-    "portfolio": ""
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "portfolio": null
   },
   "professional_summary": {
-    "content": "Results-driven Full Stack Developer with 4+ years of experience in building scalable and maintainable applications using React, React Native, and Mendix. Proven expertise in designing and delivering complex features, collaborating with global stakeholders, and supporting production systems in regulated enterprise environments. Skilled in full-stack development, cloud platforms, and DevOps tools, with a strong focus on innovation and operational excellence."
+    "content": "Highly skilled Full Stack Developer with 4+ years of experience in building scalable and maintainable applications. Proficient in React, Java, and cloud platforms, with a strong background in Mendix development, microservices architecture, and DevOps tools. Proven ability to collaborate with cross-functional teams, drive innovation, and deliver high-quality software solutions."
   },
   "technical_skills": {
     "categories": [
@@ -27,11 +28,11 @@
         "category": "Frontend",
         "skills": [
           "React.js",
-          "Next.js",
           "React Native",
-          "Expo",
-          "Tailwind CSS",
-          "Redux Toolkit"
+          "Next.js",
+          "Redux Toolkit",
+          "HTML",
+          "CSS"
         ]
       },
       {
@@ -178,12 +179,13 @@
   "layout_hints": {
     "is_two_column": false,
     "section_order": [
-      "HEADER",
-      "PROFESSIONAL SUMMARY",
-      "TECHNICAL SKILLS",
-      "PROFESSIONAL EXPERIENCE",
-      "CERTIFICATIONS",
-      "EDUCATION"
+      "contact_info",
+      "professional_summary",
+      "technical_skills",
+      "professional_experience",
+      "certifications",
+      "education"
     ]
   }
 }
+```

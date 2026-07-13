@@ -47,7 +47,16 @@ GENERAL RULES
 
 12. Preserve responsibility order.
 
-13. Keep technology names exactly as written.
+13. Return technology names in canonical form.
+
+Examples:
+
+React.js -> React
+ReactJS -> React
+NodeJS -> Node.js
+SpringBoot3 -> Spring Boot
+Postgres -> PostgreSQL
+Mongo DB -> MongoDB
 
 14. Extract every certification.
 

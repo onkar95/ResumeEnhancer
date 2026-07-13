@@ -20,6 +20,13 @@ from groq import (
 )
 
 from app.core.config import settings
+from langsmith import traceable
+
+from app.utils.llm_cache import (
+    build_cache_key,
+    load_cache,
+    save_cache,
+)
 
 
 class GroqService:
@@ -34,25 +41,38 @@ class GroqService:
 
         self.model = settings.GROQ_MODEL
 
+    @traceable(name="groq_generate")
     def generate(
         self,
         prompt: str,
         temperature: float = 0.1,
         max_tokens: int = 4096,
     ) -> str:
-        """
-        Generate response from Groq.
 
-        Args:
-            prompt: Complete prompt
-            temperature: Sampling temperature
-            max_tokens: Maximum output tokens
+        cache_key = build_cache_key(
+            prompt,
+            prefix="generate"
+        )
 
-        Returns:
-            Raw LLM response string.
-        """
+        if settings.DEBUG_USE_CACHE:
+
+            cached = load_cache(
+                cache_key
+            )
+
+            if cached:
+
+                print(
+                    f"[CACHE HIT] {cache_key}"
+                )
+
+                return cached["response"]
 
         try:
+
+            print(
+                f"[CACHE MISS] {cache_key}"
+            )
 
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -66,7 +86,22 @@ class GroqService:
                 ],
             )
 
-            return response.choices[0].message.content or ""
+            content = (
+                response.choices[0]
+                .message.content
+                or ""
+            )
+
+            if settings.DEBUG_USE_CACHE:
+
+                save_cache(
+                    cache_key,
+                    {
+                        "response": content
+                    }
+                )
+
+            return content
 
         except RateLimitError as exc:
             raise Exception(
@@ -88,29 +123,50 @@ class GroqService:
                 f"Unexpected Groq Error: {exc}"
             ) from exc
 
+    @traceable(name="groq_generate_json")
     async def generate_json(
         self,
         prompt: str,
     ) -> str:
-        """
-        Helper specifically for JSON responses.
-        """
 
         system_prompt = """
-You are a JSON API.
+        You are a JSON API.
 
-Return ONLY valid JSON.
+        Return ONLY valid JSON.
 
-Do NOT return markdown.
+        Do NOT return markdown.
 
-Do NOT use ```json.
+        Do NOT use ```json.
 
-Do NOT explain anything.
+        Do NOT explain anything.
 
-Return JSON only.
-"""
+        Return JSON only.
+        """
+
+        cache_key = build_cache_key(
+            prompt,
+            prefix="generate_json"
+        )
+
+        if settings.DEBUG_USE_CACHE:
+
+            cached = load_cache(
+                cache_key
+            )
+
+            if cached:
+
+                print(
+                    f"[CACHE HIT] {cache_key}"
+                )
+
+                return cached["response"]
 
         try:
+
+            print(
+                f"[CACHE MISS] {cache_key}"
+            )
 
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -130,12 +186,133 @@ Return JSON only.
                 ],
             )
 
-            return response.choices[0].message.content or ""
+            content = (
+                response.choices[0]
+                .message.content
+                or ""
+            )
+
+            if settings.DEBUG_USE_CACHE:
+
+                save_cache(
+                    cache_key,
+                    {
+                        "response": content
+                    }
+                )
+
+            return content
 
         except Exception as exc:
             raise Exception(
                 f"Groq JSON Error: {exc}"
             ) from exc
+
+#     @traceable(name="groq_generate")
+#     def generate(
+#         self,
+#         prompt: str,
+#         temperature: float = 0.1,
+#         max_tokens: int = 4096,
+#     ) -> str:
+#         """
+#         Generate response from Groq.
+
+#         Args:
+#             prompt: Complete prompt
+#             temperature: Sampling temperature
+#             max_tokens: Maximum output tokens
+
+#         Returns:
+#             Raw LLM response string.
+#         """
+
+#         try:
+
+#             response = self.client.chat.completions.create(
+#                 model=self.model,
+#                 temperature=temperature,
+#                 max_tokens=max_tokens,
+#                 messages=[
+#                     {
+#                         "role": "user",
+#                         "content": prompt,
+#                     }
+#                 ],
+#             )
+
+#             return response.choices[0].message.content or ""
+
+#         except RateLimitError as exc:
+#             raise Exception(
+#                 "Groq rate limit exceeded."
+#             ) from exc
+
+#         except APIConnectionError as exc:
+#             raise Exception(
+#                 "Unable to connect to Groq."
+#             ) from exc
+
+#         except APIStatusError as exc:
+#             raise Exception(
+#                 f"Groq API Error: {exc}"
+#             ) from exc
+
+#         except Exception as exc:
+#             raise Exception(
+#                 f"Unexpected Groq Error: {exc}"
+#             ) from exc
+
+#     @traceable(name="groq_generate_json")
+#     async def generate_json(
+#         self,
+#         prompt: str,
+#     ) -> str:
+#         """
+#         Helper specifically for JSON responses.
+#         """
+
+#         system_prompt = """
+# You are a JSON API.
+
+# Return ONLY valid JSON.
+
+# Do NOT return markdown.
+
+# Do NOT use ```json.
+
+# Do NOT explain anything.
+
+# Return JSON only.
+# """
+
+#         try:
+
+#             response = self.client.chat.completions.create(
+#                 model=self.model,
+#                 temperature=0.1,
+#                 response_format={
+#                     "type": "json_object"
+#                 },
+#                 messages=[
+#                     {
+#                         "role": "system",
+#                         "content": system_prompt,
+#                     },
+#                     {
+#                         "role": "user",
+#                         "content": prompt,
+#                     },
+#                 ],
+#             )
+
+#             return response.choices[0].message.content or ""
+
+#         except Exception as exc:
+#             raise Exception(
+#                 f"Groq JSON Error: {exc}"
+#             ) from exc
+
 
 # from groq import Groq
 

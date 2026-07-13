@@ -1,5 +1,6 @@
 from uuid import uuid4
 
+from app.utils.skill_normalizer import normalize_skill
 from app.workflows.state import (
     ResumeTailorState
 )
@@ -25,12 +26,12 @@ def candidate_suggestion_node(
     # --------------------------------------------------
 
     inventory_skills = {
-        skill.name.lower()
+        normalize_skill(skill.name)
         for skill in inventory.skills
     }
 
     resume_skills = {
-        skill.lower()
+        normalize_skill(skill)
         for category in resume.technical_skills.categories
         for skill in category.skills
     }
@@ -43,7 +44,7 @@ def candidate_suggestion_node(
 
     for skill in set(jd_skills):
 
-        normalized = skill.lower().strip()
+        normalized = normalize_skill(skill)
 
         if (
             normalized in inventory_skills

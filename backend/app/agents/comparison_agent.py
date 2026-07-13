@@ -1,3 +1,7 @@
+from app.utils.skill_normalizer import (
+    normalize_skill
+)
+
 from app.workflows.state import (
     ResumeTailorState
 )
@@ -7,9 +11,127 @@ from app.schemas.comparison_result import (
 )
 
 
+def extract_resume_skills(
+    resume
+):
+
+    skills = set()
+
+    for category in (
+        resume.technical_skills.categories
+    ):
+
+        for skill in category.skills:
+
+            skills.add(
+                normalize_skill(skill)
+            )
+
+    return skills
+
+
+def extract_jd_targets(
+    jd
+):
+
+    targets = set()
+
+    for skill in (
+        jd.required_skills
+        + jd.preferred_skills
+    ):
+
+        targets.add(
+            normalize_skill(skill)
+        )
+
+    for keyword in jd.keywords:
+
+        targets.add(
+            normalize_skill(keyword)
+        )
+
+    return targets
+
+
+def calculate_ats(
+    resume_skills,
+    jd_targets
+):
+
+    if not jd_targets:
+        return 0
+
+    matched = len(
+        resume_skills.intersection(
+            jd_targets
+        )
+    )
+
+    return round(
+        (
+            matched
+            / len(jd_targets)
+        )
+        * 100
+    )
+
+
+def count_changed_experiences(
+    original_resume,
+    tailored_resume
+):
+
+    changed = 0
+
+    original_entries = {
+        (
+            exp.company,
+            exp.role
+        ): exp
+        for exp in original_resume.professional_experience
+    }
+
+    for tailored_exp in (
+        tailored_resume.professional_experience
+    ):
+
+        key = (
+            tailored_exp.company,
+            tailored_exp.role
+        )
+
+        original_exp = (
+            original_entries.get(key)
+        )
+
+        if not original_exp:
+            continue
+
+        if (
+            original_exp.responsibilities
+            != tailored_exp.responsibilities
+        ):
+            changed += 1
+
+    return changed
+
+
 def comparison_node(
     state: ResumeTailorState
 ):
+
+    original_resume = state[
+        "parsed_resume"
+    ]
+
+    tailored_resume = state[
+        "tailored_resume"
+    ]
+
+    jd = state[
+        "parsed_jd"
+    ]
 
     gap_analysis = state.get(
         "gap_analysis"
@@ -19,75 +141,82 @@ def comparison_node(
         "enhancement_plan"
     )
 
-    tailoring_decision = state.get(
-        "tailoring_decision"
+    original_skills = (
+        extract_resume_skills(
+            original_resume
+        )
+    )
+
+    tailored_skills = (
+        extract_resume_skills(
+            tailored_resume
+        )
+    )
+
+    jd_targets = (
+        extract_jd_targets(
+            jd
+        )
+    )
+
+    ats_before = calculate_ats(
+        original_skills,
+        jd_targets
+    )
+
+    ats_after = calculate_ats(
+        tailored_skills,
+        jd_targets
+    )
+
+    added_skills = sorted(
+        list(
+            tailored_skills
+            - original_skills
+        )
     )
 
     comparison = ComparisonResult(
 
-        inventory_skills_used=
-            gap_analysis.available_in_inventory
-            if gap_analysis
-            else [],
+        inventory_skills_used=gap_analysis.available_in_inventory
+        if gap_analysis
+        else [],
 
-        approved_skills_added=
-            (
-                tailoring_decision
-                .approved_skill_additions
-            )
-            if tailoring_decision
-            else [],
+        approved_skills_added=added_skills,
 
-        emphasized_skills=
-            (
-                tailoring_decision
-                .approved_skill_emphasis
-            )
-            if tailoring_decision
-            else [],
+        emphasized_skills=enhancement_plan.skills_to_emphasize
+        if enhancement_plan
+        else [],
 
-        targeted_keywords=
-            (
-                enhancement_plan
-                .keyword_targets
-            )
-            if enhancement_plan
-            else [],
+        targeted_keywords=enhancement_plan.keyword_targets
+        if enhancement_plan
+        else [],
 
-        summary_updated=
-            bool(
-                tailoring_decision
-                and
-                tailoring_decision.summary_changes
-            ),
+        summary_updated=(
+            original_resume
+            .professional_summary
+            .content
+            !=
+            tailored_resume
+            .professional_summary
+            .content
+        ),
 
-        experience_sections_updated=
-            len(
-                tailoring_decision.experience_changes
-            )
-            if (
-                tailoring_decision
-                and
-                tailoring_decision.experience_changes
-            )
-            else 0,
+        experience_sections_updated=count_changed_experiences(
+            original_resume,
+            tailored_resume
+        ),
 
-        ats_before=
-            gap_analysis.ats_before
-            if gap_analysis
-            else 0,
+        ats_before=ats_before,
 
-        ats_after=
-            gap_analysis.ats_after
-            if gap_analysis
-            else 0
+        ats_after=ats_after
     )
 
     return {
         "comparison_data":
             comparison
     }
-    
+
 # from app.agents.helpers import (
 #     extract_resume_skills
 # )

@@ -9,3 +9,5 @@ pydantic-settings
 groq
 langgraph
 langchain-core
+langsmith
+langchain

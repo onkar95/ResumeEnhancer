@@ -44,6 +44,7 @@ from app.schemas.comparison_result import (
 class ResumeTailorState(
     TypedDict
 ):
+    run_id: str
 
     resume_pdf_path: str
 
@@ -61,20 +62,8 @@ class ResumeTailorState(
         ResumeInventory
     ]
 
-    candidate_suggestions: Optional[
-        CandidateSuggestion
-    ]
-
-    approved_suggestions: Optional[
-        CandidateSuggestion
-    ]
-
     gap_analysis: Optional[
         GapAnalysis
-    ]
-
-    inventory_reasoning: Optional[
-        InventoryReasoning
     ]
 
     enhancement_plan: Optional[
@@ -83,10 +72,6 @@ class ResumeTailorState(
 
     tailoring_context: Optional[
         TailoringContext
-    ]
-
-    tailoring_decision: Optional[
-        TailoringDecision
     ]
 
     tailored_resume: Optional[
@@ -104,7 +89,8 @@ class ResumeTailorState(
     retry_count: int
 
     error: Optional[str]
-
+    
+    
 
 # from typing import Optional
 # from typing_extensions import TypedDict

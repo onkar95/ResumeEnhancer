@@ -1,4 +1,5 @@
 from pathlib import Path
+import uuid
 
 from fastapi import (
     APIRouter,
@@ -25,6 +26,7 @@ router = APIRouter(
     tags=["Resume Workflow"]
 )
 
+
 @router.post(
     "/resume-workflow"
 )
@@ -41,9 +43,13 @@ async def resume_workflow(
         resume_file
     )
 
+    run_id = str(uuid.uuid4())
+
     result = await (
         resume_tailor_graph.ainvoke(
             {
+                "run_id": run_id,
+
                 "resume_pdf_path":
                     str(file_path),
 
@@ -73,24 +79,31 @@ async def resume_workflow(
 
                 "error":
                     None
+            },
+            config={
+                "configurable": {
+                    "thread_id": run_id  # If using LangGraph persistence memory
+                },
+                "metadata": {
+                    "run_id": run_id,
+                    "environment": "development"
+                },
+                "run_name": "Resume_Workflow_API"  # This is the title you will see in LangSmith
             }
         )
     )
 
+    # return {
+    #     "success": True,
+    #     "gap_analysis": result["gap_analysis"],
+    #     "tailored_resume": result["tailored_resume"],
+    #     "comparison": result["comparison_data"]
+    # }
     return {
         "success": True,
-        "gap_analysis":
-            result[
-                "gap_analysis"
-            ],
-
-        "tailored_resume":
-            result[
-                "tailored_resume"
-            ],
-
-        "comparison":
-            result[
-                "comparison_data"
-            ]
+        "parsed_resume": result["parsed_resume"],
+        "tailored_resume": result["tailored_resume"],
+        "gap_analysis": result["gap_analysis"],
+        "comparison_data": result["comparison_data"],
+        "validation_result": result["validation_result"]
     }

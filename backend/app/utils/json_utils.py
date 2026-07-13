@@ -102,27 +102,57 @@ def parse_llm_json(response: str) -> dict[str, Any]:
             f"Failed to parse JSON.\n\nResponse:\n{cleaned}"
         ) from exc
 
+# def extract_json(response: str) -> dict:
+#     """
+#     Extract JSON from LLM response.
+#     Handles markdown wrapped responses.
+#     """
+
+#     response = response.strip()
+
+#     response = re.sub(
+#         r"^```json",
+#         "",
+#         response,
+#         flags=re.IGNORECASE,
+#     )
+
+#     response = re.sub(
+#         r"```$",
+#         "",
+#         response,
+#     )
+
+#     response = response.strip()
+
+#     return json.loads(response)
+
 def extract_json(response: str) -> dict:
     """
     Extract JSON from LLM response.
-    Handles markdown wrapped responses.
+    Supports:
+    - Plain JSON
+    - ```json fenced blocks
+    - Text before/after JSON
     """
 
     response = response.strip()
 
-    response = re.sub(
-        r"^```json",
-        "",
+    # Case 1: ```json ... ```
+    match = re.search(
+        r"```json\s*(.*?)\s*```",
         response,
-        flags=re.IGNORECASE,
+        re.DOTALL | re.IGNORECASE,
     )
 
-    response = re.sub(
-        r"```$",
-        "",
-        response,
-    )
+    if match:
+        return json.loads(match.group(1))
 
-    response = response.strip()
+    # Case 2: JSON embedded in text
+    start = response.find("{")
+    end = response.rfind("}")
 
-    return json.loads(response)
+    if start != -1 and end != -1:
+        return json.loads(response[start:end + 1])
+
+    raise ValueError("No JSON found in response")

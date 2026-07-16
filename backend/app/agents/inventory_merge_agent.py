@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from app.workflows.state import ResumeTailorState
@@ -12,11 +11,15 @@ from app.services.inventory_storage_service import (
     InventoryStorageService
 )
 
+from app.agents.helpers import (
+    extract_keywords
+)
+
 
 def normalize(value: str) -> str:
+
     return (
-        value.strip()
-        .lower()
+        value.strip().lower()
         if value
         else ""
     )
@@ -29,10 +32,14 @@ def merge_project(
 
     existing_bullets = {
         normalize(b)
-        for b in existing_project.bullet_points
+        for b in (
+            existing_project.bullet_points
+        )
     }
 
-    for bullet in incoming_project.bullet_points:
+    for bullet in (
+        incoming_project.bullet_points
+    ):
 
         if (
             normalize(bullet)
@@ -53,13 +60,11 @@ def merge_experience(
     incoming_exp
 ):
 
-    # -----------------------
-    # Responsibilities
-    # -----------------------
-
     existing_responsibilities = {
         normalize(r)
-        for r in existing_exp.responsibilities
+        for r in (
+            existing_exp.responsibilities
+        )
     }
 
     for responsibility in (
@@ -79,13 +84,11 @@ def merge_experience(
                 normalize(responsibility)
             )
 
-    # -----------------------
-    # Projects
-    # -----------------------
-
     existing_projects = {
         normalize(project.title): project
-        for project in existing_exp.projects
+        for project in (
+            existing_exp.projects
+        )
     }
 
     for incoming_project in (
@@ -113,10 +116,6 @@ def merge_experience(
             existing_exp.projects.append(
                 incoming_project
             )
-
-    # -----------------------
-    # Fill missing metadata
-    # -----------------------
 
     if (
         not existing_exp.location
@@ -148,7 +147,9 @@ def find_matching_experience(
     inventory_experiences
 ):
 
-    for existing in inventory_experiences:
+    for existing in (
+        inventory_experiences
+    ):
 
         same_company = (
             normalize(existing.company)
@@ -194,9 +195,9 @@ def inventory_merge_node(
     )
 
     existing_summaries = {
-        normalize(summary)
-        for summary in (
-            inventory.professional_summaries
+        normalize(point)
+        for point in (
+            inventory.summary_points
         )
     }
 
@@ -205,9 +206,15 @@ def inventory_merge_node(
         not in existing_summaries
     ):
 
-        inventory.professional_summaries.append(
+        inventory.summary_points.append(
             summary
         )
+
+    inventory.summary_keywords = (
+        extract_keywords(
+            inventory.summary_points
+        )
+    )
 
     # ==================================
     # Skills
@@ -309,17 +316,24 @@ def inventory_merge_node(
             normalize(edu.degree),
             normalize(edu.institution)
         )
-        for edu in inventory.education
+        for edu in (
+            inventory.education
+        )
     }
 
-    for edu in resume.education:
+    for edu in (
+        resume.education
+    ):
 
         key = (
             normalize(edu.degree),
             normalize(edu.institution)
         )
 
-        if key not in existing_education:
+        if (
+            key
+            not in existing_education
+        ):
 
             inventory.education.append(
                 edu
@@ -330,17 +344,37 @@ def inventory_merge_node(
             )
 
     # ==================================
-    # Resume Version History
+    # Resume Versions
     # ==================================
 
-    inventory.resume_versions.append(
-        ResumeVersion(
-            filename=state[
-                "resume_pdf_path"
-            ],
-            uploaded_at=datetime.utcnow()
+    existing_files = {
+        normalize(version.filename)
+        for version in (
+            inventory.resume_versions
         )
+    }
+
+    current_file = normalize(
+        state["resume_pdf_path"]
     )
+
+    if (
+        current_file
+        not in existing_files
+    ):
+
+        inventory.resume_versions.append(
+            ResumeVersion(
+                filename=state[
+                    "resume_pdf_path"
+                ],
+                uploaded_at=datetime.utcnow()
+            )
+        )
+
+    # ==================================
+    # Metadata
+    # ==================================
 
     inventory.updated_at = (
         datetime.utcnow()
@@ -353,107 +387,3 @@ def inventory_merge_node(
     return {
         "resume_inventory": inventory
     }
-    
-# 
-# from datetime import datetime
-
-# from app.workflows.state import (
-#     ResumeTailorState
-# )
-
-# from app.schemas.resume_inventory import (
-#     InventorySkill,
-#     ResumeVersion
-# )
-
-# from app.services.inventory_storage_service import (
-#     InventoryStorageService
-# )
-# from app.agents.helpers import (
-#     experience_exists
-# )
-
-
-# def inventory_merge_node(
-#     state: ResumeTailorState
-# ):
-
-#     inventory = (
-#         InventoryStorageService
-#         .load_inventory()
-#     )
-
-#     resume = state[
-#         "parsed_resume"
-#     ]
-
-#     inventory.professional_summaries.append(
-#         resume.professional_summary.content
-#     )
-
-#     existing_skills = {
-#         skill.name.lower()
-#         for skill in inventory.skills
-#     }
-
-#     for category in (
-#         resume.technical_skills.categories
-#     ):
-
-#         for skill in category.skills:
-
-#             if (
-#                 skill.lower()
-#                 not in existing_skills
-#             ):
-
-#                 inventory.skills.append(
-#                     InventorySkill(
-#                         name=skill,
-#                         rating=5,
-#                         verified=True
-#                     )
-#                 )
-
-#     inventory.professional_experience.extend(
-#         resume.professional_experience
-#     )
-
-#     inventory.certifications.extend(
-#         resume.certifications
-#     )
-
-#     for exp in (
-#         resume.professional_experience
-#     ):
-
-#         if not experience_exists(
-#             exp.company,
-#             exp.role,
-#             inventory.professional_experience
-#         ):
-
-#             inventory.professional_experience.append(
-#                 exp
-#             )
-
-#     inventory.resume_versions.append(
-#         ResumeVersion(
-#             filename=state[
-#                 "resume_pdf_path"
-#             ],
-#             uploaded_at=datetime.utcnow()
-#         )
-#     )
-
-#     inventory.updated_at = (
-#         datetime.utcnow()
-#     )
-
-#     InventoryStorageService.save_inventory(
-#         inventory
-#     )
-
-#     return {
-#         "resume_inventory": inventory
-#     }

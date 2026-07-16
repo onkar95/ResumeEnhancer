@@ -105,10 +105,10 @@ def add_summary(
         summary
         and
         summary
-        not in inventory.professional_summaries
+        not in inventory.summary_points
     ):
 
-        inventory.professional_summaries.append(
+        inventory.summary_points.append(
             summary
         )
 

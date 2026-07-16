@@ -1,6 +1,62 @@
 {
-  "professional_summaries": [
+  "summary_points": [
     "Mendix Developer with 2.5+ years of hands-on experience and 4+ years of overall professional experience building enterprise-scale applications across logistics, compliance, and transport domains. Strong expertise in Mendix domain modeling, microflows, security, integrations, workflow automation, and UI/UX using Atlas Design System, with a solid full-stack foundation in JavaScript, REST APIs, and cloud platforms. Proven ability to own features end-to-end, collaborate with global stakeholders, and support production systems in regulated enterprise environments, delivering scalable and maintainable solutions across low-code and pro-code architectures"
+  ],
+  "summary_keywords": [
+    "2.5+",
+    "ability",
+    "across",
+    "apis",
+    "architectures",
+    "atlas",
+    "automation",
+    "building",
+    "cloud",
+    "collaborate",
+    "compliance",
+    "delivering",
+    "design",
+    "developer",
+    "domain",
+    "domains.",
+    "end-to-end",
+    "enterprise",
+    "enterprise-scale",
+    "environments",
+    "experience",
+    "expertise",
+    "features",
+    "foundation",
+    "full-stack",
+    "global",
+    "hands-on",
+    "integrations",
+    "javascript",
+    "logistics",
+    "low-code",
+    "maintainable",
+    "mendix",
+    "microflows",
+    "modeling",
+    "overall",
+    "own",
+    "platforms.",
+    "pro-code",
+    "production",
+    "professional",
+    "proven",
+    "regulated",
+    "rest",
+    "scalable",
+    "security",
+    "solid",
+    "solutions",
+    "stakeholders",
+    "strong",
+    "support",
+    "transport",
+    "workflow",
+    "years"
   ],
   "skills": [
     {
@@ -281,73 +337,8 @@
   "resume_versions": [
     {
       "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-11T13:28:25.992007"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-11T13:31:02.948141"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-11T13:57:56.241236"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-12T09:40:36.353539"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T12:43:43.463057"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T12:48:31.757697"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T12:53:59.299607"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:01:13.005531"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:02:55.524494"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:29:26.016451"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:32:29.124715"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:35:33.168060"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:54:23.817695"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T13:57:17.050134"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T14:00:39.809816"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T14:22:45.666225"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T14:34:03.586201"
+      "uploaded_at": "2026-07-13T17:39:17.805416"
     }
   ],
-  "evidence": [],
-  "updated_at": "2026-07-13T14:34:03.586215"
+  "updated_at": "2026-07-15T13:15:13.095537"
 }

@@ -28,27 +28,11 @@ JOB DESCRIPTION
 {job_description_json}
 
 ==================================================
-RESUME INVENTORY
-==================================================
-
-
-==================================================
-APPROVED SUGGESTIONS
-==================================================
-
-{approved_suggestions_json}
-
-==================================================
 ENHANCEMENT PLAN
 ==================================================
 
 {enhancement_plan_json}
 
-==================================================
-TAILORING DECISION
-==================================================
-
-{tailoring_decision_json}
 
 ==================================================
 RULES
@@ -81,7 +65,7 @@ IMPORTANT:
 If information does not exist in:
 - Resume
 - Resume Inventory
-- Approved Suggestions
+- ENHANCEMENT PLAN
 
 then DO NOT add it.
 

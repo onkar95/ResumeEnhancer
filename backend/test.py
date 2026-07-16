@@ -27,7 +27,8 @@ client = Client()
 # TRACE_ID = "019f50e4-dce7-74a3-ae25-209914f66d7a"
 # TRACE_ID = "019f515f-c636-7e60-8ff8-f0ac63d2ee17"
 # TRACE_ID = "019f5178-6073-70e1-8351-8ff031584bba"
-TRACE_ID = "019f5b92-cae1-7a53-9781-7b1c4e0add53"
+# TRACE_ID = "019f5b92-cae1-7a53-9781-7b1c4e0add53"
+TRACE_ID = "019f65ea-b40c-7841-9d48-3ab4bfa9ee8a"
 
 
 # 1. Fetch all runs belonging to this specific trace
@@ -47,7 +48,7 @@ for run in all_runs:
     })
 
 # 3. Save the complete data locally as a JSON file
-with open("uploads/complete_trace_6.json", "w") as f:
+with open("uploads/complete_trace_7.json", "w") as f:
     json.dump(trace_data, f, indent=2)
 
 print(

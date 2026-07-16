@@ -1,25 +1,21 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List
 
 
 class GapAnalysis(BaseModel):
 
-    already_present: List[str] = Field(
-        default_factory=list
-    )
+    matched_skills: List[str] = []
 
-    available_in_inventory: List[str] = Field(
-        default_factory=list
-    )
+    inventory_skills: List[str] = []
 
-    missing_and_unknown: List[str] = Field(
-        default_factory=list
-    )
+    missing_skills: List[str] = []
 
-    matched_keywords: List[str] = Field(
-        default_factory=list
-    )
+    matched_keywords: List[str] = []
 
-    missing_keywords: List[str] = Field(
-        default_factory=list
-    )
+    missing_keywords: List[str] = []
+
+    relevant_experience: List[str] = []
+
+    relevant_projects: List[str] = []
+    
+    summary_opportunities: List[str] = []

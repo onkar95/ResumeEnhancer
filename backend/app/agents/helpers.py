@@ -1,6 +1,56 @@
+import re
+
 from app.schemas.resume import (
     ResumeDocument
 )
+
+
+STOP_WORDS = {
+    "the",
+    "and",
+    "with",
+    "for",
+    "from",
+    "into",
+    "using",
+    "used",
+    "built",
+    "developed",
+    "implemented",
+    "application",
+    "applications",
+    "system",
+    "systems"
+}
+
+
+def extract_keywords(
+    texts: list[str]
+) -> list[str]:
+
+    keywords = set()
+
+    for text in texts:
+
+        if not text:
+            continue
+
+        words = re.findall(
+            r"[A-Za-z0-9+#.-]+",
+            text.lower()
+        )
+
+        for word in words:
+
+            if (
+                len(word) < 3
+                or word in STOP_WORDS
+            ):
+                continue
+
+            keywords.add(word)
+
+    return sorted(keywords)
 
 
 def extract_resume_skills(
@@ -15,7 +65,9 @@ def extract_resume_skills(
     if not resume.technical_skills:
         return skills
 
-    for category in resume.technical_skills.categories:
+    for category in (
+        resume.technical_skills.categories
+    ):
 
         for skill in category.skills:
 
@@ -26,6 +78,8 @@ def extract_resume_skills(
                 )
 
     return skills
+
+
 def experience_exists(
     company: str,
     role: str,
@@ -44,31 +98,3 @@ def experience_exists(
             return True
 
     return False
-
-# def extract_resume_skills(
-#     resume: dict
-# ) -> Set[str]:
-
-#     skills = set()
-
-#     technical_skills = (
-#         resume.get("technical_skills", {})
-#     )
-
-#     categories = technical_skills.get(
-#         "categories",
-#         []
-#     )
-
-#     for category in categories:
-
-#         for skill in category.get(
-#             "skills",
-#             []
-#         ):
-
-#             skills.add(
-#                 skill.strip().lower()
-#             )
-
-#     return skills

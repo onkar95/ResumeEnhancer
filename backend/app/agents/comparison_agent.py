@@ -178,7 +178,7 @@ def comparison_node(
 
     comparison = ComparisonResult(
 
-        inventory_skills_used=gap_analysis.available_in_inventory
+        inventory_skills_used=gap_analysis.inventory_skills
         if gap_analysis
         else [],
 

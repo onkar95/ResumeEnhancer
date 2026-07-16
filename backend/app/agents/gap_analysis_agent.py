@@ -1,4 +1,7 @@
-from app.utils.skill_normalizer import normalize_skill
+from app.utils.skill_normalizer import (
+    normalize_skill
+)
+
 from app.workflows.state import (
     ResumeTailorState
 )
@@ -6,22 +9,20 @@ from app.workflows.state import (
 from app.schemas.gap_analysis import (
     GapAnalysis
 )
+
 from app.core.logger import logger
 
 
-def extract_resume_skills(resume):
+def extract_resume_skills(
+    resume
+):
 
     skills = set()
 
     for category in (
         resume.technical_skills.categories
     ):
-
         for skill in category.skills:
-
-            # skills.add(
-            #     skill.strip().lower()
-            # )
             skills.add(
                 normalize_skill(skill)
             )
@@ -39,10 +40,122 @@ def extract_inventory_skills(
     }
 
 
+def extract_summary_text(
+    inventory
+):
+
+    values = []
+
+    values.extend(
+        inventory.summary_points
+    )
+
+    values.extend(
+        inventory.summary_keywords
+    )
+
+    return " ".join(values).lower()
+
+
+# def find_relevant_experience(
+#     inventory,
+#     jd_keywords
+# ):
+
+#     results = []
+
+#     for exp in inventory.professional_experience:
+
+#         searchable_text = []
+
+#         searchable_text.append(
+#             exp.role
+#         )
+
+#         searchable_text.append(
+#             exp.company
+#         )
+
+#         searchable_text.extend(
+#             exp.responsibilities
+#         )
+
+#         combined = (
+#             " ".join(
+#                 searchable_text
+#             ).lower()
+#         )
+
+#         matches = 0
+
+#         for keyword in jd_keywords:
+
+#             if keyword in combined:
+#                 matches += 1
+
+#         if matches > 0:
+
+#             results.append(
+#                 f"{exp.role} @ {exp.company}"
+#             )
+
+#     return list(
+#         dict.fromkeys(results)
+#     )
+
+
+# def find_relevant_projects(
+#     inventory,
+#     jd_keywords
+# ):
+
+#     results = []
+
+#     for exp in inventory.professional_experience:
+
+#         for project in exp.projects:
+
+#             searchable_text = []
+
+#             searchable_text.append(
+#                 project.title
+#             )
+
+#             searchable_text.extend(
+#                 project.bullet_points
+#             )
+
+#             combined = (
+#                 " ".join(
+#                     searchable_text
+#                 ).lower()
+#             )
+
+#             matches = 0
+
+#             for keyword in jd_keywords:
+
+#                 if keyword in combined:
+#                     matches += 1
+
+#             if matches > 0:
+
+#                 results.append(
+#                     project.title
+#                 )
+
+#     return list(
+#         dict.fromkeys(results)
+#     )
+
+
 def gap_analysis_node(
     state: ResumeTailorState
 ):
-    logger.info("started gap_analysis-agent")
+
+    logger.info(
+        "started gap_analysis_agent"
+    )
 
     resume = state[
         "parsed_resume"
@@ -61,59 +174,45 @@ def gap_analysis_node(
             resume
         )
     )
-    logger.info(
-        "resume_skills=%s",
-        sorted(resume_skills)
-    )
 
     inventory_skills = (
         extract_inventory_skills(
             inventory
         )
     )
-    logger.info(
-        "inventory_skills=%s",
-        sorted(inventory_skills)
-    )
 
     jd_skills = {
         normalize_skill(skill)
-
         for skill in (
             jd.required_skills
             + jd.preferred_skills
         )
-
         if skill.strip()
     }
 
-    logger.info(
-        "jd_skills=%s",
-        sorted(jd_skills)
-    )
-    already_present = []
+    matched_skills = []
 
-    available_in_inventory = []
+    inventory_skill_matches = []
 
-    missing_and_unknown = []
+    missing_skills = []
 
     for skill in jd_skills:
 
         if skill in resume_skills:
 
-            already_present.append(
+            matched_skills.append(
                 skill
             )
 
         elif skill in inventory_skills:
 
-            available_in_inventory.append(
+            inventory_skill_matches.append(
                 skill
             )
 
         else:
 
-            missing_and_unknown.append(
+            missing_skills.append(
                 skill
             )
 
@@ -121,52 +220,110 @@ def gap_analysis_node(
 
     missing_keywords = []
 
+    normalized_keywords = []
+
     for keyword in jd.keywords:
 
-        # keyword = (
-        #     keyword.strip()
-        #     .lower()
-        # )
-        keyword = normalize_skill(
+        normalized = normalize_skill(
             keyword
         )
 
+        normalized_keywords.append(
+            normalized
+        )
+
         if (
-            keyword in resume_skills
-            or keyword in inventory_skills
+            normalized in resume_skills
+            or normalized in inventory_skills
         ):
 
             matched_keywords.append(
-                keyword
+                normalized
             )
 
         else:
 
             missing_keywords.append(
-                keyword
+                normalized
             )
 
+    summary_text = (
+        extract_summary_text(
+            inventory
+        )
+    )
 
+    summary_opportunities = []
+
+    for skill in (
+        matched_skills
+        + inventory_skill_matches
+    ):
+
+        if skill not in summary_text:
+
+            summary_opportunities.append(
+                skill
+            )
+
+    # relevant_experience = (
+    #     find_relevant_experience(
+    #         inventory,
+    #         normalized_keywords
+    #     )
+    # )
+
+    # relevant_projects = (
+    #     find_relevant_projects(
+    #         inventory,
+    #         normalized_keywords
+    #     )
+    # )
 
     result = GapAnalysis(
 
-        already_present=already_present,
+        matched_skills=sorted(
+            matched_skills
+        ),
 
-        available_in_inventory=available_in_inventory,
+        inventory_skills=sorted(
+            inventory_skill_matches
+        ),
 
-        missing_and_unknown=missing_and_unknown,
+        missing_skills=sorted(
+            missing_skills
+        ),
 
-        matched_keywords=matched_keywords,
+        matched_keywords=sorted(
+            matched_keywords
+        ),
 
-        missing_keywords=missing_keywords,
+        missing_keywords=sorted(
+            missing_keywords
+        ),
 
+        # relevant_experience=sorted(
+        #     relevant_experience
+        # ),
+
+        # relevant_projects=sorted(
+        #     relevant_projects
+        # ),
+
+        summary_opportunities=sorted(
+            list(
+                set(
+                    summary_opportunities
+                )
+            )
+        )
     )
 
-    print("gap_analysis ", "=" * 100)
-    print("", result)  # Print the last 3000 characters
-    print("=" * 100)
+    logger.info(
+        "gap_analysis=%s",
+        result.model_dump()
+    )
 
     return {
-        "gap_analysis":
-            result
+        "gap_analysis": result
     }

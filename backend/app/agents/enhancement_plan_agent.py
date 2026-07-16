@@ -6,10 +6,18 @@ from app.schemas.enhancement_plan import (
     EnhancementPlan
 )
 
+from app.core.logger import (
+    logger
+)
+
 
 def enhancement_plan_node(
     state: ResumeTailorState
 ):
+
+    logger.info(
+        "started enhancement_plan_agent"
+    )
 
     gap_analysis = state[
         "gap_analysis"
@@ -17,50 +25,86 @@ def enhancement_plan_node(
 
     plan = EnhancementPlan()
 
-    # safe additions
+    # --------------------------------------------------
+    # Skills available in inventory but not currently
+    # present in resume
+    # --------------------------------------------------
+
     plan.skills_to_add.extend(
-        gap_analysis.available_in_inventory
+        sorted(
+            set(
+                gap_analysis.inventory_skills
+            )
+        )
     )
 
-    # emphasize existing skills
+    # --------------------------------------------------
+    # Skills already matching JD
+    # --------------------------------------------------
+
     plan.skills_to_emphasize.extend(
-        gap_analysis.already_present
+        sorted(
+            set(
+                gap_analysis.matched_skills
+            )
+        )
     )
 
-    # target keywords
+    # --------------------------------------------------
+    # Relevant experience
+    # --------------------------------------------------
+
+    plan.experience_to_emphasize.extend(
+        sorted(
+            set(
+                gap_analysis.relevant_experience
+            )
+        )
+    )
+
+    # --------------------------------------------------
+    # Relevant projects
+    # --------------------------------------------------
+
+    plan.projects_to_emphasize.extend(
+        sorted(
+            set(
+                gap_analysis.relevant_projects
+            )
+        )
+    )
+
+    # --------------------------------------------------
+    # ATS Keywords
+    # --------------------------------------------------
+
     plan.keyword_targets.extend(
-        gap_analysis.missing_keywords
+        sorted(
+            set(
+                gap_analysis.missing_keywords
+            )
+        )
     )
 
-    # summary suggestions
+    # --------------------------------------------------
+    # Summary improvements
+    # --------------------------------------------------
 
-    if (
-        gap_analysis.available_in_inventory
+    for item in sorted(
+        set(
+            gap_analysis.summary_opportunities
+        )
     ):
 
         plan.summary_improvements.append(
-            "Include inventory skills relevant to the JD in the professional summary."
+            f"Highlight {item} in the professional summary."
         )
 
-    if (
-        gap_analysis.already_present
-    ):
-
-        plan.summary_improvements.append(
-            "Highlight strongest matching skills from the current resume."
-        )
-
-    # experience improvements
-
-    for skill in (
-        gap_analysis.available_in_inventory
-    ):
-
-        plan.experience_improvements.append(
-            f"Add evidence demonstrating experience with {skill} where appropriate."
-        )
+    logger.info(
+        "enhancement_plan=%s",
+        plan.model_dump()
+    )
 
     return {
-        "enhancement_plan":
-            plan
+        "enhancement_plan": plan
     }

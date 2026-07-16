@@ -93,10 +93,10 @@ builder.add_node(
     enhancement_plan_node
 )
 
-builder.add_node(
-    "tailoring_context",
-    tailoring_context_node
-)
+# builder.add_node(
+#     "tailoring_context",
+#     tailoring_context_node
+# )
 
 builder.add_node(
     "resume_tailor",
@@ -141,11 +141,6 @@ builder.add_edge(
 
 builder.add_edge(
     "enhancement_plan",
-    "tailoring_context"
-)
-
-builder.add_edge(
-    "tailoring_context",
     "resume_tailor"
 )
 

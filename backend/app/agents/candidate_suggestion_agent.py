@@ -140,7 +140,7 @@ def candidate_suggestion_node(
     # Summary Suggestions
     # --------------------------------------------------
 
-    for summary in inventory.professional_summaries:
+    for summary in inventory.summary_points:
 
         if (
             summary.lower()

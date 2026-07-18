@@ -41,6 +41,7 @@ from app.agents.validation_agent import (
 from app.agents.comparison_agent import (
     comparison_node
 )
+from app.agents.candidate_suggestion_agent import candidate_suggestion_node
 
 MAX_RETRIES = 3
 
@@ -93,10 +94,10 @@ builder.add_node(
     enhancement_plan_node
 )
 
-# builder.add_node(
-#     "tailoring_context",
-#     tailoring_context_node
-# )
+builder.add_node(
+    "candidate_suggestion",
+    candidate_suggestion_node
+)
 
 builder.add_node(
     "resume_tailor",
@@ -158,12 +159,15 @@ builder.add_edge(
     'validation',
     "comparison"
 )
-
 builder.add_edge(
     "comparison",
-    END
+    "candidate_suggestion"
 )
 
+builder.add_edge(
+    "candidate_suggestion",
+    END
+)
 resume_tailor_graph = (
     builder.compile()
 )

@@ -7,6 +7,10 @@ from app.core.config import settings
 from app.api.v1.resume_workflow import (
     router as workflow_router
 )
+from app.api.v1.review import router as review_router
+from app.api.v1.approval import router as approval_router
+
+
 from app.core.config import settings
 import os
 
@@ -42,6 +46,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(
+    review_router
+)
+
+app.include_router(
+    approval_router
+)
 
 app.include_router(
     workflow_router

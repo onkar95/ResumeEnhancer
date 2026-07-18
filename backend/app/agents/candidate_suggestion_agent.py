@@ -190,7 +190,6 @@ def candidate_suggestion_node(
             )
     }
 
-
 # from uuid import uuid4
 
 # from app.utils.skill_normalizer import normalize_skill

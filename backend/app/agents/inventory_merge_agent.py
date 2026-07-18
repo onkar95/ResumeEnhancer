@@ -14,6 +14,9 @@ from app.services.inventory_storage_service import (
 from app.agents.helpers import (
     extract_keywords
 )
+from app.utils.skill_normalizer import (
+    normalize_skill
+)
 
 
 def normalize(value: str) -> str:
@@ -221,7 +224,7 @@ def inventory_merge_node(
     # ==================================
 
     existing_skills = {
-        normalize(skill.name)
+        normalize_skill(skill.name)
         for skill in inventory.skills
     }
 
@@ -234,7 +237,7 @@ def inventory_merge_node(
         ):
 
             if (
-                normalize(skill_name)
+                normalize_skill(skill_name)
                 not in existing_skills
             ):
 
@@ -248,7 +251,7 @@ def inventory_merge_node(
                 )
 
                 existing_skills.add(
-                    normalize(skill_name)
+                    normalize_skill(skill_name)
                 )
 
     # ==================================

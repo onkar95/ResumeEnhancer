@@ -34,7 +34,7 @@ class ContactInfo(BaseModel):
     location: Optional[str] = None
 
     phone: Optional[str] = None
-    
+
     email: Optional[str] = None
 
     github: Optional[str] = None
@@ -129,6 +129,17 @@ class ExperienceProject(BaseModel):
     title: str
 
     bullet_points: List[str] = Field(default_factory=list)
+    
+    technologies: List[str] = Field(
+        default_factory=list,
+        description=(
+            "Tech stack explicitly listed for this project on the resume "
+            "(e.g. a subtitle line like 'React Native, Node.js, Express, "
+            "MongoDB' under a project title). Used for JD relevance "
+            "matching -- do NOT infer these; only capture what the resume "
+            "explicitly states."
+        )
+    )
 
 
 # ==========================================================
@@ -226,7 +237,8 @@ class ResumeDocument(BaseModel):
 
     technical_skills: SkillsSection
 
-    professional_experience: List[ExperienceEntry] = Field(default_factory=list)
+    professional_experience: List[ExperienceEntry] = Field(
+        default_factory=list)
 
     certifications: List[Certification] = Field(default_factory=list)
 

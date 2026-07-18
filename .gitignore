@@ -227,6 +227,8 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+*/test.py
+
 # Ruff stuff:
 .ruff_cache/
 

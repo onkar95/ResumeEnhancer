@@ -23,14 +23,28 @@ export default function GapAnalysis({ gapAnalysis }: Props) {
           ))}
         </div>
       </div>
-      <div>
+      <div className="mb-4">
         <h3 className="font-semibold mb-2">Matched Skills</h3>
 
         <div className="flex flex-wrap gap-2">
-          {gapAnalysis.already_present?.map((skill: string) => (
+          {gapAnalysis.matched_skills?.map((skill: string) => (
             <span
               key={skill}
               className="bg-green-100 text-green-700 px-3 py-1 rounded-full"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 className="font-semibold mb-2">Available in Inventory</h3>
+
+        <div className="flex flex-wrap gap-2">
+          {gapAnalysis.inventory_skills?.map((skill: string) => (
+            <span
+              key={skill}
+              className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full"
             >
               {skill}
             </span>

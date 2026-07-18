@@ -1,7 +1,7 @@
 ```json
 {
   "name": "ONKAR KOTULE",
-  "headline": "Full Stack Developer | Expertise in React, Java, and Cloud Platforms",
+  "headline": "Full Stack Developer | Mendix & React Expert",
   "contact_info": {
     "location": "Pune, India",
     "phone": "9511860767",
@@ -11,7 +11,7 @@
     "portfolio": null
   },
   "professional_summary": {
-    "content": "Highly skilled Full Stack Developer with 4+ years of experience in building scalable and maintainable applications. Proficient in React, Java, and cloud platforms, with a strong background in Mendix development, microservices architecture, and DevOps tools. Proven ability to collaborate with cross-functional teams, drive innovation, and deliver high-quality software solutions."
+    "content": "Highly skilled Full Stack Developer with 4+ years of experience in building enterprise-scale applications using Mendix, React, and JavaScript. Proven expertise in designing and delivering scalable solutions, with a strong foundation in cloud platforms, Docker, and CI/CD pipelines. Proficient in React, React Native, and Redux, with a solid understanding of infrastructure, deployment pipelines, and operational excellence."
   },
   "technical_skills": {
     "categories": [
@@ -28,11 +28,11 @@
         "category": "Frontend",
         "skills": [
           "React.js",
-          "React Native",
           "Next.js",
-          "Redux Toolkit",
-          "HTML",
-          "CSS"
+          "React Native",
+          "Expo",
+          "Tailwind CSS",
+          "Redux Toolkit"
         ]
       },
       {
@@ -74,7 +74,8 @@
       "responsibilities": [
         "Designed and delivered enterprise-scale applications using Mendix and React, supporting complex business workflows and compliance-driven systems",
         "Built end-to-end Mendix applications including domain models, microflows, nanoflows, integrations, and Mendix security",
-        "Integrated external REST APIs and backend services into Mendix applications"
+        "Integrated external REST APIs and backend services into Mendix applications",
+        "Utilized Docker and CI/CD pipelines to ensure scalable and maintainable solutions"
       ],
       "projects": [
         {
@@ -83,35 +84,21 @@
             "Developed ShareSpace, a Mendix-based enterprise document management system for secure file storage and collaboration from scratch",
             "Implemented a hierarchical folder and file structure to organize documents across business units",
             "Built secure file upload and download functionality using Mendix FileDocument with role-based access control",
-            "Implemented Soft Delete (Trash) functionality to support restore and permanent delete, ensuring an audit-friendly document lifecycle",
-            "Applied entity and attribute-level security with XPath to control document visibility and access",
-            "Contributed actively to refinement sessions and sprint planning, collaborating with business and technical stakeholders",
-            "Integrated the application into CI/CD pipelines, enabling reliable builds and controlled deployments across environments"
+            "Applied entity and attribute-level security with XPath to control document visibility and access"
           ]
         },
         {
           "title": "Export Control",
           "bullet_points": [
-            "Enhanced And Implemented an Export Control Compliance system in Mendix to automate regulatory validations",
-            "Refactored existing ECCN logic into a configuration-driven design, making ECCNs and COO rules easy to understand, modify, and maintain",
-            "Built dynamic validation microflows for export restrictions with secure, auditable, and role-based access control"
+            "Enhanced and implemented an Export Control Compliance system in Mendix to automate regulatory validations",
+            "Refactored existing ECCN logic into a configuration-driven design, making ECCNs and COO rules easy to understand, modify, and maintain"
           ]
         },
         {
           "title": "Resource & Industrials – Dangerous Goods Transport Management System (R&I DG TMS)",
           "bullet_points": [
             "Developed a customer-facing Mendix application for booking dangerous goods transport slots",
-            "Implemented: Time-slot booking & approval workflows, Role-based access for customers, schedulers, and admins, In-app and email notifications, Authentication and user management",
-            "Built scalable domain models, microflow-driven workflows, and secure entity access",
-            "Delivered as a Hackathon MVP in 1 day, later expanded into a production-ready system with"
-          ]
-        },
-        {
-          "title": "Support & SPOC Role",
-          "bullet_points": [
-            "Acted as technical SPOC for multiple Mendix applications",
-            "Responsibilities included: UI enhancements and design system rollout, Azure Active Directory & SSO integration, UAT support, post-production fixes, and hypercare",
-            "Resolved production issues and established best practices for Mendix development and support handover"
+            "Implemented time-slot booking and approval workflows, role-based access, and in-app notifications"
           ]
         }
       ]
@@ -125,33 +112,14 @@
       "responsibilities": [
         "Built scalable full-stack features using Node.js, Express.js, and MongoDB, handling complex CRUD operations and relational data modeling",
         "Designed and consumed RESTful APIs, enabling seamless communication between frontend and backend services",
-        "Implemented JWT-based authentication and authorization, ensuring secure access control across applications",
-        "Developed responsive React and Next.js components from Figma designs using Tailwind CSS",
-        "Improved application performance through API optimizations, efficient state management, and MongoDB indexing",
-        "Ensured cross-browser and mobile compatibility, resolving UI/UX bottlenecks"
+        "Implemented JWT-based authentication and authorization, ensuring secure access control across applications"
       ],
       "projects": [
         {
           "title": "Expense Tracker (Mobile Application)",
           "bullet_points": [
             "Designed a shared-expense system with REST APIs and real-time balance calculation",
-            "Implemented transaction-safe updates to ensure data consistency across users and groups",
-            "Built analytics dashboards using aggregated expense data for spending insights",
-            "Modeled normalized schemas for users, groups, expenses, and balances"
-          ]
-        },
-        {
-          "title": "Jira Clone (Project Management Tool)",
-          "bullet_points": [
-            "Implemented task workflows, project boards, and real-time updates",
-            "Designed modular UI components and optimized data fetching with caching strategies"
-          ]
-        },
-        {
-          "title": "Real-Time Chat Application",
-          "bullet_points": [
-            "Built group chat functionality with join/leave support using Socket.IO",
-            "Handled real-time message delivery and user presence updates"
+            "Implemented transaction-safe updates to ensure data consistency across users and groups"
           ]
         }
       ]

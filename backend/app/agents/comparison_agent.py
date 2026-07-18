@@ -2,6 +2,11 @@ from app.utils.skill_normalizer import (
     normalize_skill
 )
 
+from app.utils.text_matching import (
+    resume_document_text,
+    match_keywords,
+)
+
 from app.workflows.state import (
     ResumeTailorState
 )
@@ -30,51 +35,50 @@ def extract_resume_skills(
     return skills
 
 
-def extract_jd_targets(
+def calculate_ats(
+    resume,
     jd
 ):
+    """
+    ATS score = weighted combination of:
+    - required/preferred SKILL coverage (matched as normalized tokens
+      against technical_skills, since these are literal skill names)
+    - KEYWORD coverage (matched via full-text search across the whole
+      resume, since JD keywords are free-text phrases like "deployment
+      pipelines" that will never appear inside a skills list)
 
-    targets = set()
+    Mixing these into one set (the old behavior) permanently deflated the
+    score because keywords could never match a skills-only set.
+    """
 
-    for skill in (
-        jd.required_skills
-        + jd.preferred_skills
-    ):
+    resume_skill_set = extract_resume_skills(resume)
 
-        targets.add(
-            normalize_skill(skill)
-        )
+    jd_skill_set = {
+        normalize_skill(skill)
+        for skill in (jd.required_skills + jd.preferred_skills)
+        if skill.strip()
+    }
 
-    for keyword in jd.keywords:
+    resume_text = resume_document_text(resume)
 
-        targets.add(
-            normalize_skill(keyword)
-        )
+    matched_keywords, _ = match_keywords(
+        jd.keywords,
+        resume_text
+    )
 
-    return targets
+    skill_total = len(jd_skill_set)
+    skill_matched = len(resume_skill_set & jd_skill_set)
 
+    keyword_total = len(set(k.lower() for k in jd.keywords if k.strip()))
+    keyword_matched = len(matched_keywords)
 
-def calculate_ats(
-    resume_skills,
-    jd_targets
-):
+    total = skill_total + keyword_total
+    matched = skill_matched + keyword_matched
 
-    if not jd_targets:
+    if total == 0:
         return 0
 
-    matched = len(
-        resume_skills.intersection(
-            jd_targets
-        )
-    )
-
-    return round(
-        (
-            matched
-            / len(jd_targets)
-        )
-        * 100
-    )
+    return round((matched / total) * 100)
 
 
 def count_changed_experiences(
@@ -153,20 +157,14 @@ def comparison_node(
         )
     )
 
-    jd_targets = (
-        extract_jd_targets(
-            jd
-        )
-    )
-
     ats_before = calculate_ats(
-        original_skills,
-        jd_targets
+        original_resume,
+        jd
     )
 
     ats_after = calculate_ats(
-        tailored_skills,
-        jd_targets
+        tailored_resume,
+        jd
     )
 
     added_skills = sorted(
@@ -217,52 +215,64 @@ def comparison_node(
             comparison
     }
 
-# from app.agents.helpers import (
-#     extract_resume_skills
+
+# from app.utils.skill_normalizer import (
+#     normalize_skill
 # )
 
-# from app.schemas.resume import (
-#     ResumeDocument
+# from app.workflows.state import (
+#     ResumeTailorState
 # )
 
-# from app.schemas.job_description import (
-#     JobDescription
+# from app.schemas.comparison_result import (
+#     ComparisonResult
 # )
 
 
-# def normalize(values):
+# def extract_resume_skills(
+#     resume
+# ):
 
-#     return {
-#         str(v).strip().lower()
-#         for v in values
-#         if v
-#     }
+#     skills = set()
+
+#     for category in (
+#         resume.technical_skills.categories
+#     ):
+
+#         for skill in category.skills:
+
+#             skills.add(
+#                 normalize_skill(skill)
+#             )
+
+#     return skills
 
 
 # def extract_jd_targets(
-#     jd: JobDescription
+#     jd
 # ):
 
-#     required = normalize(
+#     targets = set()
+
+#     for skill in (
 #         jd.required_skills
-#     )
+#         + jd.preferred_skills
+#     ):
 
-#     preferred = normalize(
-#         jd.preferred_skills
-#     )
+#         targets.add(
+#             normalize_skill(skill)
+#         )
 
-#     keywords = normalize(
-#         jd.keywords
-#     )
+#     for keyword in jd.keywords:
 
-#     return (
-#         required
-#         | preferred
-#         | keywords
-#     )
+#         targets.add(
+#             normalize_skill(keyword)
+#         )
+
+#     return targets
 
 
-# def calculate_ats_score(
+# def calculate_ats(
 #     resume_skills,
 #     jd_targets
 # ):
@@ -285,42 +295,23 @@ def comparison_node(
 #     )
 
 
-# def compare_summary(
-#     original: ResumeDocument,
-#     tailored: ResumeDocument
+# def count_changed_experiences(
+#     original_resume,
+#     tailored_resume
 # ):
 
-#     return {
-#         "changed": (
-#             original.professional_summary.content
-#             != tailored.professional_summary.content
-#         ),
-#         "before": (
-#             original.professional_summary.content
-#         ),
-#         "after": (
-#             tailored.professional_summary.content
-#         )
-#     }
-
-
-# def compare_experience(
-#     original: ResumeDocument,
-#     tailored: ResumeDocument
-# ):
-
-#     changes = []
+#     changed = 0
 
 #     original_entries = {
 #         (
 #             exp.company,
 #             exp.role
 #         ): exp
-#         for exp in original.professional_experience
+#         for exp in original_resume.professional_experience
 #     }
 
 #     for tailored_exp in (
-#         tailored.professional_experience
+#         tailored_resume.professional_experience
 #     ):
 
 #         key = (
@@ -335,49 +326,37 @@ def comparison_node(
 #         if not original_exp:
 #             continue
 
-#         original_bullets = set(
+#         if (
 #             original_exp.responsibilities
-#         )
+#             != tailored_exp.responsibilities
+#         ):
+#             changed += 1
 
-#         tailored_bullets = set(
-#             tailored_exp.responsibilities
-#         )
-
-#         added_bullets = list(
-#             tailored_bullets
-#             - original_bullets
-#         )
-
-#         if added_bullets:
-
-#             changes.append(
-#                 {
-#                     "company":
-#                         tailored_exp.company,
-
-#                     "role":
-#                         tailored_exp.role,
-
-#                     "added_bullets":
-#                         added_bullets
-#                 }
-#             )
-
-#     return changes
+#     return changed
 
 
-# async def comparison_node(state):
+# def comparison_node(
+#     state: ResumeTailorState
+# ):
 
-#     original_resume: ResumeDocument = (
-#         state["parsed_resume"]
+#     original_resume = state[
+#         "parsed_resume"
+#     ]
+
+#     tailored_resume = state[
+#         "tailored_resume"
+#     ]
+
+#     jd = state[
+#         "parsed_jd"
+#     ]
+
+#     gap_analysis = state.get(
+#         "gap_analysis"
 #     )
 
-#     tailored_resume: ResumeDocument = (
-#         state["tailored_resume"]
-#     )
-
-#     jd: JobDescription = (
-#         state["parsed_jd"]
+#     enhancement_plan = state.get(
+#         "enhancement_plan"
 #     )
 
 #     original_skills = (
@@ -393,160 +372,66 @@ def comparison_node(
 #     )
 
 #     jd_targets = (
-#         extract_jd_targets(jd)
+#         extract_jd_targets(
+#             jd
+#         )
 #     )
 
-#     added_skills = list(
-#         tailored_skills
-#         - original_skills
-#     )
-
-#     removed_skills = list(
-#         original_skills
-#         - tailored_skills
-#     )
-
-#     ats_before = calculate_ats_score(
+#     ats_before = calculate_ats(
 #         original_skills,
 #         jd_targets
 #     )
 
-#     ats_after = calculate_ats_score(
+#     ats_after = calculate_ats(
 #         tailored_skills,
 #         jd_targets
 #     )
 
-#     summary_changes = (
-#         compare_summary(
-#             original_resume,
-#             tailored_resume
+#     added_skills = sorted(
+#         list(
+#             tailored_skills
+#             - original_skills
 #         )
 #     )
 
-#     experience_changes = (
-#         compare_experience(
-#             original_resume,
-#             tailored_resume
-#         )
-#     )
+#     comparison = ComparisonResult(
 
-#     return {
-#         "comparison_data": {
+#         inventory_skills_used=gap_analysis.inventory_skills
+#         if gap_analysis
+#         else [],
 
-#             "ats_before":
-#                 ats_before,
+#         approved_skills_added=added_skills,
 
-#             "ats_after":
-#                 ats_after,
+#         emphasized_skills=enhancement_plan.skills_to_emphasize
+#         if enhancement_plan
+#         else [],
 
-#             "added_skills":
-#                 added_skills,
+#         targeted_keywords=enhancement_plan.keyword_targets
+#         if enhancement_plan
+#         else [],
 
-#             "removed_skills":
-#                 removed_skills,
-
-#             "summary_changes":
-#                 summary_changes,
-
-#             "experience_changes":
-#                 experience_changes
-#         }
-#     }
-
-print('hello')
-#
-# from app.agents.helpers import (
-#     extract_resume_skills
-# )
-
-
-# def calculate_ats_score(
-#     resume_skills,
-#     jd_targets
-# ):
-
-#     if not jd_targets:
-#         return 0
-
-#     matched = len(
-#         resume_skills.intersection(
-#             jd_targets
-#         )
-#     )
-
-#     return round(
-#         (matched / len(jd_targets))
-#         * 100
-#     )
-
-
-# async def comparison_node(state):
-
-#     original_resume = (
-#         state["parsed_resume"]
-#     )
-
-#     tailored_resume = (
-#         state["tailored_resume"]
-#     )
-
-#     jd = state["parsed_jd"]
-
-#     original_skills = (
-#         extract_resume_skills(
+#         summary_updated=(
 #             original_resume
-#         )
-#     )
-
-#     tailored_skills = (
-#         extract_resume_skills(
+#             .professional_summary
+#             .content
+#             !=
 #             tailored_resume
-#         )
-#     )
+#             .professional_summary
+#             .content
+#         ),
 
-#     jd_targets = {
-#         *[
-#             x.lower()
-#             for x in jd.get(
-#                 "required_skills",
-#                 []
-#             )
-#         ],
-#         *[
-#             x.lower()
-#             for x in jd.get(
-#                 "preferred_skills",
-#                 []
-#             )
-#         ],
-#         *[
-#             x.lower()
-#             for x in jd.get(
-#                 "keywords",
-#                 []
-#             )
-#         ]
-#     }
+#         experience_sections_updated=count_changed_experiences(
+#             original_resume,
+#             tailored_resume
+#         ),
 
-#     added_skills = list(
-#         tailored_skills
-#         - original_skills
-#     )
+#         ats_before=ats_before,
 
-#     ats_before = calculate_ats_score(
-#         original_skills,
-#         jd_targets
-#     )
-
-#     ats_after = calculate_ats_score(
-#         tailored_skills,
-#         jd_targets
+#         ats_after=ats_after
 #     )
 
 #     return {
-#         "comparison_data": {
-#             "added_skills": added_skills,
-#             "ats_before": ats_before,
-#             "ats_after": ats_after
-#         }
+#         "comparison_data":
+#             comparison
 #     }
+

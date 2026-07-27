@@ -5,6 +5,8 @@ interface Props {
 export default function GapAnalysis({ gapAnalysis }: Props) {
   if (!gapAnalysis) return null;
 
+  console.log("matched_skills",gapAnalysis.matched_skills)
+  console.log("inventory_skills",gapAnalysis.inventory_skills)
   return (
     <div className="bg-white rounded-xl p-6 shadow">
       {" "}

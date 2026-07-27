@@ -1,0 +1,883 @@
+{
+  "resume_pdf_path": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+  "jd_text": "Description\r\n\r\nRevolutionize Global Financial Systems with Cutting-Edge Technology\r\n\r\nAre you passionate about building transformative financial technologies that power global transactions? Join our team and design innovative solutions that will impact millions of customers worldwide, leveraging the most advanced cloud technologies available.\r\n\r\nElevator Pitch You'll be at the forefront of creating scalable financial systems that drive Amazon's global growth. In this role, you'll design and develop sophisticated software solutions that transform how financial transactions are processed, using state-of-the-art AWS cloud services to solve complex technological challenges.\r\n\r\nAbout the Team We are a collaborative and forward-thinking group dedicated to building next-generation financial technologies. Our team values innovation, technical excellence, and creating solutions that make a meaningful difference. We're committed to solving complex problems and driving technological advancement in the financial sector.\r\n\r\nKey job responsibilities\r\n\r\n Define high level and low level design for software solutions using the latest AWS technology in a large distributed environment.\r\n Define high-level and low-level architecture for distributed financial systems using modern AWS technologies.\r\n Design, develop, test, and deploy scalable and reliable software solutions for accounting and financial operations.\r\n Drive architecture and technology choices, ensuring alignment with long-term platform goals and scalability requirements.\r\n Implement and advocate engineering best practices, including automation, testing, code reviews, and CI/CD pipelines.\r\n Leverage data and metrics to enhance system performance, reliability, and operational efficiency.\r\n Develop integration frameworks and APIs to streamline workflows and improve system interoperability.\r\n Maintain exceptional code quality standards with emphasis on security, readability, and maintainability.\r\n Collaborate with cross-functional teams across Finance, Product, and Platform Engineering to deliver high-impact solutions.\r\n Drive continuous innovation through experimentation and adoption of modern technologies.\r\n Experience or exposure to AI/ML technologies is a strong plus, particularly in building intelligent, predictive, or automation-driven financial systems.\r\n\r\nA day in the life\r\n\r\nA Day in the Life Your day will be dynamic and impactful. You'll collaborate with world-class engineers, architect innovative solutions, and tackle complex technological challenges. Expect to dive deep into cloud technologies, design intricate software systems, and continuously push the boundaries of what's possible in financial technology.\r\n\r\nAbout The Team\r\n\r\nAmazon Financial Technology Team is looking for a results-oriented, driven software development engineer, who can help us create the next generation of distributed, scalable financial systems. Our ideal candidate thrives in a fast-paced environment, enjoys the challenge of highly complex business contexts that are typically being defined in real-time. We need someone to design and develop services that facilitate global financial transactions worth billions (USD) annually.\r\n\r\nBasic Qualifications\r\n\r\n 3+ years of non-internship professional software development experience\r\n 2+ years of non-internship design or architecture (design patterns, reliability and scaling) of new and existing systems experience\r\n Experience programming with at least one software programming language\r\n\r\nPreferred Qualifications\r\n\r\n Experience in machine learning, data mining, information retrieval, statistics or natural language processing\r\n Experience building complex software systems that have been successfully delivered to customers\r\n\r\nOur inclusive culture empowers Amazonians to deliver the best results for our customers. If you have a disability and need a workplace accommodation or adjustment during the application and hiring process, including support for the interview or onboarding process, please visit https://amazon.jobs/content/en/how-we-hire/accommodations for more information. If the country/region you’re applying in isn’t listed, please contact your Recruiting Partner.",
+  "parsed_resume": {
+    "name": "ONKAR KOTULE",
+    "headline": "Software Development Engineer (SDE-2) | Backend & Full-Stack | MERN | Azure | Mendix",
+    "contact_info": {
+      "location": "Pune, India",
+      "phone": "9511860767",
+      "email": "kotuleonkar101@gmail.com",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "portfolio": null
+    },
+    "professional_summary": {
+      "content": "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production."
+    },
+    "technical_skills": {
+      "categories": [
+        {
+          "category": "Languages",
+          "skills": [
+            "JavaScript (ES6+)",
+            "TypeScript",
+            "Java",
+            "Python"
+          ]
+        },
+        {
+          "category": "Frontend",
+          "skills": [
+            "React.js",
+            "Next.js",
+            "React Native",
+            "Expo",
+            "Tailwind CSS",
+            "Redux Toolkit",
+            "TanStack Query"
+          ]
+        },
+        {
+          "category": "Backend",
+          "skills": [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "PostgreSQL",
+            "REST APIs",
+            "GraphQL",
+            "JWT",
+            "OAuth"
+          ]
+        },
+        {
+          "category": "Cloud & DevOps",
+          "skills": [
+            "Azure DevOps",
+            "CI/CD",
+            "Docker",
+            "Git",
+            "GitHub",
+            "Firebase",
+            "Appwrite"
+          ]
+        },
+        {
+          "category": "Testing",
+          "skills": [
+            "Jest",
+            "Basic Unit Testing"
+          ]
+        },
+        {
+          "category": "AI/GenAI",
+          "skills": [
+            "langGraph",
+            "LLM Integration",
+            "Prompt Engineering",
+            "Agentic Workflows"
+          ]
+        }
+      ]
+    },
+    "professional_experience": [
+      {
+        "company": "Capgemini",
+        "role": "Associate Consultant (Software Engineer – Backend & Full-Stack)",
+        "location": "Pune, India",
+        "start_date": "Jul 2023",
+        "end_date": "Present",
+        "responsibilities": [
+          "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
+          "Architected backend integrations and REST API layers for scalable communication across services",
+          "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
+          "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
+        ],
+        "projects": [
+          {
+            "title": "ShareSpace",
+            "bullet_points": [
+              "Hierarchical file storage with optimized data modeling",
+              "Secure upload/download pipelines with access control",
+              "Soft delete (trash), restore & lifecycle management"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Export Control system",
+            "bullet_points": [
+              "Converted rigid logic into config-driven architecture",
+              "Improved maintainability and reduced manual effort"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "AI-Powered Investment Insights System",
+            "bullet_points": [
+              "Designed LLM-based pipelines to generate structured investment reports",
+              "Implemented prompt engineering and response validation for consistent and reliable outputs",
+              "Built dynamic frontend components to render UI based on API-driven responses",
+              "Integrated AI-generated insights into applications for real-time user consumption"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Dangerous Goods Transport System",
+            "bullet_points": [
+              "Slot booking system with workflow orchestration",
+              "Real-time notifications and approval pipelines"
+            ],
+            "technologies": []
+          }
+        ]
+      },
+      {
+        "company": "BITCS | DigitalFlow | KnockOnce",
+        "role": "Software Developer (Backend & Full-Stack)",
+        "location": null,
+        "start_date": "Jun 2021",
+        "end_date": "Oct 2022",
+        "responsibilities": [
+          "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+          "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+          "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
+          "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
+        ],
+        "projects": [
+          {
+            "title": "Expense management system",
+            "bullet_points": [
+              "Designed and developed a production-grade expense management system handling multi-user financial transactions",
+              "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic",
+              "Designed optimized data models and aggregation pipelines for analytics and reporting",
+              "Enhanced performance using compound indexes for high-frequency queries",
+              "Built the system with focus on scalability, concurrency handling, and data integrity"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Additional Systems Built",
+            "bullet_points": [
+              "Built real-time communication features using event-driven architecture (Socket.IO)",
+              "Developed modular frontend systems with optimized data fetching & caching"
+            ],
+            "technologies": []
+          }
+        ]
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Microsoft Certified: Azure Developer Associate (AZ-204)"
+      },
+      {
+        "name": "Microsoft Certified: Azure AI Engineer Associate (AI-104)"
+      },
+      {
+        "name": "Microsoft GenAI Practitioner (AI-900)"
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Engineering (B.E.)",
+        "institution": "Bharati Vidyapeeth College of Engineering, Pune",
+        "start_year": null,
+        "end_year": null
+      }
+    ],
+    "layout_hints": {
+      "is_two_column": false,
+      "section_order": [
+        "contact_info",
+        "professional_summary",
+        "technical_skills",
+        "professional_experience",
+        "certifications",
+        "education"
+      ]
+    }
+  },
+  "parsed_jd": {
+    "job_details": {
+      "title": "Software Development Engineer",
+      "company": "Amazon",
+      "location": "",
+      "employment_type": "",
+      "experience_required": null
+    },
+    "summary": "Revolutionize Global Financial Systems with Cutting-Edge Technology",
+    "responsibilities": [
+      "Define high level and low level design for software solutions",
+      "Design, develop, test, and deploy scalable and reliable software solutions",
+      "Drive architecture and technology choices",
+      "Implement and advocate engineering best practices",
+      "Develop integration frameworks and APIs",
+      "Maintain exceptional code quality standards",
+      "Collaborate with cross-functional teams"
+    ],
+    "required_skills": [
+      "aws",
+      "software development",
+      "design patterns",
+      "reliability",
+      "scaling",
+      "programming"
+    ],
+    "preferred_skills": [
+      "machine learning",
+      "data mining",
+      "information retrieval",
+      "statistics",
+      "natural language processing"
+    ],
+    "qualifications": [
+      "3+ years of professional software development experience",
+      "2+ years of design or architecture experience",
+      "experience programming with at least one software programming language"
+    ],
+    "keywords": [
+      "cloud technologies",
+      "financial technology",
+      "distributed systems",
+      "scalability",
+      "ci/cd"
+    ],
+    "education_required": ""
+  },
+  "resume_inventory": {
+    "summary_points": [
+      "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production."
+    ],
+    "summary_keywords": [
+      "ability",
+      "across",
+      "api",
+      "architectures",
+      "backend",
+      "build",
+      "building",
+      "clean",
+      "cloud",
+      "consistency",
+      "data",
+      "design",
+      "design.",
+      "designing",
+      "developing",
+      "development",
+      "end-to-end",
+      "engineer",
+      "enterprise",
+      "environments.",
+      "experience",
+      "expertise",
+      "features",
+      "focus",
+      "full-stack",
+      "hands-on",
+      "high-performance",
+      "modeling",
+      "mongodb",
+      "node.js",
+      "optimization",
+      "own",
+      "performance",
+      "platforms",
+      "production-grade",
+      "production.",
+      "proficient",
+      "proven",
+      "real-time",
+      "reliable",
+      "scalability",
+      "scalable",
+      "software",
+      "startup",
+      "strong",
+      "systems.",
+      "transaction-safe",
+      "years"
+    ],
+    "skills": [
+      {
+        "name": "JavaScript (ES6+)",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "TypeScript",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Java",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Python",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "React.js",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Next.js",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "React Native",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Expo",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Tailwind CSS",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Redux Toolkit",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "TanStack Query",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Node.js",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Express.js",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "MongoDB",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "PostgreSQL",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "REST APIs",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "GraphQL",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "JWT",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "OAuth",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Azure DevOps",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "CI/CD",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Docker",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Git",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "GitHub",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Firebase",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Appwrite",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Jest",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Basic Unit Testing",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "langGraph",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "LLM Integration",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Prompt Engineering",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      },
+      {
+        "name": "Agentic Workflows",
+        "rating": 5,
+        "source": "resume",
+        "verified": true
+      }
+    ],
+    "professional_experience": [
+      {
+        "company": "Capgemini",
+        "role": "Associate Consultant (Software Engineer – Backend & Full-Stack)",
+        "location": "Pune, India",
+        "start_date": "Jul 2023",
+        "end_date": "Present",
+        "responsibilities": [
+          "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
+          "Architected backend integrations and REST API layers for scalable communication across services",
+          "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
+          "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
+        ],
+        "projects": [
+          {
+            "title": "ShareSpace",
+            "bullet_points": [
+              "Hierarchical file storage with optimized data modeling",
+              "Secure upload/download pipelines with access control",
+              "Soft delete (trash), restore & lifecycle management"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Export Control system",
+            "bullet_points": [
+              "Converted rigid logic into config-driven architecture",
+              "Improved maintainability and reduced manual effort"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "AI-Powered Investment Insights System",
+            "bullet_points": [
+              "Designed LLM-based pipelines to generate structured investment reports",
+              "Implemented prompt engineering and response validation for consistent and reliable outputs",
+              "Built dynamic frontend components to render UI based on API-driven responses",
+              "Integrated AI-generated insights into applications for real-time user consumption"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Dangerous Goods Transport System",
+            "bullet_points": [
+              "Slot booking system with workflow orchestration",
+              "Real-time notifications and approval pipelines"
+            ],
+            "technologies": []
+          }
+        ]
+      },
+      {
+        "company": "BITCS | DigitalFlow | KnockOnce",
+        "role": "Software Developer (Backend & Full-Stack)",
+        "location": null,
+        "start_date": "Jun 2021",
+        "end_date": "Oct 2022",
+        "responsibilities": [
+          "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+          "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+          "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
+          "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
+        ],
+        "projects": [
+          {
+            "title": "Expense management system",
+            "bullet_points": [
+              "Designed and developed a production-grade expense management system handling multi-user financial transactions",
+              "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic",
+              "Designed optimized data models and aggregation pipelines for analytics and reporting",
+              "Enhanced performance using compound indexes for high-frequency queries",
+              "Built the system with focus on scalability, concurrency handling, and data integrity"
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Additional Systems Built",
+            "bullet_points": [
+              "Built real-time communication features using event-driven architecture (Socket.IO)",
+              "Developed modular frontend systems with optimized data fetching & caching"
+            ],
+            "technologies": []
+          }
+        ]
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Microsoft Certified: Azure Developer Associate (AZ-204)"
+      },
+      {
+        "name": "Microsoft Certified: Azure AI Engineer Associate (AI-104)"
+      },
+      {
+        "name": "Microsoft GenAI Practitioner (AI-900)"
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Engineering (B.E.)",
+        "institution": "Bharati Vidyapeeth College of Engineering, Pune",
+        "start_year": null,
+        "end_year": null
+      }
+    ],
+    "resume_versions": [
+      {
+        "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
+        "uploaded_at": "2026-07-18T12:04:40.312939"
+      }
+    ],
+    "updated_at": "2026-07-27T10:44:27.883340"
+  },
+  "gap_analysis": {
+    "matched_skills": [],
+    "inventory_skills": [],
+    "missing_skills": [
+      "aws",
+      "data mining",
+      "design patterns",
+      "information retrieval",
+      "machine learning",
+      "natural language processing",
+      "programming",
+      "reliability",
+      "scaling",
+      "software development",
+      "statistics"
+    ],
+    "matched_keywords": [
+      "ci/cd",
+      "scalability"
+    ],
+    "missing_keywords": [
+      "cloud technologies",
+      "distributed systems",
+      "financial technology"
+    ],
+    "relevant_experience": [],
+    "relevant_projects": [
+      "Expense management system"
+    ],
+    "summary_opportunities": []
+  },
+  "enhancement_plan": {
+    "skills_to_add": [],
+    "skills_to_emphasize": [],
+    "experience_to_emphasize": [],
+    "projects_to_emphasize": [
+      "Expense management system"
+    ],
+    "keyword_targets": [
+      "cloud technologies",
+      "distributed systems",
+      "financial technology"
+    ],
+    "summary_improvements": [
+      "Naturally work the JD phrase \"cloud technologies\" into the professional summary or an experience bullet, but ONLY if it can be phrased truthfully based on the candidate's actual experience -- do not force it in a way that misrepresents their work.",
+      "Naturally work the JD phrase \"distributed systems\" into the professional summary or an experience bullet, but ONLY if it can be phrased truthfully based on the candidate's actual experience -- do not force it in a way that misrepresents their work.",
+      "Naturally work the JD phrase \"financial technology\" into the professional summary or an experience bullet, but ONLY if it can be phrased truthfully based on the candidate's actual experience -- do not force it in a way that misrepresents their work."
+    ]
+  },
+  "tailored_resume": {
+    "name": "ONKAR KOTULE",
+    "headline": "Software Development Engineer (SDE-2) | Backend & Full-Stack | MERN | Azure | Mendix",
+    "contact_info": {
+      "location": "Pune, India",
+      "phone": "9511860767",
+      "email": "kotuleonkar101@gmail.com",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "portfolio": null
+    },
+    "professional_summary": {
+      "content": "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments, utilizing cloud technologies to drive scalability and reliability. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production, with a strong background in financial technology and distributed systems."
+    },
+    "technical_skills": {
+      "categories": [
+        {
+          "category": "Languages",
+          "skills": [
+            "JavaScript (ES6+)",
+            "TypeScript",
+            "Java",
+            "Python"
+          ]
+        },
+        {
+          "category": "Frontend",
+          "skills": [
+            "React.js",
+            "Next.js",
+            "React Native",
+            "Expo",
+            "Tailwind CSS",
+            "Redux Toolkit",
+            "TanStack Query"
+          ]
+        },
+        {
+          "category": "Backend",
+          "skills": [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "PostgreSQL",
+            "REST APIs",
+            "GraphQL",
+            "JWT",
+            "OAuth"
+          ]
+        },
+        {
+          "category": "Cloud & DevOps",
+          "skills": [
+            "Azure DevOps",
+            "CI/CD",
+            "Docker",
+            "Git",
+            "GitHub",
+            "Firebase",
+            "Appwrite"
+          ]
+        },
+        {
+          "category": "Testing",
+          "skills": [
+            "Jest",
+            "Basic Unit Testing"
+          ]
+        },
+        {
+          "category": "AI/GenAI",
+          "skills": [
+            "langGraph",
+            "LLM Integration",
+            "Prompt Engineering",
+            "Agentic Workflows"
+          ]
+        }
+      ]
+    },
+    "professional_experience": [
+      {
+        "company": "Capgemini",
+        "role": "Associate Consultant (Software Engineer – Backend & Full-Stack)",
+        "location": "Pune, India",
+        "start_date": "Jul 2023",
+        "end_date": "Present",
+        "responsibilities": [
+          "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows, utilizing cloud technologies to drive scalability and reliability.",
+          "Architected backend integrations and REST API layers for scalable communication across services, with a focus on distributed systems.",
+          "Built systems with role-based access control (RBAC), auditability, and secure data flows, leveraging financial technology expertise.",
+          "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership, ensuring high-quality and reliable systems."
+        ],
+        "projects": [
+          {
+            "title": "AI-Powered Investment Insights System",
+            "bullet_points": [
+              "Designed LLM-based pipelines to generate structured investment reports, utilizing cloud technologies and distributed systems.",
+              "Implemented prompt engineering and response validation for consistent and reliable outputs.",
+              "Built dynamic frontend components to render UI based on API-driven responses.",
+              "Integrated AI-generated insights into applications for real-time user consumption."
+            ],
+            "technologies": []
+          },
+          {
+            "title": "ShareSpace",
+            "bullet_points": [
+              "Hierarchical file storage with optimized data modeling.",
+              "Secure upload/download pipelines with access control.",
+              "Soft delete (trash), restore & lifecycle management."
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Export Control system",
+            "bullet_points": [
+              "Converted rigid logic into config-driven architecture.",
+              "Improved maintainability and reduced manual effort."
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Dangerous Goods Transport System",
+            "bullet_points": [
+              "Slot booking system with workflow orchestration.",
+              "Real-time notifications and approval pipelines."
+            ],
+            "technologies": []
+          }
+        ]
+      },
+      {
+        "company": "BITCS | DigitalFlow | KnockOnce",
+        "role": "Software Developer (Backend & Full-Stack)",
+        "location": null,
+        "start_date": "Jun 2021",
+        "end_date": "Oct 2022",
+        "responsibilities": [
+          "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+          "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+          "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
+          "Improved system performance through MongoDB indexing, query optimization, and efficient schema design, with a focus on scalability and reliability."
+        ],
+        "projects": [
+          {
+            "title": "Expense management system",
+            "bullet_points": [
+              "Designed and developed a production-grade expense management system handling multi-user financial transactions, utilizing cloud technologies and distributed systems.",
+              "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic.",
+              "Designed optimized data models and aggregation pipelines for analytics and reporting.",
+              "Enhanced performance using compound indexes for high-frequency queries.",
+              "Built the system with focus on scalability, concurrency handling, and data integrity."
+            ],
+            "technologies": []
+          },
+          {
+            "title": "Additional Systems Built",
+            "bullet_points": [
+              "Built real-time communication features using event-driven architecture (Socket.IO).",
+              "Developed modular frontend systems with optimized data fetching & caching."
+            ],
+            "technologies": []
+          }
+        ]
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Microsoft Certified: Azure Developer Associate (AZ-204)"
+      },
+      {
+        "name": "Microsoft Certified: Azure AI Engineer Associate (AI-104)"
+      },
+      {
+        "name": "Microsoft GenAI Practitioner (AI-900)"
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Engineering (B.E.)",
+        "institution": "Bharati Vidyapeeth College of Engineering, Pune",
+        "start_year": null,
+        "end_year": null
+      }
+    ],
+    "layout_hints": {
+      "is_two_column": false,
+      "section_order": [
+        "contact_info",
+        "professional_summary",
+        "technical_skills",
+        "professional_experience",
+        "certifications",
+        "education"
+      ]
+    }
+  },
+  "validation_result": {
+    "is_valid": true,
+    "invented_content": [],
+    "missing_required_keywords": [],
+    "keyword_coverage": 100,
+    "warnings": []
+  },
+  "comparison_data": {
+    "inventory_skills_used": [],
+    "approved_skills_added": [],
+    "emphasized_skills": [],
+    "targeted_keywords": [
+      "cloud technologies",
+      "distributed systems",
+      "financial technology"
+    ],
+    "summary_updated": true,
+    "experience_sections_updated": 2,
+    "ats_before": 12,
+    "ats_after": 31
+  },
+  "candidate_suggestions": {
+    "suggestions": []
+  },
+  "tailored_resume_versions": [],
+  "finalized": false,
+  "run_id": "40eef0ec-87d0-4f8d-9697-3b521f264fbd",
+  "saved_at": "2026-07-27T10:44:32.573960"
+}

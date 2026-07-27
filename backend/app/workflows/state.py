@@ -86,11 +86,13 @@ class ResumeTailorState(
         ComparisonResult
     ]
 
+    candidate_suggestions: Optional[
+        CandidateSuggestion
+    ]
     retry_count: int
 
     error: Optional[str]
-    
-    
+
 
 # from typing import Optional
 # from typing_extensions import TypedDict

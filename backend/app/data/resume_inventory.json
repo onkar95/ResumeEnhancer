@@ -1,70 +1,58 @@
 {
   "summary_points": [
-    "Mendix Developer with 2.5+ years of hands-on experience and 4+ years of overall professional experience building enterprise-scale applications across logistics, compliance, and transport domains. Strong expertise in Mendix domain modeling, microflows, security, integrations, workflow automation, and UI/UX using Atlas Design System, with a solid full-stack foundation in JavaScript, REST APIs, and cloud platforms. Proven ability to own features end-to-end, collaborate with global stakeholders, and support production systems in regulated enterprise environments, delivering scalable and maintainable solutions across low-code and pro-code architectures"
+    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production."
   ],
   "summary_keywords": [
-    "2.5+",
     "ability",
     "across",
-    "apis",
+    "api",
     "architectures",
-    "atlas",
-    "automation",
+    "backend",
+    "build",
     "building",
+    "clean",
     "cloud",
-    "collaborate",
-    "compliance",
-    "delivering",
+    "consistency",
+    "data",
     "design",
-    "developer",
-    "domain",
-    "domains.",
+    "design.",
+    "designing",
+    "developing",
+    "development",
     "end-to-end",
+    "engineer",
     "enterprise",
-    "enterprise-scale",
-    "environments",
+    "environments.",
     "experience",
     "expertise",
     "features",
-    "foundation",
+    "focus",
     "full-stack",
-    "global",
     "hands-on",
-    "integrations",
-    "javascript",
-    "logistics",
-    "low-code",
-    "maintainable",
-    "mendix",
-    "microflows",
+    "high-performance",
     "modeling",
-    "overall",
+    "mongodb",
+    "node.js",
+    "optimization",
     "own",
-    "platforms.",
-    "pro-code",
-    "production",
-    "professional",
+    "performance",
+    "platforms",
+    "production-grade",
+    "production.",
+    "proficient",
     "proven",
-    "regulated",
-    "rest",
+    "real-time",
+    "reliable",
+    "scalability",
     "scalable",
-    "security",
-    "solid",
-    "solutions",
-    "stakeholders",
+    "software",
+    "startup",
     "strong",
-    "support",
-    "transport",
-    "workflow",
+    "systems.",
+    "transaction-safe",
     "years"
   ],
   "skills": [
-    {
-      "name": "Java",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
     {
       "name": "JavaScript (ES6+)",
       "rating": 5,
@@ -73,6 +61,12 @@
     },
     {
       "name": "TypeScript",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Java",
       "rating": 5,
       "source": "resume",
       "verified": true
@@ -120,6 +114,12 @@
       "verified": true
     },
     {
+      "name": "TanStack Query",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
       "name": "Node.js",
       "rating": 5,
       "source": "resume",
@@ -133,6 +133,12 @@
     },
     {
       "name": "MongoDB",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "PostgreSQL",
       "rating": 5,
       "source": "resume",
       "verified": true
@@ -157,12 +163,6 @@
     },
     {
       "name": "OAuth",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "Mendix",
       "rating": 5,
       "source": "resume",
       "verified": true
@@ -198,18 +198,6 @@
       "verified": true
     },
     {
-      "name": "Postman",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "Figma",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
       "name": "Firebase",
       "rating": 5,
       "source": "resume",
@@ -220,97 +208,126 @@
       "rating": 5,
       "source": "resume",
       "verified": true
+    },
+    {
+      "name": "Jest",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Basic Unit Testing",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "langGraph",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "LLM Integration",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Prompt Engineering",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Agentic Workflows",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
     }
   ],
   "professional_experience": [
     {
       "company": "Capgemini",
-      "role": "Associate Consultant (Software Engineer \u2013 Mendix & Full-Stack)",
+      "role": "Associate Consultant (Software Engineer \u2013 Backend & Full-Stack)",
       "location": "Pune, India",
       "start_date": "Jul 2023",
       "end_date": "Present",
       "responsibilities": [
-        "Designed and delivered enterprise-scale applications using Mendix and React, supporting complex business workflows and compliance-driven systems",
-        "Built end-to-end Mendix applications including domain models, microflows, nanoflows, integrations, and Mendix security",
-        "Integrated external REST APIs and backend services into Mendix applications"
+        "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
+        "Architected backend integrations and REST API layers for scalable communication across services",
+        "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
+        "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
       ],
       "projects": [
         {
-          "title": "ShareSpace - Document Management System",
+          "title": "ShareSpace",
           "bullet_points": [
-            "Developed ShareSpace, a Mendix-based enterprise document management system for secure file storage and collaboration from scratch",
-            "Implemented a hierarchical folder and file structure to organize documents across business units",
-            "Built secure file upload and download functionality using Mendix FileDocument with role-based access control",
-            "Implemented Soft Delete (Trash) functionality to support restore and permanent delete, ensuring an audit-friendly document lifecycle",
-            "Applied entity and attribute-level security with XPath to control document visibility and access",
-            "Contributed actively to refinement sessions and sprint planning, collaborating with business and technical stakeholders",
-            "Integrated the application into CI/CD pipelines, enabling reliable builds and controlled deployments across environments"
-          ]
+            "Hierarchical file storage with optimized data modeling",
+            "Secure upload/download pipelines with access control",
+            "Soft delete (trash), restore & lifecycle management"
+          ],
+          "technologies": []
         },
         {
-          "title": "Export Control",
+          "title": "Export Control system",
           "bullet_points": [
-            "Enhanced And Implemented an Export Control Compliance system in Mendix to automate regulatory validations",
-            "Refactored existing ECCN logic into a configuration-driven design, making ECCNs and COO rules easy to understand, modify, and maintain",
-            "Built dynamic validation microflows for export restrictions with secure, auditable, and role-based access control"
-          ]
+            "Converted rigid logic into config-driven architecture",
+            "Improved maintainability and reduced manual effort"
+          ],
+          "technologies": []
         },
         {
-          "title": "Resource & Industrials \u2013 Dangerous Goods Transport Management System (R&I DG TMS)",
+          "title": "AI-Powered Investment Insights System",
           "bullet_points": [
-            "Developed a customer-facing Mendix application for booking dangerous goods transport slots",
-            "Implemented: Time-slot booking & approval workflows, Role-based access for customers, schedulers, and admins, In-app and email notifications, Authentication and user management",
-            "Built scalable domain models, microflow-driven workflows, and secure entity access",
-            "Delivered as a Hackathon MVP in 1 day, later expanded into a production-ready system with"
-          ]
+            "Designed LLM-based pipelines to generate structured investment reports",
+            "Implemented prompt engineering and response validation for consistent and reliable outputs",
+            "Built dynamic frontend components to render UI based on API-driven responses",
+            "Integrated AI-generated insights into applications for real-time user consumption"
+          ],
+          "technologies": []
         },
         {
-          "title": "Support & SPOC Role",
+          "title": "Dangerous Goods Transport System",
           "bullet_points": [
-            "Acted as technical SPOC for multiple Mendix applications",
-            "Responsibilities included: UI enhancements and design system rollout, Azure Active Directory & SSO integration, UAT support, post-production fixes, and hypercare",
-            "Resolved production issues and established best practices for Mendix development and support handover"
-          ]
+            "Slot booking system with workflow orchestration",
+            "Real-time notifications and approval pipelines"
+          ],
+          "technologies": []
         }
       ]
     },
     {
       "company": "BITCS | DigitalFlow | KnockOnce",
-      "role": "Software Developer (Backend & React)",
-      "location": "Remote",
+      "role": "Software Developer (Backend & Full-Stack)",
+      "location": null,
       "start_date": "Jun 2021",
       "end_date": "Oct 2022",
       "responsibilities": [
-        "Built scalable full-stack features using Node.js, Express.js, and MongoDB, handling complex CRUD operations and relational data modeling",
-        "Designed and consumed RESTful APIs, enabling seamless communication between frontend and backend services",
-        "Implemented JWT-based authentication and authorization, ensuring secure access control across applications",
-        "Developed responsive React and Next.js components from Figma designs using Tailwind CSS",
-        "Improved application performance through API optimizations, efficient state management, and MongoDB indexing",
-        "Ensured cross-browser and mobile compatibility, resolving UI/UX bottlenecks"
+        "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+        "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+        "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
+        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
       ],
       "projects": [
         {
-          "title": "Expense Tracker (Mobile Application)",
+          "title": "Expense management system",
           "bullet_points": [
-            "Designed a shared-expense system with REST APIs and real-time balance calculation",
-            "Implemented transaction-safe updates to ensure data consistency across users and groups",
-            "Built analytics dashboards using aggregated expense data for spending insights",
-            "Modeled normalized schemas for users, groups, expenses, and balances"
-          ]
+            "Designed and developed a production-grade expense management system handling multi-user financial transactions",
+            "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic",
+            "Designed optimized data models and aggregation pipelines for analytics and reporting",
+            "Enhanced performance using compound indexes for high-frequency queries",
+            "Built the system with focus on scalability, concurrency handling, and data integrity"
+          ],
+          "technologies": []
         },
         {
-          "title": "Jira Clone (Project Management Tool)",
+          "title": "Additional Systems Built",
           "bullet_points": [
-            "Implemented task workflows, project boards, and real-time updates",
-            "Designed modular UI components and optimized data fetching with caching strategies"
-          ]
-        },
-        {
-          "title": "Real-Time Chat Application",
-          "bullet_points": [
-            "Built group chat functionality with join/leave support using Socket.IO",
-            "Handled real-time message delivery and user presence updates"
-          ]
+            "Built real-time communication features using event-driven architecture (Socket.IO)",
+            "Developed modular frontend systems with optimized data fetching & caching"
+          ],
+          "technologies": []
         }
       ]
     }
@@ -330,15 +347,15 @@
     {
       "degree": "Bachelor of Engineering (B.E.)",
       "institution": "Bharati Vidyapeeth College of Engineering, Pune",
-      "start_year": "2019",
-      "end_year": "2023"
+      "start_year": null,
+      "end_year": null
     }
   ],
   "resume_versions": [
     {
       "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-07-13T17:39:17.805416"
+      "uploaded_at": "2026-07-18T12:04:40.312939"
     }
   ],
-  "updated_at": "2026-07-17T19:47:31.706699"
+  "updated_at": "2026-07-27T11:07:06.028514"
 }

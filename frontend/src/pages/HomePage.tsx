@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { runWorkflow } from "../services/api";
 
@@ -7,18 +8,17 @@ import ResumeRenderer from "../components/resume/ResumeRenderer";
 import LoadingScreen from "../components/layout/LoadingScreen";
 
 import ATSCard from "../components/comparison/ATSCard";
-
 import GapAnalysis from "../components/comparison/GapAnalysis";
-
 import ValidationPanel from "../components/comparison/ValidationPanel";
 
+import { saveRunId } from "../utils/storage";
+
 export default function HomePage() {
+  const navigate = useNavigate();
+
   const [resumeFile, setResumeFile] = useState<File | null>(null);
-
   const [jdText, setJdText] = useState("");
-
   const [loading, setLoading] = useState(false);
-
   const [result, setResult] = useState<any>(null);
 
   async function handleSubmit() {
@@ -47,23 +47,27 @@ export default function HomePage() {
     }
   }
 
-  console.log("PARSED", result?.parsed_resume);
+  function handleSaveAndReview() {
+    if (!result?.run_id) return;
 
-  console.log("TAILORED", result?.tailored_resume);
+    saveRunId(result.run_id);
 
-  const comparison = result?.comparison_data || result?.comparison || {};
+    navigate(`/review/${result.run_id}`);
+  }
+
+  const comparison = result?.comparison_data || {};
 
   return (
     <div className="min-h-screen min-w-screen bg-slate-100">
-      <div className=" mx-2 p-8">
+      <div className="mx-2 p-8">
         <div className="mb-8">
           <h1 className="text-4xl font-bold">Resume Enhancer</h1>
 
           <p className="text-gray-600 mt-2">
-            Compare your original resume against the AI-tailored version.
+            Generate a tailored draft, review and edit it, then export the final
+            PDF.
           </p>
         </div>
-
         <div className="bg-white rounded-xl shadow-md p-6 mb-8">
           <div className="mb-4">
             <label className="block font-semibold mb-2">Resume PDF</label>
@@ -87,15 +91,15 @@ export default function HomePage() {
 
             <textarea
               className="
-            w-full
-            border
-            rounded-lg
-            p-4
-            h-64
-            focus:outline-none
-            focus:ring-2
-            focus:ring-blue-500
-          "
+                w-full
+                border
+                rounded-lg
+                p-4
+                h-64
+                focus:outline-none
+                focus:ring-2
+                focus:ring-blue-500
+              "
               placeholder="Paste Job Description"
               value={jdText}
               onChange={(e) => setJdText(e.target.value)}
@@ -105,15 +109,15 @@ export default function HomePage() {
           <button
             onClick={handleSubmit}
             className="
-          mt-6
-          px-8
-          py-3
-          bg-blue-600
-          hover:bg-blue-700
-          text-white
-          rounded-lg
-          font-medium
-        "
+              mt-6
+              px-8
+              py-3
+              bg-blue-600
+              hover:bg-blue-700
+              text-white
+              rounded-lg
+              font-medium
+            "
           >
             Generate Tailored Resume
           </button>
@@ -123,7 +127,21 @@ export default function HomePage() {
 
         {result && (
           <>
-            <div className=" grid grid-cols-1 2xl:grid-cols-2 gap-10 items-start">
+            <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 mb-6 flex items-center justify-between flex-wrap gap-3">
+              <span className="text-sm text-yellow-800">
+                This is a draft. Save it to review, edit sections, and export a
+                final PDF.
+              </span>
+
+              <button
+                onClick={handleSaveAndReview}
+                className="px-5 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-medium"
+              >
+                Save &amp; Review
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 2xl:grid-cols-2 gap-10 items-start">
               <ATSCard
                 title="ATS Before"
                 value={comparison.ats_before ?? "-"}
@@ -134,14 +152,14 @@ export default function HomePage() {
               <ATSCard
                 title="Improvement"
                 value={
-                  comparison.ats_before && comparison.ats_after
+                  comparison.ats_before != null && comparison.ats_after != null
                     ? `${comparison.ats_after - comparison.ats_before}`
                     : "-"
                 }
               />
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
               <div>
                 <h2 className="text-2xl font-bold mb-4">Original Resume</h2>
 
@@ -149,7 +167,7 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold mb-4">Tailored Resume</h2>
+                <h2 className="text-2xl font-bold mb-4">Tailored Draft</h2>
 
                 <ResumeRenderer resume={result.tailored_resume} />
               </div>

@@ -1,0 +1,199 @@
+```json
+{
+  "name": "ONKAR KOTULE",
+  "headline": "Software Development Engineer (SDE-2) | Backend & Full-Stack | MERN | Azure | Mendix",
+  "contact_info": {
+    "location": "Pune, India",
+    "phone": "9511860767",
+    "email": "kotuleonkar101@gmail.com",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "portfolio": null
+  },
+  "professional_summary": {
+    "content": "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production. Skilled in Docker, Java, JavaScript, Jest, PostgreSQL, React, React Native, and Redux."
+  },
+  "technical_skills": {
+    "categories": [
+      {
+        "category": "Languages",
+        "skills": [
+          "JavaScript (ES6+)",
+          "TypeScript",
+          "Java",
+          "Python"
+        ]
+      },
+      {
+        "category": "Frontend",
+        "skills": [
+          "React.js",
+          "Next.js",
+          "React Native",
+          "Expo",
+          "Tailwind CSS",
+          "Redux Toolkit",
+          "TanStack Query"
+        ]
+      },
+      {
+        "category": "Backend",
+        "skills": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "PostgreSQL",
+          "REST APIs",
+          "GraphQL",
+          "JWT",
+          "OAuth"
+        ]
+      },
+      {
+        "category": "Cloud & DevOps",
+        "skills": [
+          "Azure DevOps",
+          "CI/CD",
+          "Docker",
+          "Git",
+          "GitHub",
+          "Firebase",
+          "Appwrite"
+        ]
+      },
+      {
+        "category": "Testing",
+        "skills": [
+          "Jest",
+          "Basic Unit Testing"
+        ]
+      },
+      {
+        "category": "AI/GenAI",
+        "skills": [
+          "langGraph",
+          "LLM Integration",
+          "Prompt Engineering",
+          "Agentic Workflows"
+        ]
+      }
+    ]
+  },
+  "professional_experience": [
+    {
+      "company": "Capgemini",
+      "role": "Associate Consultant (Software Engineer – Backend & Full-Stack)",
+      "location": "Pune, India",
+      "start_date": "Jul 2023",
+      "end_date": "Present",
+      "responsibilities": [
+        "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
+        "Architected backend integrations and REST API layers for scalable communication across services",
+        "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
+        "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
+      ],
+      "projects": [
+        {
+          "title": "AI-Powered Investment Insights System",
+          "bullet_points": [
+            "Designed LLM-based pipelines to generate structured investment reports",
+            "Implemented prompt engineering and response validation for consistent and reliable outputs",
+            "Built dynamic frontend components to render UI based on API-driven responses",
+            "Integrated AI-generated insights into applications for real-time user consumption"
+          ],
+          "technologies": []
+        },
+        {
+          "title": "ShareSpace",
+          "bullet_points": [
+            "Hierarchical file storage with optimized data modeling",
+            "Secure upload/download pipelines with access control",
+            "Soft delete (trash), restore & lifecycle management"
+          ],
+          "technologies": []
+        },
+        {
+          "title": "Export Control system",
+          "bullet_points": [
+            "Converted rigid logic into config-driven architecture",
+            "Improved maintainability and reduced manual effort"
+          ],
+          "technologies": []
+        },
+        {
+          "title": "Dangerous Goods Transport System",
+          "bullet_points": [
+            "Slot booking system with workflow orchestration",
+            "Real-time notifications and approval pipelines"
+          ],
+          "technologies": []
+        }
+      ]
+    },
+    {
+      "company": "BITCS | DigitalFlow | KnockOnce",
+      "role": "Software Developer (Backend & Full-Stack)",
+      "location": null,
+      "start_date": "Jun 2021",
+      "end_date": "Oct 2022",
+      "responsibilities": [
+        "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+        "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+        "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
+        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
+      ],
+      "projects": [
+        {
+          "title": "Expense management system",
+          "bullet_points": [
+            "Designed and developed a production-grade expense management system handling multi-user financial transactions",
+            "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic",
+            "Designed optimized data models and aggregation pipelines for analytics and reporting",
+            "Enhanced performance using compound indexes for high-frequency queries",
+            "Built the system with focus on scalability, concurrency handling, and data integrity"
+          ],
+          "technologies": []
+        },
+        {
+          "title": "Additional Systems Built",
+          "bullet_points": [
+            "Built real-time communication features using event-driven architecture (Socket.IO)",
+            "Developed modular frontend systems with optimized data fetching & caching"
+          ],
+          "technologies": []
+        }
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Microsoft Certified: Azure Developer Associate (AZ-204)"
+    },
+    {
+      "name": "Microsoft Certified: Azure AI Engineer Associate (AI-104)"
+    },
+    {
+      "name": "Microsoft GenAI Practitioner (AI-900)"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering (B.E.)",
+      "institution": "Bharati Vidyapeeth College of Engineering, Pune",
+      "start_year": null,
+      "end_year": null
+    }
+  ],
+  "layout_hints": {
+    "is_two_column": false,
+    "section_order": [
+      "contact_info",
+      "professional_summary",
+      "technical_skills",
+      "professional_experience",
+      "certifications",
+      "education"
+    ]
+  }
+}
+```

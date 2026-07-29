@@ -169,7 +169,11 @@ export default function HomePage() {
               <div>
                 <h2 className="text-2xl font-bold mb-4">Tailored Draft</h2>
 
-                <ResumeRenderer resume={result.tailored_resume} />
+                {/* <ResumeRenderer resume={result.tailored_resume} /> */}
+                <ResumeRenderer
+                  resume={result.tailored_resume}
+                  originalResume={result.parsed_resume}
+                />
               </div>
             </div>
 

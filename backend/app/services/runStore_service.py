@@ -53,6 +53,35 @@ def load_run(run_id: str) -> Optional[dict[str, Any]]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def list_runs() -> list[dict]:
+    runs = []
+
+    for file in RUN_STORE_DIR.glob("*.json"):
+        with open(file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        comparison = data.get("comparison_data") or {}
+        jd = data.get("parsed_jd") or {}
+        details = jd.get("job_details") or {}
+
+        runs.append(
+            {
+                "run_id": file.stem,
+                "created_at": data.get("created_at"),
+                "finalized": data.get("finalized", False),
+                "job_title": details.get("title"),
+                "company": details.get("company"),
+                "ats_before": comparison.get("ats_before"),
+                "ats_after": comparison.get("ats_after"),
+            }
+        )
+
+    runs.sort(
+        key=lambda x: x.get("created_at") or "",
+        reverse=True,
+    )
+
+    return runs
 
 def update_run(run_id: str, patch: dict[str, Any]) -> dict[str, Any]:
     """

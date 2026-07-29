@@ -140,6 +140,7 @@ export default function ReviewPage() {
               runId={resolvedRunId!}
               resume={run.tailored_resume}
               onEdited={refreshRun}
+              originalResume={run.parsed_resume}
             />
           </div>
 

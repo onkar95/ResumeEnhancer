@@ -10,3 +10,5 @@ venv
 */test.py
 ./test.py
 .test.py
+
+cache

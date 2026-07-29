@@ -91,7 +91,7 @@
 #             },
 #             config={
 #                 "configurable": {
-#                     "thread_id": run_id  # If using LangGraph persistence memory
+#                     "thread_id": run_id
 #                 },
 #                 "metadata": {
 #                     "run_id": run_id,
@@ -102,32 +102,12 @@
 #         )
 #     )
 
-#     # ------------------------------------------------------------
-#     # Persist the run so /api/v1/review/{run_id} and
-#     # /api/v1/review/{run_id}/revise can find it afterward.
-#     # ------------------------------------------------------------
-
-#     save_run(
-#         run_id,
-#         {
-#             "resume_pdf_path": str(file_path),
-#             "jd_text": jd_text,
-#             "parsed_resume": _dump(result.get("parsed_resume")),
-#             "parsed_jd": _dump(result.get("parsed_jd")),
-#             "resume_inventory": _dump(result.get("resume_inventory")),
-#             "gap_analysis": _dump(result.get("gap_analysis")),
-#             "enhancement_plan": _dump(result.get("enhancement_plan")),
-#             "tailored_resume": _dump(result.get("tailored_resume")),
-#             "validation_result": _dump(result.get("validation_result")),
-#             "comparison_data": _dump(result.get("comparison_data")),
-#             "candidate_suggestions": (
-#                 _dump(result.get("candidate_suggestions"))
-#                 or {"suggestions": []}
-#             ),
-#             "tailored_resume_versions": [],
-#         },
-#     )
-
+#     # return {
+#     #     "success": True,
+#     #     "gap_analysis": result["gap_analysis"],
+#     #     "tailored_resume": result["tailored_resume"],
+#     #     "comparison": result["comparison_data"]
+#     # }
 #     return {
 #         "success": True,
 #         "run_id": run_id,
@@ -139,6 +119,7 @@
 #         "candidate_suggestions": result.get("candidate_suggestions"),
 #     }
 
+from datetime import datetime, UTC
 from pathlib import Path
 import uuid
 
@@ -238,17 +219,40 @@ async def resume_workflow(
                     "run_id": run_id,
                     "environment": "development"
                 },
-                "run_name": "Resume_Workflow_API"  # This is the title you will see in LangSmith
+                "run_name": "Resume_Workflow_API"
             }
         )
     )
 
-    # return {
-    #     "success": True,
-    #     "gap_analysis": result["gap_analysis"],
-    #     "tailored_resume": result["tailored_resume"],
-    #     "comparison": result["comparison_data"]
-    # }
+    # ------------------------------------------------------------
+    # Persist the run so /api/v1/review/{run_id} and
+    # /api/v1/review/{run_id}/revise|finalize can find it afterward.
+    # ------------------------------------------------------------
+
+    save_run(
+        run_id,
+        {
+            "resume_pdf_path": str(file_path),
+            "jd_text": jd_text,
+            "parsed_resume": _dump(result.get("parsed_resume")),
+            "parsed_jd": _dump(result.get("parsed_jd")),
+            "resume_inventory": _dump(result.get("resume_inventory")),
+            "gap_analysis": _dump(result.get("gap_analysis")),
+            "enhancement_plan": _dump(result.get("enhancement_plan")),
+            "tailored_resume": _dump(result.get("tailored_resume")),
+            "validation_result": _dump(result.get("validation_result")),
+            "comparison_data": _dump(result.get("comparison_data")),
+            "candidate_suggestions": (
+                _dump(result.get("candidate_suggestions"))
+                or {"suggestions": []}
+            ),
+            "tailored_resume_versions": [],
+            "finalized": False,
+            "created_at": datetime.utcnow().isoformat(),
+            "resume_name": resume_file.filename,
+        },
+    )
+
     return {
         "success": True,
         "run_id": run_id,

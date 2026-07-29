@@ -11,3 +11,4 @@ langgraph
 langchain-core
 langsmith
 langchain
+pymongo>=4.8

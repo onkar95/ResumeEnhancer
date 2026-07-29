@@ -23,7 +23,7 @@ from pydantic import BaseModel
 from app.schemas.candidate_suggestion import CandidateSuggestion
 from app.schemas.resume import ResumeDocument
 from app.services.resume_revision_service import regenerate_tailored_resume
-from app.services.runStore_service import apply_dot_path, load_run, save_run,list_runs
+from app.services.runStore_service import apply_dot_path, clear_all_runs, delete_run, load_run, save_run, list_runs
 
 router = APIRouter(
     prefix="/api/v1/review",
@@ -42,6 +42,11 @@ def _get_run_or_404(run_id: str) -> dict[str, Any]:
         )
 
     return run
+
+
+@router.get("/runs")
+def get_runs():
+    return list_runs()
 
 
 @router.get("/{run_id}")
@@ -168,9 +173,22 @@ def finalize_run(run_id: str):
 
     return {"finalized": True}
 
-@router.get("/runs")
-def get_runs():
-    return list_runs()
+
+
+@router.delete("/runs")
+def clear_history():
+    """Delete every stored run. Irreversible."""
+    deleted = clear_all_runs()
+    return {"deleted_count": deleted}
+
+
+@router.delete("/{run_id}")
+def delete_single_run(run_id: str):
+    _get_run_or_404(run_id)  # 404 if it doesn't exist
+    delete_run(run_id)
+    return {"deleted": True, "run_id": run_id}
+
+
 # """
 # Review API
 

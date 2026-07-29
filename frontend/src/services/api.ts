@@ -97,3 +97,20 @@ export async function finalizeRun(runId: string) {
   const response = await api.post(`/api/v1/review/${runId}/finalize`);
   return response.data;
 }
+
+
+//
+export async function fetchRunHistory() {
+  const response = await api.get("/api/v1/review/runs");
+  return response.data; // [{ run_id, created_at, resume_name, job_title, company, ats_before, ats_after, finalized }]
+}
+
+export async function deleteRun(runId: string) {
+  const response = await api.delete(`/api/v1/review/${runId}`);
+  return response.data;
+}
+
+export async function clearAllRuns() {
+  const response = await api.delete("/api/v1/review/runs");
+  return response.data;
+}

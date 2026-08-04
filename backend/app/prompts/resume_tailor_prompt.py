@@ -4,7 +4,8 @@ def build_resume_tailor_prompt(
     inventory_json: str,
     approved_suggestions_json: str,
     enhancement_plan_json: str,
-    tailoring_decision_json: str
+    tailoring_decision_json: str,
+     user_context_json: str = "{}"
 ) -> str:
 
     return f"""
@@ -42,6 +43,35 @@ most relevant to this JOB DESCRIPTION -- prioritize these)
 ==================================================
 
 {enhancement_plan_json}
+# AFTER
+==================================================
+CANDIDATE-PROVIDED CONTEXT (optional free-form notes from the candidate --
+follow this alongside the rules below; if it is "{{}}" the candidate left
+this blank and you should ignore this section entirely)
+==================================================
+
+{user_context_json}
+
+If "tailoring_mode" is "strict": ONLY use skills/experience explicitly
+present in CURRENT RESUME or RESUME INVENTORY. Do not add anything beyond
+what appears there, even from the ENHANCEMENT PLAN, unless it is truthfully
+supported.
+
+If "tailoring_mode" is "aggressive": prioritize weaving in as many
+JD-relevant skills and keywords as can be reasonably justified by CURRENT
+RESUME, RESUME INVENTORY (including any "user_declared" skills), or
+"declared_skills" below -- even if only lightly supported.
+
+If "tailoring_mode" is null or "balanced": use your normal judgment
+(default behavior, same as if this section were absent).
+
+For each entry in "declared_skills": you MAY add that skill to the
+technical_skills section and/or reference it in a relevant experience or
+summary line, phrased to match its stated confidence (e.g. lower confidence
+-> "exposure to X" / "familiar with X"; higher confidence -> "hands-on
+experience with X"). Do NOT claim it was used on a specific project unless
+the candidate's note ties it to one.
+
 
 ==================================================
 USER-APPROVED SUGGESTIONS (the user has explicitly approved these specific
@@ -68,6 +98,9 @@ ALLOWED:
 8. Highlight relevant skills.
 9. Reorder projects/bullets within a company to put the most JOB
    DESCRIPTION-relevant ones first.
+10. Incorporate skills the candidate explicitly declared in CANDIDATE-
+    PROVIDED CONTEXT, phrased according to their stated confidence, and
+    follow their stated "tailoring_mode" preference if any.
 
 FORBIDDEN:
 

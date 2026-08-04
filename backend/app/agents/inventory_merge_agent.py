@@ -188,6 +188,8 @@ def inventory_merge_node(
         "parsed_resume"
     ]
 
+    user_context = state.get("user_context")
+
     # ==================================
     # Professional Summary
     # ==================================
@@ -253,6 +255,33 @@ def inventory_merge_node(
                 existing_skills.add(
                     normalize_skill(skill_name)
                 )
+
+       # ==================================
+    # User-Declared Skills (from optional
+    # free-form candidate instructions)
+    # ==================================
+
+    if user_context and user_context.declared_skills:
+
+        for declared in user_context.declared_skills:
+
+            normalized_name = normalize_skill(declared.skill)
+
+            if not normalized_name:
+                continue
+
+            if normalized_name not in existing_skills:
+
+                inventory.skills.append(
+                    InventorySkill(
+                        name=declared.skill,
+                        rating=max(1, round(declared.confidence * 5)),
+                        verified=False,
+                        source="user_declared"
+                    )
+                )
+
+                existing_skills.add(normalized_name)
 
     # ==================================
     # Experience

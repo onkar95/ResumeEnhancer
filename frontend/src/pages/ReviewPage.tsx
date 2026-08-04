@@ -9,6 +9,7 @@ import SuggestionPanel from "../components/review/SuggestionPanel";
 import LoadingScreen from "../components/layout/LoadingScreen";
 
 import { getRunId, saveRunId, clearRunId } from "../utils/storage";
+import { downloadResumeWord } from "../utils/WordExport";
 
 export default function ReviewPage() {
   const { runId } = useParams();
@@ -82,6 +83,11 @@ export default function ReviewPage() {
     documentTitle: `${run?.tailored_resume?.name || "resume"}`,
   });
 
+  const handleDownloadWord = () => {
+    console.log("--",run?.tailored_resume)
+    // downloadResumeWord(run?.tailored_resume);
+  };
+
   if (loading) {
     return <LoadingScreen />;
   }
@@ -125,11 +131,24 @@ export default function ReviewPage() {
             >
               Download PDF
             </button>
+            <button
+              onClick={handleDownloadWord}
+              className="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg font-medium"
+            >
+              Download Word
+            </button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-start">
           <div className="xl:col-span-2">
+            {run.user_instructions && (
+              <div className="mb-4 text-xs bg-blue-50 border border-blue-200 rounded-lg p-3 text-blue-900">
+                <span className="font-semibold">Your notes: </span>
+                {run.user_instructions}
+              </div>
+            )}
+
             <h2 className="text-2xl font-bold mb-4">
               Tailored Resume{" "}
               {run.finalized ? "(Final)" : "(Draft — click any text to edit)"}

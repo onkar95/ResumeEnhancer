@@ -10,6 +10,10 @@ from app.agents.resume_parser_agent import (
     resume_parser_node
 )
 
+from app.agents.user_context_agent import (
+    user_context_node
+)
+
 from app.agents.inventory_merge_agent import (
     inventory_merge_node
 )
@@ -46,25 +50,6 @@ from app.agents.candidate_suggestion_agent import candidate_suggestion_node
 MAX_RETRIES = 3
 
 
-def validation_router(state):
-
-    result = state["validation_result"]
-
-    print(
-        "ROUTER:",
-        result.is_valid,
-        result.keyword_coverage
-    )
-
-    # if result.is_valid:
-    #     return "comparison"
-
-    # if state["retry_count"] >= MAX_RETRIES:
-    #     return END
-
-    return "resume_tailor"
-
-
 builder = StateGraph(
     ResumeTailorState
 )
@@ -72,6 +57,11 @@ builder = StateGraph(
 builder.add_node(
     "resume_parser",
     resume_parser_node
+)
+
+builder.add_node(
+    "user_context",
+    user_context_node
 )
 
 builder.add_node(
@@ -122,6 +112,11 @@ builder.add_edge(
 
 builder.add_edge(
     "resume_parser",
+    "user_context"
+)
+
+builder.add_edge(
+    "user_context",
     "inventory_merge"
 )
 
@@ -149,11 +144,6 @@ builder.add_edge(
     "resume_tailor",
     "validation"
 )
-
-# builder.add_conditional_edges(
-#     "validation",
-#     validation_router
-# )
 
 builder.add_edge(
     'validation',

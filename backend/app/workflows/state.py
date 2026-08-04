@@ -3,6 +3,8 @@ from typing_extensions import TypedDict
 
 from app.schemas.resume import ResumeDocument
 from app.schemas.job_description import JobDescription
+# add near the other schema imports
+from app.schemas.user_context import UserContext
 
 from app.schemas.resume_inventory import (
     ResumeInventory
@@ -61,6 +63,9 @@ class ResumeTailorState(
     resume_inventory: Optional[
         ResumeInventory
     ]
+    user_instructions: Optional[str]
+
+    user_context: Optional[UserContext]
 
     gap_analysis: Optional[
         GapAnalysis

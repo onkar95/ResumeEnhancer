@@ -18,6 +18,7 @@ export default function HomePage() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [jdText, setJdText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userInstructions, setUserInstructions] = useState("");
   const [result, setResult] = useState<any>(null);
 
   // Restore last-active run on refresh.
@@ -57,7 +58,7 @@ export default function HomePage() {
     try {
       setLoading(true);
 
-      const response = await runWorkflow(resumeFile, jdText);
+      const response = await runWorkflow(resumeFile, jdText, userInstructions);
 
       setResult(response);
 
@@ -82,6 +83,7 @@ export default function HomePage() {
     setResult(null);
     setActiveRunId(null);
     setResumeFile(null);
+    setUserInstructions("");
     setJdText("");
   }
 
@@ -93,7 +95,8 @@ export default function HomePage() {
         <div>
           <h1 className="text-4xl font-bold">Resume Enhancer</h1>
           <p className="text-gray-600 mt-2">
-            Generate a tailored draft, compare side by side, then save it to review, edit, and export.
+            Generate a tailored draft, compare side by side, then save it to
+            review, edit, and export.
           </p>
         </div>
 
@@ -126,7 +129,9 @@ export default function HomePage() {
         />
 
         {resumeFile && (
-          <div className="mt-2 text-sm text-green-600">Selected: {resumeFile.name}</div>
+          <div className="mt-2 text-sm text-green-600">
+            Selected: {resumeFile.name}
+          </div>
         )}
 
         <div className="mt-4">
@@ -136,6 +141,24 @@ export default function HomePage() {
             placeholder="Paste Job Description"
             value={jdText}
             onChange={(e) => setJdText(e.target.value)}
+          />
+        </div>
+        <div className="mt-4">
+          <label className="block font-semibold mb-2">
+            Additional Notes{" "}
+            <span className="text-gray-400 font-normal">(optional)</span>
+          </label>
+          <p className="text-xs text-gray-500 mb-2">
+            Mention skills you've worked with that aren't on your resume, how
+            confident you are with them, or how aggressively you want the AI to
+            tailor — e.g. "I've used Kafka briefly on a side project, add it if
+            relevant" or "be strict, only use what's already on my resume."
+          </p>
+          <textarea
+            className="w-full border rounded-lg p-4 h-28 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Optional — anything you want the AI to know before tailoring your resume"
+            value={userInstructions}
+            onChange={(e) => setUserInstructions(e.target.value)}
           />
         </div>
 
@@ -154,7 +177,8 @@ export default function HomePage() {
         <>
           <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 mb-6 flex items-center justify-between flex-wrap gap-3">
             <span className="text-sm text-yellow-800">
-              This draft is saved. Click "Save & Review" to edit sections and export a final PDF.
+              This draft is saved. Click "Save & Review" to edit sections and
+              export a final PDF.
             </span>
             <button
               onClick={handleSaveAndReview}
@@ -188,15 +212,21 @@ export default function HomePage() {
                 <h2 className="text-2xl font-bold">Tailored Draft</h2>
                 <div className="flex items-center gap-3 text-xs text-gray-500">
                   <span className="flex items-center gap-1">
-                    <span className="inline-block w-3 h-3 rounded diff-added" /> Added/changed
+                    <span className="inline-block w-3 h-3 rounded diff-added" />{" "}
+                    Added/changed
                   </span>
                   <span className="flex items-center gap-1">
-                    <span className="inline-block w-3 h-3 rounded diff-removed" /> Removed
+                    <span className="inline-block w-3 h-3 rounded diff-removed" />{" "}
+                    Removed
                   </span>
                 </div>
               </div>
 
-              <ResumeRenderer resume={result.tailored_resume} originalResume={result.parsed_resume} diff />
+              <ResumeRenderer
+                resume={result.tailored_resume}
+                originalResume={result.parsed_resume}
+                diff
+              />
             </div>
           </div>
 

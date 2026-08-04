@@ -42,6 +42,9 @@ def resume_tailor_node(
     tailoring_decision = state.get(
         "tailoring_decision"
     )
+    user_context = state.get(
+        "user_context"
+    )
 
     prompt = build_resume_tailor_prompt(
 
@@ -85,6 +88,14 @@ def resume_tailor_node(
                 indent=2
             )
             if tailoring_decision
+            else "{}"
+        ),
+        user_context_json=(
+            user_context
+            .model_dump_json(
+                indent=2
+            )
+            if user_context
             else "{}"
         )
     )
@@ -234,11 +245,11 @@ def resume_tailor_node(
 #     # response = llm.generate(
 #     #         prompt
 #     #     )
-    
+
 #     print("response=" * 100)
 #     print(json.dumps(response, indent=2))
 #     print("=" * 100)
-    
+
 #     json_response = extract_json(response)
 
 #     print("json_response=" * 100)

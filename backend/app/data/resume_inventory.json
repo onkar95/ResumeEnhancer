@@ -1,6 +1,7 @@
 {
   "summary_points": [
-    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production."
+    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production.",
+    "Highly motivated software engineer with 5 years of experience in developing scalable and efficient software solutions."
   ],
   "summary_keywords": [
     "ability",
@@ -19,6 +20,7 @@
     "designing",
     "developing",
     "development",
+    "efficient",
     "end-to-end",
     "engineer",
     "enterprise",
@@ -30,8 +32,10 @@
     "full-stack",
     "hands-on",
     "high-performance",
+    "highly",
     "modeling",
     "mongodb",
+    "motivated",
     "node.js",
     "optimization",
     "own",
@@ -46,6 +50,7 @@
     "scalability",
     "scalable",
     "software",
+    "solutions.",
     "startup",
     "strong",
     "systems.",
@@ -244,6 +249,102 @@
       "rating": 5,
       "source": "resume",
       "verified": true
+    },
+    {
+      "name": "agile",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "graphana",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "framer motion",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "react testing library",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "scrum",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "shadcn/ui",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "websocket",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "zustand",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "C++",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Angular",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Vue.js",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Django",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "MERN",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "Azure",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "Frontend",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
+    },
+    {
+      "name": "Full-Stack",
+      "rating": 3,
+      "source": "user_declared",
+      "verified": false
     }
   ],
   "professional_experience": [
@@ -330,6 +431,66 @@
           "technologies": []
         }
       ]
+    },
+    {
+      "company": "ABC Corporation",
+      "role": "Software Engineer",
+      "location": "New York",
+      "start_date": "2018",
+      "end_date": "2020",
+      "responsibilities": [
+        "Developed multiple software applications using Java and Python",
+        "Collaborated with cross-functional teams to identify and prioritize project requirements"
+      ],
+      "projects": [
+        {
+          "title": "Project A",
+          "bullet_points": [
+            "Developed a scalable and efficient software solution using React and Node.js",
+            "Collaborated with the design team to create a user-friendly interface"
+          ],
+          "technologies": [
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB"
+          ]
+        },
+        {
+          "title": "Project B",
+          "bullet_points": [
+            "Developed a machine learning model using Python and TensorFlow",
+            "Integrated the model with a web application using Flask"
+          ],
+          "technologies": []
+        }
+      ]
+    },
+    {
+      "company": "DEF Startups",
+      "role": "Senior Software Engineer",
+      "location": "San Francisco",
+      "start_date": "2020",
+      "end_date": null,
+      "responsibilities": [
+        "Led a team of software engineers to develop a cloud-based software solution",
+        "Collaborated with the product team to identify and prioritize project requirements"
+      ],
+      "projects": [
+        {
+          "title": "Project C",
+          "bullet_points": [
+            "Developed a cloud-based software solution using AWS and Python",
+            "Collaborated with the design team to create a user-friendly interface"
+          ],
+          "technologies": [
+            "AWS",
+            "Python",
+            "Flask",
+            "MySQL"
+          ]
+        }
+      ]
     }
   ],
   "certifications": [
@@ -341,6 +502,12 @@
     },
     {
       "name": "Microsoft GenAI Practitioner (AI-900)"
+    },
+    {
+      "name": "Certified Scrum Master"
+    },
+    {
+      "name": "Certified Java Developer"
     }
   ],
   "education": [
@@ -349,13 +516,23 @@
       "institution": "Bharati Vidyapeeth College of Engineering, Pune",
       "start_year": null,
       "end_year": null
+    },
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "Stanford University",
+      "start_year": "2014",
+      "end_year": "2018"
     }
   ],
   "resume_versions": [
     {
       "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
       "uploaded_at": "2026-07-28T13:48:30.456620"
+    },
+    {
+      "filename": "uploads\\frontend developer.pdf",
+      "uploaded_at": "2026-08-03T16:43:53.389127"
     }
   ],
-  "updated_at": "2026-07-29T07:06:44.822200"
+  "updated_at": "2026-08-03T16:46:00.834411"
 }

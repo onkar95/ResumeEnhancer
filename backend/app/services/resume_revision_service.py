@@ -20,6 +20,7 @@ from app.utils.json_utils import extract_json
 from app.utils.resume_normalizer import normalize_resume
 
 
+# AFTER
 def regenerate_tailored_resume(
     resume_json: str,
     job_description_json: str,
@@ -27,6 +28,7 @@ def regenerate_tailored_resume(
     approved_suggestions_json: str,
     enhancement_plan_json: str,
     tailoring_decision_json: str = "{}",
+    user_context_json: str = "{}",
 ) -> ResumeDocument:
 
     prompt = build_resume_tailor_prompt(
@@ -36,6 +38,7 @@ def regenerate_tailored_resume(
         approved_suggestions_json=approved_suggestions_json,
         enhancement_plan_json=enhancement_plan_json,
         tailoring_decision_json=tailoring_decision_json,
+        user_context_json=user_context_json,
     )
 
     llm = GroqService()

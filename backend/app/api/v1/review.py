@@ -140,6 +140,9 @@ def revise_resume(run_id: str):
         enhancement_plan_json=json.dumps(
             run.get("enhancement_plan") or {}, indent=2, ensure_ascii=False
         ),
+        user_context_json=json.dumps(
+            run.get("user_context") or {}, indent=2, ensure_ascii=False
+        ),
     )
 
     versions = run.get("tailored_resume_versions") or []

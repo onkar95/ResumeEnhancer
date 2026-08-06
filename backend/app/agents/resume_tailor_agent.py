@@ -120,8 +120,12 @@ def resume_tailor_node(
         )
     )
 
-    return {
+    tailored_resume.contact_info.github_url = resume.contact_info.github_url
+    tailored_resume.contact_info.linkedin_url = resume.contact_info.linkedin_url
+    tailored_resume.contact_info.portfolio_url = resume.contact_info.portfolio_url
+    tailored_resume.contact_info.website_url = resume.contact_info.website_url
 
+    return {
         "tailored_resume":
             tailored_resume
     }

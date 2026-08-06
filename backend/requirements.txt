@@ -2,7 +2,7 @@ fastapi
 uvicorn
 openai
 pymupdf
-weasyprint
+
 jinja2
 python-multipart
 pydantic-settings
@@ -12,3 +12,5 @@ langchain-core
 langsmith
 langchain
 pymongo>=4.8
+playwright>=1.45
+python-docx

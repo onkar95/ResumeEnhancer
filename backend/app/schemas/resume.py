@@ -42,6 +42,11 @@ class ContactInfo(BaseModel):
     linkedin: Optional[str] = None
 
     portfolio: Optional[str] = None
+    
+    github_url: Optional[str] = None
+    linkedin_url: Optional[str] = None
+    portfolio_url: Optional[str] = None
+    website_url: Optional[str] = None
 
 
 # ==========================================================

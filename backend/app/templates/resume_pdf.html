@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 10.5pt; color: #1f2937; }
+  h1 { font-size: 20pt; margin: 0 0 2pt 0; text-align: center; }
+  .headline { text-align: center; color: #4b5563; margin: 0 0 6pt 0; }
+  .contact { text-align: center; font-size: 9pt; color: #6b7280; margin-bottom: 14pt; }
+  .contact a { color: #2563eb; text-decoration: none; }
+  h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: .05em;
+       border-bottom: 1.5pt solid #d1d5db; padding-bottom: 3pt; margin: 14pt 0 6pt 0; }
+  .exp-header { display: flex; justify-content: space-between; font-weight: bold; }
+  .exp-sub { color: #4b5563; margin-bottom: 4pt; }
+  ul { margin: 4pt 0 8pt 16pt; padding: 0; }
+  li { margin-bottom: 2pt; }
+  .project-title { font-weight: 600; margin-top: 6pt; }
+</style>
+</head>
+<body>
+
+  <h1>{{ resume.name }}</h1>
+  <div class="headline">{{ resume.headline }}</div>
+
+  <div class="contact">
+    {%- set c = resume.contact_info -%}
+    {{ c.location or "" }}
+    {%- if c.phone %} &nbsp;|&nbsp; {{ c.phone }}{% endif %}
+    {%- if c.email %} &nbsp;|&nbsp; {{ c.email }}{% endif %}
+    {%- if c.github %} &nbsp;|&nbsp;
+      {% if c.github_url %}<a href="{{ c.github_url }}">{{ c.github }}</a>{% else %}{{ c.github }}{% endif %}
+    {%- endif %}
+    {%- if c.linkedin %} &nbsp;|&nbsp;
+      {% if c.linkedin_url %}<a href="{{ c.linkedin_url }}">{{ c.linkedin }}</a>{% else %}{{ c.linkedin }}{% endif %}
+    {%- endif %}
+    {%- if c.portfolio %} &nbsp;|&nbsp;
+      {% if c.portfolio_url %}<a href="{{ c.portfolio_url }}">{{ c.portfolio }}</a>{% else %}{{ c.portfolio }}{% endif %}
+    {%- endif %}
+  </div>
+
+  <h2>Professional Summary</h2>
+  <p>{{ resume.professional_summary.content }}</p>
+
+  <h2>Technical Skills</h2>
+  {% for category in resume.technical_skills.categories %}
+    <div><strong>{{ category.category }}:</strong> {{ category.skills | join(", ") }}</div>
+  {% endfor %}
+
+  <h2>Professional Experience</h2>
+  {% for exp in resume.professional_experience %}
+    <div class="exp-header">
+      <span>{{ exp.role }}</span>
+      <span>{{ exp.start_date }} - {{ exp.end_date }}</span>
+    </div>
+    <div class="exp-sub">{{ exp.company }}{% if exp.location %}, {{ exp.location }}{% endif %}</div>
+
+    <ul>
+      {% for point in exp.responsibilities %}<li>{{ point }}</li>{% endfor %}
+    </ul>
+
+    {% for project in exp.projects %}
+      <div class="project-title">{{ project.title }}</div>
+      <ul>
+        {% for bullet in project.bullet_points %}<li>{{ bullet }}</li>{% endfor %}
+      </ul>
+    {% endfor %}
+  {% endfor %}
+
+  {% if resume.certifications %}
+  <h2>Certifications</h2>
+  <ul>
+    {% for cert in resume.certifications %}<li>{{ cert.name }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if resume.education %}
+  <h2>Education</h2>
+  {% for edu in resume.education %}
+    <div><strong>{{ edu.degree }}</strong> — {{ edu.institution }}
+      {% if edu.start_year or edu.end_year %} ({{ edu.start_year }} - {{ edu.end_year }}){% endif %}
+    </div>
+  {% endfor %}
+  {% endif %}
+
+</body>
+</html>

@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
-import { fetchRun, finalizeRun } from "../services/api";
+import {
+  fetchRun,
+  finalizeRun,
+  getExportDocxUrl,
+  getExportPdfUrl,
+} from "../services/api";
 
 import EditableResumeRenderer from "../components/review/EditableResumeRenderer";
 import SuggestionPanel from "../components/review/SuggestionPanel";
@@ -84,7 +89,7 @@ export default function ReviewPage() {
   });
 
   const handleDownloadWord = () => {
-    console.log("--",run?.tailored_resume)
+    console.log("--", run?.tailored_resume);
     // downloadResumeWord(run?.tailored_resume);
   };
 
@@ -124,8 +129,20 @@ export default function ReviewPage() {
                 Finalized
               </span>
             )}
+            <a
+              href={getExportPdfUrl(resolvedRunId!)}
+              className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium"
+            >
+              Download PDF
+            </a>
+            <a
+              href={getExportDocxUrl(resolvedRunId!)}
+              className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium"
+            >
+              Download Word
+            </a>
 
-            <button
+            {/* <button
               onClick={handleDownloadPdf}
               className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium"
             >
@@ -136,7 +153,7 @@ export default function ReviewPage() {
               className="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg font-medium"
             >
               Download Word
-            </button>
+            </button> */}
           </div>
         </div>
 

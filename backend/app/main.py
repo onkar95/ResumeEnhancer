@@ -9,7 +9,7 @@ from app.api.v1.resume_workflow import (
 )
 from app.api.v1.review import router as review_router
 from app.api.v1.approval import router as approval_router
-
+from app.api.v1.export import router as export_router
 
 from app.core.config import settings
 import os
@@ -49,6 +49,7 @@ app.add_middleware(
 app.include_router(
     review_router
 )
+app.include_router(export_router)
 
 app.include_router(
     approval_router

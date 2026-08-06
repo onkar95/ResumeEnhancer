@@ -121,3 +121,11 @@ export async function clearAllRuns() {
   const response = await api.delete("/api/v1/review/runs");
   return response.data;
 }
+
+export function getExportPdfUrl(runId: string) {
+  return `${api.defaults.baseURL}/api/v1/review/${runId}/export/pdf`;
+}
+
+export function getExportDocxUrl(runId: string) {
+  return `${api.defaults.baseURL}/api/v1/review/${runId}/export/docx`;
+}

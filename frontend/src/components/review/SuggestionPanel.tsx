@@ -94,11 +94,9 @@ export default function SuggestionsPanel({
             {s.suggested_content.title}
           </div>
           <ul className="list-disc ml-5 text-xs text-gray-600 mt-1">
-            {s.suggested_content.bullet_points?.map(
-              (b: string, i: number) => (
-                <li key={i}>{b}</li>
-              ),
-            )}
+            {s.suggested_content.bullet_points?.map((b: string, i: number) => (
+              <li key={i}>{b}</li>
+            ))}
           </ul>
         </>
       );
@@ -128,15 +126,16 @@ export default function SuggestionsPanel({
           <button
             onClick={handleApprove}
             disabled={busy || selected.size === 0}
-            className="text-sm bg-green-600 text-white px-3 py-1.5 rounded disabled:opacity-50"
+            // AFTER
+            className="text-sm bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-lg disabled:opacity-50 transition"
           >
             Approve Selected
           </button>
           <button
             onClick={handleReject}
             disabled={busy || selected.size === 0}
-            className="text-sm bg-red-100 text-red-700 px-3 py-1.5 rounded disabled:opacity-50"
-          >
+// AFTER
+            className="text-sm bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-lg disabled:opacity-50 transition"          >
             Reject Selected
           </button>
         </div>

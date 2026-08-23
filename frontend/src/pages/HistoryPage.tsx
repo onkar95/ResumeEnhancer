@@ -7,7 +7,6 @@ import HistoryPanel from "../components/history/HistoryPanel";
 
 export default function HistoryPage() {
   const navigate = useNavigate();
-
   const [history, setHistory] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +27,7 @@ export default function HistoryPage() {
   }
 
   function handleSelect(runId: string) {
-    saveRunId(runId); // sets active-run pointer for persistence too
+    saveRunId(runId);
     navigate(`/review/${runId}`);
   }
 
@@ -43,8 +42,7 @@ export default function HistoryPage() {
   }
 
   async function handleClearAll() {
-    if (!confirm("Clear all saved drafts from the database? This cannot be undone.")) return;
-
+    if (!confirm("Clear all saved drafts? This cannot be undone.")) return;
     try {
       await clearAllRuns();
       setHistory([]);
@@ -56,20 +54,17 @@ export default function HistoryPage() {
   }
 
   return (
-    <div className="p-8 max-w-5xl mx-auto">
+    <div className="w-full min-w-0 px-4 sm:px-6 lg:px-8 py-6 max-w-5xl mx-auto">
       <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
         <div>
-          <h1 className="text-3xl font-bold">History</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">History</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">
             All previously generated resume drafts. Click one to open it in Review.
           </p>
         </div>
 
         {history.length > 0 && (
-          <button
-            onClick={handleClearAll}
-            className="text-sm text-red-500 hover:text-red-700 underline"
-          >
+          <button onClick={handleClearAll} className="text-sm text-red-500 hover:text-red-700 underline">
             Clear all history
           </button>
         )}

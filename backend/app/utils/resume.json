@@ -1,0 +1,184 @@
+{
+  "name": "ONKAR KOTULE",
+  "headline": "Software Development Engineer | Mendix Developer| Full-Stack (MERN, Azure)",
+  "contact_info": {
+    "location": "Pune, India",
+    "phone": "9511860767",
+    "email": "kotuleonkar101@gmail.com",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "professional_summary": {
+    "content": "Software Engineer with 4+ years of experience designing, developing, and supporting enterprise applications using Siemens Mendix and modern full-stack technologies. Skilled in application design, domain modeling, microflows, nanoflows, security, workflow automation, REST integrations, and production support. Experienced in collaborating with cross-functional teams to deliver scalable low-code solutions across logistics, compliance, and transportation domains."
+  },
+  "technical_skills": {
+    "categories": [
+      {
+        "category": "Mendix Ecosystem",
+        "skills": [
+          "Mendix Studio Pro (v9/v10)",
+          "Domain Modeling",
+          "Microflows",
+          "Nanoflows",
+          "Advanced XPath Security",
+          "Java Actions",
+          "Page Design",
+          "Integrations (REST, Teamcenter, SAP,etc)"
+        ]
+      },
+      {
+        "category": "Languages",
+        "skills": [
+          "Java",
+          "JavaScript (ES6+)",
+          "TypeScript",
+          "Python"
+        ]
+      },
+      {
+        "category": "Frontend",
+        "skills": [
+          "React.js",
+          "Next.js",
+          "React Native",
+          "Expo",
+          "Tailwind CSS",
+          "Redux Toolkit"
+        ]
+      },
+      {
+        "category": "Backend",
+        "skills": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "REST APIs",
+          "GraphQL",
+          "JWT",
+          "OAuth"
+        ]
+      },
+      {
+        "category": "Tools & Other",
+        "skills": [
+          "Azure DevOps",
+          "CI/CD",
+          "Docker",
+          "Git",
+          "GitHub",
+          "Postman",
+          "Figma",
+          "Firebase",
+          "Appwrite"
+        ]
+      }
+    ]
+  },
+  "professional_experience": [
+    {
+      "company": "Capgemini",
+      "role": "Associate Consultant (Software Engineer – Mendix & Full-Stack)",
+      "location": "Pune, India",
+      "start_date": "Jul 2023",
+      "end_date": "Present",
+      "responsibilities": [
+        "Designed, developed, configured, and supported enterprise-scale applications using Mendix and React, supporting complex business workflows and compliance-driven systems, Support junior members.",
+        "Built end-to-end Mendix applications including domain models, microflows, nanoflows, integrations, and Mendix security.",
+        "Integrated external REST APIs and backend services into Mendix applications."
+      ],
+      "projects": [
+        {
+          "title": "ShareSpace - Document Management System",
+          "bullet_points": [
+            "Architected from scratch an enterprise-grade document management platform tailored for secure, file storage and business-unit collaboration.",
+            "Engineered a hierarchical data structure within the domain model to seamlessly organize complex directory trees and file systems.",
+            "Implemented secure data lifecycle controls, leveraging the FileDocument system to manage high-performance uploads/downloads alongside customized soft-delete (Trash) and permanent purge workflows.",
+            "Enforced rigid security baselines by building complex entity and attribute-level access criteria using XPath to strictly govern document visibility across user roles.",
+            "Contributed actively to refinement sessions and sprint planning, collaborated with business stakeholders to gather and analyze business requirements.",
+            "Integrated the application into CI/CD pipelines, enabling reliable builds and controlled deployments across environments."
+          ]
+        },
+        {
+          "title": "Export Control",
+          "bullet_points": [
+            "Enhanced And Implemented an Export Control Compliance system in Mendix to automate regulatory validations.",
+            "Refactored existing ECCN logic into a configuration-driven design, making ECCNs and COO rules easy to understand, modify, and maintain.",
+            "Built dynamic validation microflows for export restrictions with secure, auditable, and role-based access control."
+          ]
+        },
+        {
+          "title": "Resource & Industrials – Dangerous Goods Transport Management System (R&I DG TMS)",
+          "bullet_points": [
+            "developed a customer-facing Mendix application for booking dangerous goods transport slots.",
+            "Implemented:",
+            "Time-slot booking & approval workflows",
+            "Role-based access for customers, schedulers, and admins",
+            "In-app and email notifications",
+            "Authentication and user management",
+            "Built scalable domain models, microflow-driven workflows, and secure entity access.",
+            "Delivered as a Hackathon MVP in 1 day, later expanded into a production-ready system with"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Capgemini",
+      "role": "Support & SPOC Role",
+      "responsibilities": [
+        "Acted as technical SPOC for multiple Mendix applications.",
+        "UI enhancements and design system rollout",
+        "Azure Active Directory & SSO integration",
+        "UAT support, post-production fixes, and hypercare",
+        "Continuously update technical documentation",
+        "Resolved production issues and established best practices for Mendix development and support handover."
+      ]
+    },
+    {
+      "company": "BITCS | DigitalFlow | KnockOnce",
+      "role": "Software Developer (Backend & React)",
+      "location": "Remote",
+      "start_date": "Jun 2021",
+      "end_date": "Oct 2022",
+      "responsibilities": [
+        "Built scalable full-stack features using Node.js, Express.js, and MongoDB, handling complex CRUD operations and relational data modeling.",
+        "Designed and consumed RESTful APIs, enabling seamless communication between frontend and backend services.",
+        "Implemented JWT-based authentication and authorization, ensuring secure access control across applications.",
+        "Developed responsive React and Next.js components from Figma designs using Tailwind CSS.",
+        "Improved application performance through API optimizations, efficient state management, and MongoDB indexing.",
+        "Ensured cross-browser and mobile compatibility, resolving UI/UX bottlenecks."
+      ],
+      "projects": [
+        {
+          "title": "Expense Tracker",
+          "bullet_points": [
+            "Built a React Native expense-sharing application with secure REST APIs, transaction-safe updates, and analytics dashboards."
+          ]
+        },
+        {
+          "title": "Jira Clone",
+          "bullet_points": [
+            "Developed Kanban workflows, reusable UI components, and optimized data fetching using TanStack Query."
+          ]
+        },
+        {
+          "title": "Real-Time Chat",
+          "bullet_points": [
+            "Implemented Socket.IO-based group messaging with real-time user presence."
+          ]
+        }
+      ]
+    }
+  ],
+  "certifications": [
+    "Mendix Intermediate Certified",
+    "Microsoft Certified: Azure Developer Associate (AZ-204)",
+    "Microsoft Certified: Azure AI Engineer Associate (AI-104)",
+    "Microsoft GenAI Practitioner (AI-900)"
+  ],
+  "education": {
+    "degree": "Bachelor of Engineering (B.E.)",
+    "institution": "Bharati Vidyapeeth College of Engineering, Pune",
+    "start_year": "2019",
+    "end_year": "2023"
+  }
+}

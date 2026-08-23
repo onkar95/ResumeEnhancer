@@ -40,7 +40,13 @@ export default function HistoryPanel({
         </h3>
       )}
 
-      <div className={expanded ? "grid grid-cols-1 md:grid-cols-2 gap-3" : "space-y-2 max-h-[420px] overflow-y-auto"}>
+      <div
+        className={
+          expanded
+            ? "grid grid-cols-1 md:grid-cols-2 gap-3"
+            : "space-y-2 max-h-[420px] overflow-y-auto"
+        }
+      >
         {history.map((entry) => {
           const isActive = entry.run_id === activeRunId;
 
@@ -48,9 +54,10 @@ export default function HistoryPanel({
             <div
               key={entry.run_id}
               onClick={() => onSelect(entry.run_id)}
+              // AFTER
               className={`
-                border rounded-lg p-3 cursor-pointer transition bg-white
-                ${isActive ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:bg-gray-50"}
+                border rounded-lg p-3 cursor-pointer transition bg-white min-w-0
+                ${isActive ? "border-brand-500 bg-brand-50" : "border-gray-200 hover:bg-gray-50"}
               `}
             >
               <div className="flex items-start justify-between gap-2">

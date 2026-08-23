@@ -5,10 +5,9 @@ interface Props {
 
 export default function ATSCard({ title, value }: Props) {
   return (
-    <div className="bg-white border rounded-xl p-5 shadow-sm">
-      {" "}
-      <div className="text-sm text-gray-500 ">{title} </div>
-     <div className="text-4xl font-bold ">{value}</div>
+    <div className="card p-5 min-w-0">
+      <div className="text-sm text-gray-500">{title}</div>
+      <div className="text-4xl font-bold text-brand-700 mt-1">{value}</div>
     </div>
   );
 }

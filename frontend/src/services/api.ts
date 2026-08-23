@@ -25,9 +25,23 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+    baseURL: "http://localhost:8000",
+    withCredentials: true,   // <-- required so the httpOnly cookie is sent
 });
 
+//login
+export async function fetchMe() {
+  const response = await api.get("/api/v1/auth/me");
+  return response.data;
+}
+
+export function loginWithGoogle() {
+  window.location.href = "http://localhost:8000/api/v1/auth/login";
+}
+
+export async function logout() {
+  await api.post("/api/v1/auth/logout");
+}
 
 // AFTER
 export async function runWorkflow(
@@ -91,10 +105,12 @@ export async function reviseResume(runId: string) {
 export async function editSection(
   runId: string,
   path: string,
+  user_id:string,
   value: unknown
 ) {
   const response = await api.post(`/api/v1/review/${runId}/section-edit`, {
     path,
+    user_id,
     value,
   });
   return response.data;
@@ -128,4 +144,9 @@ export function getExportPdfUrl(runId: string) {
 
 export function getExportDocxUrl(runId: string) {
   return `${api.defaults.baseURL}/api/v1/review/${runId}/export/docx`;
+}
+
+export async function chatRevise(runId: string, message: string) {
+  const response = await api.post(`/api/v1/review/${runId}/chat`, { message });
+  return response.data;
 }

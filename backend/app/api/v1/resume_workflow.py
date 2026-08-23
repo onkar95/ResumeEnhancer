@@ -25,6 +25,15 @@ from app.workflows.resume_tailor_graph import (
 from app.services.runStore_service import (
     save_run
 )
+from fastapi import Depends, HTTPException
+
+from app.dependencies import get_current_user
+from app.services.usage_service import (
+    has_quota,
+    record_generation,
+    remaining_quota,
+)
+
 
 router = APIRouter(
     prefix="/api/v1",
@@ -43,8 +52,18 @@ def _dump(value):
 async def resume_workflow(
     resume_file: UploadFile = File(...),
     jd_text: str = Form(...),
-    user_instructions: str = Form("")
+    user_instructions: str = Form(""),
+     current_user: dict = Depends(get_current_user),
 ):
+    if not has_quota(current_user["user_id"]):
+        raise HTTPException(
+            status_code=429,
+            detail=(
+                "You've reached your limit of 2 resume generations per "
+                "24 hours. Please try again later."
+            ),
+        )
+
 
     validate_pdf(
         resume_file
@@ -69,8 +88,8 @@ async def resume_workflow(
 
                 "user_instructions":
                     user_instructions or "",
-                
-                 "user_context":
+
+                "user_context":
                     None,
 
                 "parsed_resume":
@@ -115,13 +134,31 @@ async def resume_workflow(
     # /api/v1/review/{run_id}/revise|finalize can find it afterward.
     # ------------------------------------------------------------
 
+    initial_chat_history = []
+
+    if user_instructions and user_instructions.strip():
+        initial_chat_history = [
+            {
+                "role": "user",
+                "content": user_instructions.strip(),
+                "created_at": datetime.utcnow().isoformat(),
+            },
+            {
+                "role": "assistant",
+                "content": "Applied these notes to the initial tailored resume.",
+                "created_at": datetime.utcnow().isoformat(),
+            },
+        ]
+
     save_run(
         run_id,
         {
+            "user_id": current_user["user_id"],
             "resume_pdf_path": str(file_path),
             "jd_text": jd_text,
+            "chat_history": initial_chat_history,
+            "revision_count": 0,
             "parsed_resume": _dump(result.get("parsed_resume")),
-            "parsed_jd": _dump(result.get("parsed_jd")),
             "user_instructions": user_instructions or "",
             "user_context": _dump(result.get("user_context")),
             "resume_inventory": _dump(result.get("resume_inventory")),
@@ -141,9 +178,12 @@ async def resume_workflow(
         },
     )
 
+    record_generation(current_user["user_id"], run_id)
+      
     return {
         "success": True,
-        "run_id": run_id,
+        "run_id": run_id, 
+        "remaining_quota": remaining_quota(current_user["user_id"]),
         "parsed_resume": result["parsed_resume"],
         "tailored_resume": result["tailored_resume"],
         "gap_analysis": result["gap_analysis"],

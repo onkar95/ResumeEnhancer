@@ -1,44 +1,24 @@
 {
   "summary_points": [
-    "Software Engineer with 4+ years of experience designing, developing, and supporting enterprise applications using Siemens Mendix and modern full-stack technologies. Skilled in application design, domain modeling, microflows, nanoflows, security, workflow automation, REST integrations, and production support. Experienced in collaborating with cross-functional teams to deliver scalable low-code solutions across logistics, compliance, and transportation domains.",
-    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production."
+    "Software Engineer with 4+ years of experience designing, developing, and supporting enterprise applications using Siemens Mendix and modern full-stack technologies. Skilled in application design, domain modeling, microflows, nanoflows, security, workflow automation, REST integrations, and production support. Experienced in collaborating with cross-functional teams to deliver scalable low-code solutions across logistics, compliance, and transportation domains."
   ],
   "summary_keywords": [
-    "ability",
     "across",
-    "api",
-    "architectures",
     "automation",
-    "backend",
-    "build",
-    "building",
-    "clean",
-    "cloud",
     "collaborating",
     "compliance",
-    "consistency",
     "cross-functional",
-    "data",
     "deliver",
     "design",
-    "design.",
     "designing",
     "developing",
-    "development",
     "domain",
     "domains.",
-    "end-to-end",
     "engineer",
     "enterprise",
-    "environments.",
     "experience",
     "experienced",
-    "expertise",
-    "features",
-    "focus",
     "full-stack",
-    "hands-on",
-    "high-performance",
     "integrations",
     "logistics",
     "low-code",
@@ -46,36 +26,19 @@
     "microflows",
     "modeling",
     "modern",
-    "mongodb",
     "nanoflows",
-    "node.js",
-    "optimization",
-    "own",
-    "performance",
-    "platforms",
     "production",
-    "production-grade",
-    "production.",
-    "proficient",
-    "proven",
-    "real-time",
-    "reliable",
     "rest",
-    "scalability",
     "scalable",
     "security",
     "siemens",
     "skilled",
     "software",
     "solutions",
-    "startup",
-    "strong",
     "support.",
     "supporting",
-    "systems.",
     "teams",
     "technologies.",
-    "transaction-safe",
     "transportation",
     "workflow",
     "years"
@@ -284,54 +247,6 @@
       "rating": 5,
       "source": "resume",
       "verified": true
-    },
-    {
-      "name": "TanStack Query",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "PostgreSQL",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "Jest",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "Basic Unit Testing",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "langGraph",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "LLM Integration",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "Prompt Engineering",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
-    },
-    {
-      "name": "Agentic Workflows",
-      "rating": 5,
-      "source": "resume",
-      "verified": true
     }
   ],
   "professional_experience": [
@@ -417,90 +332,6 @@
           "technologies": []
         }
       ]
-    },
-    {
-      "company": "Capgemini",
-      "role": "Associate Consultant (Software Engineer \u2013 Backend & Full-Stack)",
-      "location": "Pune, India",
-      "start_date": "Jul 2023",
-      "end_date": "Present",
-      "responsibilities": [
-        "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
-        "Architected backend integrations and REST API layers for scalable communication across services",
-        "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
-        "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
-      ],
-      "projects": [
-        {
-          "title": "ShareSpace",
-          "bullet_points": [
-            "Hierarchical file storage with optimized data modeling",
-            "Secure upload/download pipelines with access control",
-            "Soft delete (trash), restore & lifecycle management"
-          ],
-          "technologies": []
-        },
-        {
-          "title": "Export Control system",
-          "bullet_points": [
-            "Converted rigid logic into config-driven architecture",
-            "Improved maintainability and reduced manual effort"
-          ],
-          "technologies": []
-        },
-        {
-          "title": "AI-Powered Investment Insights System",
-          "bullet_points": [
-            "Designed LLM-based pipelines to generate structured investment reports",
-            "Implemented prompt engineering and response validation for consistent and reliable outputs",
-            "Built dynamic frontend components to render UI based on API-driven responses",
-            "Integrated AI-generated insights into applications for real-time user consumption"
-          ],
-          "technologies": []
-        },
-        {
-          "title": "Dangerous Goods Transport System",
-          "bullet_points": [
-            "Slot booking system with workflow orchestration",
-            "Real-time notifications and approval pipelines"
-          ],
-          "technologies": []
-        }
-      ]
-    },
-    {
-      "company": "BITCS | DigitalFlow | KnockOnce",
-      "role": "Software Developer (Backend & Full-Stack)",
-      "location": null,
-      "start_date": "Jun 2021",
-      "end_date": "Oct 2022",
-      "responsibilities": [
-        "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
-        "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
-        "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
-        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
-      ],
-      "projects": [
-        {
-          "title": "Expense management system",
-          "bullet_points": [
-            "Designed and developed a production-grade expense management system handling multi-user financial transactions",
-            "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic",
-            "Designed optimized data models and aggregation pipelines for analytics and reporting",
-            "Enhanced performance using compound indexes for high-frequency queries",
-            "Built the system with focus on scalability, concurrency handling, and data integrity"
-          ],
-          "technologies": []
-        },
-        {
-          "title": "Additional Systems Built",
-          "bullet_points": [
-            "Built real-time communication features using event-driven architecture (Socket.IO)",
-            "Developed modular frontend systems with optimized data fetching & caching"
-          ],
-          "technologies": []
-        }
-      ]
     }
   ],
   "certifications": [
@@ -528,12 +359,8 @@
   "resume_versions": [
     {
       "filename": "uploads\\ONKAR KOTULE-mendix-accenture.pdf",
-      "uploaded_at": "2026-08-08T06:44:11.737536"
-    },
-    {
-      "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-08-23T13:36:33.221381"
+      "uploaded_at": "2026-08-08T05:59:18.617827"
     }
   ],
-  "updated_at": "2026-08-23T13:45:28.138274"
+  "updated_at": "2026-08-08T06:43:19.682393"
 }

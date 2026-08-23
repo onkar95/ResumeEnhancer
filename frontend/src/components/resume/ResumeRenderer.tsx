@@ -16,15 +16,24 @@ export default function ResumeRenderer({
   if (!resume) return null;
 
   return (
-    <div className="bg-white border shadow-xl rounded-xl p-10 text-sm leading-6 h-full">
+    // AFTER
+    <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6 sm:p-8 lg:p-10 text-sm leading-6 h-full min-w-0">
       {/* Header */}
       <div className="text-center mb-6">
         <h1 className="text-3xl font-bold tracking-wide">
-          <HighlightText diff={diff} original={originalResume?.name} current={resume.name} />
+          <HighlightText
+            diff={diff}
+            original={originalResume?.name}
+            current={resume.name}
+          />
         </h1>
 
         <p className="text-gray-600 mt-2 font-medium">
-          <HighlightText diff={diff} original={originalResume?.headline} current={resume.headline} />
+          <HighlightText
+            diff={diff}
+            original={originalResume?.headline}
+            current={resume.headline}
+          />
         </p>
 
         <div className="mt-3 text-gray-500 text-xs flex flex-wrap justify-center gap-2">
@@ -65,9 +74,10 @@ export default function ResumeRenderer({
       <ResumeSection title="Technical Skills">
         <div className="space-y-2">
           {resume.technical_skills?.categories?.map((category: any) => {
-            const originalCategory = originalResume?.technical_skills?.categories?.find(
-              (c: any) => c.category === category.category,
-            );
+            const originalCategory =
+              originalResume?.technical_skills?.categories?.find(
+                (c: any) => c.category === category.category,
+              );
 
             return (
               <div key={category.category}>
@@ -77,7 +87,9 @@ export default function ResumeRenderer({
                     <li key={skill}>
                       <HighlightText
                         diff={diff}
-                        original={originalCategory?.skills?.find((s: string) => s === skill)}
+                        original={originalCategory?.skills?.find(
+                          (s: string) => s === skill,
+                        )}
                         current={skill}
                       />
                     </li>
@@ -100,10 +112,18 @@ export default function ResumeRenderer({
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="font-bold text-base">
-                    <HighlightText diff={diff} original={originalExp?.role} current={exp.role} />
+                    <HighlightText
+                      diff={diff}
+                      original={originalExp?.role}
+                      current={exp.role}
+                    />
                   </h3>
                   <div className="text-gray-600">
-                    <HighlightText diff={diff} original={originalExp?.company} current={exp.company} />
+                    <HighlightText
+                      diff={diff}
+                      original={originalExp?.company}
+                      current={exp.company}
+                    />
                   </div>
                 </div>
 
@@ -146,15 +166,21 @@ export default function ResumeRenderer({
                         </h4>
 
                         <ul className="list-disc ml-5 mt-2 space-y-1">
-                          {project.bullet_points?.map((bullet: string, bulletIndex: number) => (
-                            <li key={bulletIndex}>
-                              <HighlightText
-                                diff={diff}
-                                original={originalProject?.bullet_points?.[bulletIndex]}
-                                current={bullet}
-                              />
-                            </li>
-                          ))}
+                          {project.bullet_points?.map(
+                            (bullet: string, bulletIndex: number) => (
+                              <li key={bulletIndex}>
+                                <HighlightText
+                                  diff={diff}
+                                  original={
+                                    originalProject?.bullet_points?.[
+                                      bulletIndex
+                                    ]
+                                  }
+                                  current={bullet}
+                                />
+                              </li>
+                            ),
+                          )}
                         </ul>
                       </div>
                     );
@@ -175,7 +201,11 @@ export default function ResumeRenderer({
 
             return (
               <li key={index}>
-                <HighlightText diff={diff} original={originalCert?.name} current={cert.name} />
+                <HighlightText
+                  diff={diff}
+                  original={originalCert?.name}
+                  current={cert.name}
+                />
               </li>
             );
           })}
@@ -185,13 +215,18 @@ export default function ResumeRenderer({
       <ResumeSection title="Education">
         {resume.education?.map((edu: any, index: number) => {
           const originalEdu = originalResume?.education?.find(
-            (e: any) => e.degree === edu.degree || e.institution === edu.institution,
+            (e: any) =>
+              e.degree === edu.degree || e.institution === edu.institution,
           );
 
           return (
             <div key={index} className="mb-5">
               <div className="font-semibold">
-                <HighlightText diff={diff} original={originalEdu?.degree} current={edu.degree} />
+                <HighlightText
+                  diff={diff}
+                  original={originalEdu?.degree}
+                  current={edu.degree}
+                />
               </div>
               <div>
                 <HighlightText

@@ -373,18 +373,20 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
     }
 
     return (
+      // AFTER
       <div
         ref={ref}
         id="resume-pdf-target"
         className="
           bg-white
-          border
-          shadow-xl
+          border border-gray-200
+          shadow-sm
           rounded-xl
-          p-10
+          p-6 sm:p-8 lg:p-10
           text-sm
           leading-6
           h-full
+          min-w-0
         "
       >
         {/* Header */}
@@ -456,7 +458,6 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
             )}
           </div>
         </ResumeSection>
-
 
         <ResumeSection title="Professional Experience">
           {resume.professional_experience?.map((exp: any, ei: number) => {

@@ -69,20 +69,6 @@
 #     ] = None
 
 
-# class InventoryEvidence(BaseModel):
-
-#     evidence_id: str
-
-#     title: str
-
-#     section: str
-
-#     content: str
-
-#     source: str
-
-#     created_at: datetime
-
 from datetime import datetime
 from typing import List, Optional
 
@@ -154,3 +140,18 @@ class ResumeInventory(BaseModel):
     updated_at: Optional[
         datetime
     ] = None
+
+
+class InventoryEvidence(BaseModel):
+
+    evidence_id: str
+
+    title: str
+
+    section: str
+
+    content: str
+
+    source: str
+
+    created_at: datetime

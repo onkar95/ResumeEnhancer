@@ -14,3 +14,7 @@ langchain
 pymongo>=4.8
 playwright>=1.45
 python-docx
+authlib
+python-jose[cryptography]
+itsdangerous
+httpx

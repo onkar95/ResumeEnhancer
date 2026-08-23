@@ -104,6 +104,7 @@
 import { useEffect, useState, type JSX } from "react";
 import { editSection } from "../../services/api";
 import HighlightText from "../resume/HighlightText";
+import { useAuth } from "../../context/AuthContext";
 
 interface Props {
   runId: string;
@@ -128,6 +129,9 @@ export default function InlineEditableText({
   as = "span",
   serialize,
 }: Props) {
+
+   const { user } = useAuth();
+
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(value);
   const [saving, setSaving] = useState(false);
@@ -142,7 +146,7 @@ export default function InlineEditableText({
     try {
       const payload = serialize ? serialize(draft) : draft;
 
-      await editSection(runId, path, payload);
+      await editSection(runId, path,user.user_id, payload);
 
       onSaved();
 

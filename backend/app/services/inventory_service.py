@@ -8,21 +8,24 @@ from app.schemas.resume_inventory import (
 )
 
 from app.services.inventory_storage_service import (
-    load_inventory,
-    save_inventory
+    InventoryStorageService
 )
+
+
+from app.schemas.user_context import UserContext
+from app.utils.skill_normalizer import normalize_skill
 
 
 def get_inventory() -> ResumeInventory:
 
-    return load_inventory()
+    return InventoryStorageService.load_inventory()
 
 
 def persist_inventory(
     inventory: ResumeInventory
 ):
 
-    save_inventory(
+    InventoryStorageService.save_inventory(
         inventory
     )
 
@@ -55,6 +58,47 @@ def get_skill(
             return skill
 
     return None
+
+
+def merge_declared_skills(
+    inventory: ResumeInventory,
+    user_context: UserContext | None
+) -> ResumeInventory:
+    """
+    Folds any candidate-declared skills (from the optional notes box or a
+    chat message) into the inventory, same rule as the resume-skill merge:
+    skip if already present (normalized).
+    """
+
+    if not user_context or not user_context.declared_skills:
+        return inventory
+
+    existing = {
+        normalize_skill(skill.name)
+        for skill in inventory.skills
+    }
+
+    for declared in user_context.declared_skills:
+
+        normalized = normalize_skill(declared.skill)
+
+        if not normalized or normalized in existing:
+            continue
+
+        inventory.skills.append(
+            InventorySkill(
+                name=declared.skill,
+                rating=max(1, round(declared.confidence * 5)),
+                verified=False,
+                source="user_declared"
+            )
+        )
+
+        existing.add(normalized)
+
+    inventory.updated_at = datetime.utcnow()
+
+    return inventory
 
 
 def add_skill(
@@ -207,7 +251,7 @@ def add_evidence(
 
 #         inventory = (
 #             InventoryStorageService
-#             .load_inventory()
+#             .InventoryStorageService.load_inventory()
 #         )
 
 #         for skill in inventory.skills:

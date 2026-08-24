@@ -18,3 +18,4 @@ authlib
 python-jose[cryptography]
 itsdangerous
 httpx
+google-genai

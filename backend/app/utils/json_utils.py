@@ -85,23 +85,34 @@ def clean_json_response(response: str) -> str:
     return cleaned.strip()
 
 
+# def parse_llm_json(response: str) -> dict[str, Any]:
+#     """
+#     Parse JSON returned by an LLM.
+
+#     Raises JSONParsingError if parsing fails.
+#     """
+
+#     cleaned = clean_json_response(response)
+
+#     try:
+#         return json.loads(cleaned)
+
+#     except json.JSONDecodeError as exc:
+#         raise JSONParsingError(
+#             f"Failed to parse JSON.\n\nResponse:\n{cleaned}"
+#         ) from exc
+
 def parse_llm_json(response: str) -> dict[str, Any]:
-    """
-    Parse JSON returned by an LLM.
-
-    Raises JSONParsingError if parsing fails.
-    """
-
     cleaned = clean_json_response(response)
-
     try:
-        return json.loads(cleaned)
-
+        data = json.loads(cleaned)
     except json.JSONDecodeError as exc:
-        raise JSONParsingError(
-            f"Failed to parse JSON.\n\nResponse:\n{cleaned}"
-        ) from exc
+        raise JSONParsingError(f"Failed to parse JSON.\n\nResponse:\n{cleaned}") from exc
 
+    if not isinstance(data, dict):
+        raise JSONParsingError(f"Expected a JSON object, got {type(data).__name__}: {cleaned[:500]}")
+
+    return data
 # def extract_json(response: str) -> dict:
 #     """
 #     Extract JSON from LLM response.

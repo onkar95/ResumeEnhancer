@@ -174,6 +174,7 @@ class GroqService:
                 response_format={
                     "type": "json_object"
                 },
+                # max_tokens=8192,
                 messages=[
                     {
                         "role": "system",

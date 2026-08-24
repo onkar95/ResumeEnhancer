@@ -14,13 +14,12 @@ from app.schemas.resume import (
     ResumeDocument,
 )
 
-
-from app.services.groq_service import GroqService as LLMService
-
-
+from app.services.models.gemini_service import (
+    GeminiService as LLMService
+)
 
 from app.utils.json_utils import (
-    extract_json,
+    parse_llm_json,
 )
 
 from app.utils.resume_normalizer import (
@@ -32,8 +31,8 @@ class ResumeTailorService:
 
     def __init__(self):
 
-        # self.llm_service = GroqService()
         self.llm_service = LLMService()
+
     async def tailor(
         self,
         resume: ResumeDocument,
@@ -67,7 +66,11 @@ class ResumeTailorService:
                 "Resume tailoring prompt generated"
             )
 
-            response = await self.llm_service.generate(
+            # ---------------------------------------------
+            # Gemini JSON generation
+            # ---------------------------------------------
+
+            response = await self.llm_service.generate_json(
                 prompt
             )
 
@@ -75,13 +78,21 @@ class ResumeTailorService:
                 "Tailoring response received from LLM"
             )
 
-            parsed_json = extract_json(
+            # ---------------------------------------------
+            # Parse JSON
+            # ---------------------------------------------
+
+            parsed_json = parse_llm_json(
                 response
             )
 
             logger.info(
-                "Tailored resume JSON extracted"
+                "Tailored resume JSON parsed"
             )
+
+            # ---------------------------------------------
+            # Normalize
+            # ---------------------------------------------
 
             normalized_resume = normalize_resume(
                 parsed_json
@@ -90,6 +101,10 @@ class ResumeTailorService:
             logger.info(
                 "Tailored resume normalized"
             )
+
+            # ---------------------------------------------
+            # Validate
+            # ---------------------------------------------
 
             tailored_resume = ResumeDocument.model_validate(
                 normalized_resume

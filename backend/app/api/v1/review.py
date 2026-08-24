@@ -63,9 +63,9 @@ def get_run(run_id: str, current_user: dict = Depends(get_current_user)):
 
 
 @router.post("/{run_id}/chat")
-def chat_revise(run_id: str, request: ChatReviseRequest, user_id: str):
+def chat_revise(run_id: str, request: ChatReviseRequest,current_user: dict = Depends(get_current_user),):
 
-    run = _get_run_or_404(run_id,user_id)
+    run = _get_run_or_404(run_id,current_user["user_id"])
 
     message = request.message.strip()
 
@@ -199,9 +199,9 @@ def edit_section(run_id: str, request: SectionEditRequest):
 
 
 @router.post("/{run_id}/revise")
-def revise_resume(run_id: str):
+def revise_resume(run_id: str,current_user: dict = Depends(get_current_user)):
 
-    run = _get_run_or_404(run_id)
+    run = _get_run_or_404(run_id, current_user["user_id"])
 
     suggestions = CandidateSuggestion.model_validate(
         run.get("candidate_suggestions") or {"suggestions": []}
@@ -267,9 +267,9 @@ def revise_resume(run_id: str):
 
 
 @router.post("/{run_id}/finalize")
-def finalize_run(run_id: str):
+def finalize_run(run_id: str,current_user: dict = Depends(get_current_user)):
 
-    run = _get_run_or_404(run_id)
+    run = _get_run_or_404(run_id, current_user["user_id"])
 
     run["finalized"] = True
 
@@ -286,8 +286,8 @@ def clear_history():
 
 
 @router.delete("/{run_id}")
-def delete_single_run(run_id: str):
-    _get_run_or_404(run_id)  # 404 if it doesn't exist
+def delete_single_run(run_id: str,current_user: dict = Depends(get_current_user)):
+    _get_run_or_404(run_id, current_user["user_id"])  # 404 if it doesn't exist
     delete_run(run_id)
     return {"deleted": True, "run_id": run_id}
 

@@ -12,7 +12,8 @@ from app.schemas.job_description import (
 )
 
 
-from app.services.groq_service import GroqService as LLMService
+from app.services.models.gemini_service import GeminiService as LLMService
+# from ResumeEnhancer.backend.app.services.models.groq_service import GroqService as LLMService
 
 
 from app.utils.json_utils import (

@@ -6,7 +6,8 @@ by the chat-revise endpoint (which is a sync FastAPI route and can't await
 GroqService.generate_json directly).
 """
 
-from app.services.groq_service import GroqService
+# from ResumeEnhancer.backend.app.services.models.groq_service import GroqService
+from app.services.models.gemini_service import GeminiService
 from app.utils.json_utils import extract_json
 from app.schemas.user_context import UserContext, DeclaredSkill
 from app.prompts.user_context_prompt import build_user_context_prompt
@@ -20,7 +21,7 @@ def extract_user_context(instructions: str) -> UserContext:
     if not instructions:
         return UserContext(raw_instructions="")
 
-    llm = GroqService()
+    llm = GeminiService()
 
     try:
         prompt = build_user_context_prompt(instructions)

@@ -1,6 +1,6 @@
 import json
 
-from app.utils.json_utils import extract_json
+from app.utils.json_utils import extract_json, parse_llm_json
 
 from app.workflows.state import (
     ResumeTailorState
@@ -110,8 +110,13 @@ def resume_tailor_node(
     # A fixed-filename cache (the old approach) can't tell those apart and
     # will silently replay a stale resume tailored for different input.
     response = llm.generate(prompt)
+    
+    print("=" * 100)
+    print("RAW GEMINI TAILOR RESPONSE")
+    print(response)
+    print("=" * 100)
 
-    json_response = extract_json(response)
+    json_response = parse_llm_json(response)
 
     tailored_resume = (
         ResumeDocument

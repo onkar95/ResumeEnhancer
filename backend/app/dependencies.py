@@ -6,7 +6,7 @@ Provides singleton service instances.
 
 from functools import lru_cache
 
-from app.services.groq_service import (
+from app.services.models.groq_service import (
     GroqService,
 )
 

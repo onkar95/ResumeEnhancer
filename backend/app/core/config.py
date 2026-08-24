@@ -7,9 +7,14 @@ class Settings(BaseSettings):
 
     # Groq
     GROQ_API_KEY: str
-    GROQ_MODEL: str = "llama-3.3-70b-versatile"
+    # GROQ_MODEL: str = "llama-3.3-70b-versatile"
     # GROQ_MODEL: str = "llama-3.1-8b-instant"
+    GROQ_MODEL: str
     DEBUG_USE_CACHE: bool = True
+
+
+    GEMINI_MODEL: str
+    GEMINI_API_KEY: str
 
     # class Config:
     #     env_file = ".env"
@@ -24,8 +29,8 @@ class Settings(BaseSettings):
 
     # MongoDB
     MONGO_URI: str
-    MONGO_DB_NAME: str 
-    
+    MONGO_DB_NAME: str
+
     # Google OAuth
     GOOGLE_CLIENT_ID: str
     GOOGLE_CLIENT_SECRET: str
@@ -39,8 +44,6 @@ class Settings(BaseSettings):
 
     FRONTEND_URL: str = "http://localhost:5173"
     COOKIE_SECURE: bool = False  # True in production (HTTPS)
-
-
 
     # Modern Pydantic V2 Configuration Block
     model_config = SettingsConfigDict(

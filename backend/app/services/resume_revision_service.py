@@ -15,7 +15,8 @@ approved suggestions / edits), so there's no single "the" response to pin.
 
 from app.prompts.resume_tailor_prompt import build_resume_tailor_prompt
 from app.schemas.resume import ResumeDocument
-from app.services.groq_service import GroqService
+# from ResumeEnhancer.backend.app.services.models.groq_service import GroqService
+from app.services.models.gemini_service import GeminiService
 from app.utils.json_utils import extract_json
 from app.utils.resume_normalizer import normalize_resume
 
@@ -41,7 +42,7 @@ def regenerate_tailored_resume(
         user_context_json=user_context_json,
     )
 
-    llm = GroqService()
+    llm = GeminiService()
 
     response = llm.generate(prompt)
 

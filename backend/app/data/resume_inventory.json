@@ -1,34 +1,47 @@
 {
   "summary_points": [
     "Software Engineer with 4+ years of experience designing, developing, and supporting enterprise applications using Siemens Mendix and modern full-stack technologies. Skilled in application design, domain modeling, microflows, nanoflows, security, workflow automation, REST integrations, and production support. Experienced in collaborating with cross-functional teams to deliver scalable low-code solutions across logistics, compliance, and transportation domains.",
-    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production."
+    "Software Development Engineer with 4+ years of experience building scalable backend systems and full-stack applications across enterprise and startup environments. Strong expertise in API design, data modeling, and performance optimization, with hands-on experience designing transaction-safe and real-time systems. Proficient in developing high-performance, production-grade architectures using Node.js, MongoDB, and cloud platforms, with a focus on scalability, consistency, and clean system design. Proven ability to own features end-to-end and build reliable, scalable systems in production.",
+    "Software Development Engineer with 4+ years of experience building production-grade backend and full-stack applications across enterprise and startup environments. Strong expertise in Node.js, TypeScript/JavaScript, React.js, Python, REST APIs, MongoDB, PostgreSQL, Azure, and distributed application design. Hands-on experience building LLM-powered applications and agentic AI workflows using LangGraph, prompt engineering, structured outputs, response validation, and multi-step AI pipelines. Experienced in designing reliable backend systems with transaction safety, concurrency handling, real-time communication, workflow orchestration, asynchronous processing, and API-driven architectures. Proven ability to own features end-to-end\u2014from architecture and development through CI/CD, production deployment, monitoring, and support\u2014with a strong focus on scalability, reliability, observability, and maintainable system design."
   ],
   "summary_keywords": [
     "ability",
     "across",
+    "agentic",
     "api",
+    "api-driven",
+    "apis",
+    "architecture",
     "architectures",
+    "architectures.",
+    "asynchronous",
     "automation",
+    "azure",
     "backend",
     "build",
     "building",
     "clean",
     "cloud",
     "collaborating",
+    "communication",
     "compliance",
+    "concurrency",
     "consistency",
     "cross-functional",
     "data",
     "deliver",
+    "deployment",
     "design",
     "design.",
     "designing",
     "developing",
     "development",
+    "distributed",
     "domain",
     "domains.",
     "end-to-end",
     "engineer",
+    "engineering",
     "enterprise",
     "environments.",
     "experience",
@@ -37,30 +50,49 @@
     "features",
     "focus",
     "full-stack",
+    "handling",
     "hands-on",
     "high-performance",
     "integrations",
+    "javascript",
+    "langgraph",
+    "llm-powered",
     "logistics",
     "low-code",
+    "maintainable",
     "mendix",
     "microflows",
     "modeling",
     "modern",
     "mongodb",
+    "monitoring",
+    "multi-step",
     "nanoflows",
     "node.js",
+    "observability",
     "optimization",
+    "orchestration",
+    "outputs",
     "own",
     "performance",
+    "pipelines.",
     "platforms",
+    "postgresql",
+    "processing",
     "production",
     "production-grade",
     "production.",
     "proficient",
+    "prompt",
     "proven",
+    "python",
+    "react.js",
     "real-time",
+    "reliability",
     "reliable",
+    "response",
     "rest",
+    "safety",
     "scalability",
     "scalable",
     "security",
@@ -70,14 +102,21 @@
     "solutions",
     "startup",
     "strong",
+    "structured",
+    "support",
     "support.",
     "supporting",
     "systems.",
     "teams",
     "technologies.",
+    "through",
+    "transaction",
     "transaction-safe",
     "transportation",
+    "typescript",
+    "validation",
     "workflow",
+    "workflows",
     "years"
   ],
   "skills": [
@@ -332,6 +371,120 @@
       "rating": 5,
       "source": "resume",
       "verified": true
+    },
+    {
+      "name": "HTML5",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "CSS3",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "API Integration",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Socket.IO",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Transaction Safety",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Event-Driven Architecture",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "etc",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "LLM APIs",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Multi-Step AI Pipelines",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Structured Outputs",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Response Validation",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "AI Tool Integration",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "AI Evaluation Concepts",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Microsoft Azure",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Unit Testing",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Error Handling",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Logging",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Production Monitoring",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
+    },
+    {
+      "name": "Agile / SDLC",
+      "rating": 5,
+      "source": "resume",
+      "verified": true
     }
   ],
   "professional_experience": [
@@ -342,29 +495,37 @@
       "start_date": "Jul 2023",
       "end_date": "Present",
       "responsibilities": [
-        "Designed, developed, configured, and supported enterprise-scale applications using Mendix and React, supporting complex business workflows and compliance-driven systems, Support junior members.",
+        "Designed, developed, configured, and supported enterprise-scale applications using Mendix and React, supporting complex business workflows and compliance-driven systems.",
         "Built end-to-end Mendix applications including domain models, microflows, nanoflows, integrations, and Mendix security.",
-        "Integrated external REST APIs and backend services into Mendix applications."
+        "Integrated external REST APIs and backend services into Mendix applications.",
+        "Architected backend integrations and REST API layers for scalable communication across services.",
+        "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
+        "Owned features end-to-end, from requirements and design through development, production deployment, monitoring, and post-release support.",
+        "Implemented Azure AD SSO integration.",
+        "Implemented CI/CD pipelines with Azure DevOps.",
+        "Supported production monitoring, troubleshooting, root-cause analysis, and issue resolution as an engineering SPOC."
       ],
       "projects": [
         {
           "title": "ShareSpace - Document Management System",
           "bullet_points": [
-            "Architected from scratch an enterprise-grade document management platform tailored for secure, file storage and business-unit collaboration.",
-            "Engineered a hierarchical data structure within the domain model to seamlessly organize complex directory trees and file systems.",
-            "Implemented secure data lifecycle controls, leveraging the FileDocument system to manage high-performance uploads/downloads alongside customized soft-delete (Trash) and permanent purge workflows.",
-            "Enforced rigid security baselines by building complex entity and attribute-level access criteria using XPath to strictly govern document visibility across user roles.",
-            "Contributed actively to refinement sessions and sprint planning, collaborated with business stakeholders to gather and analyze business requirements.",
-            "Integrated the application into CI/CD pipelines, enabling reliable builds and controlled deployments across environments."
+            "Architected an enterprise-grade document management platform for secure file storage and business-unit collaboration.",
+            "Engineered a hierarchical data structure within the domain model to organize complex directory trees and file systems.",
+            "Implemented secure data lifecycle controls using FileDocument for uploads/downloads, soft delete, trash, and permanent purge workflows.",
+            "Implemented entity- and attribute-level XPath security to govern document visibility across user roles.",
+            "Collaborated with business stakeholders through refinement and sprint-planning activities to gather and analyze requirements.",
+            "Integrated the application into CI/CD pipelines for reliable builds and controlled deployments.",
+            "Implemented hierarchical file storage, secure upload/download workflows, access control, soft delete, restore, and lifecycle management."
           ],
           "technologies": []
         },
         {
           "title": "Export Control",
           "bullet_points": [
-            "Enhanced And Implemented an Export Control Compliance system in Mendix to automate regulatory validations.",
-            "Refactored existing ECCN logic into a configuration-driven design, making ECCNs and COO rules easy to understand, modify, and maintain.",
-            "Built dynamic validation microflows for export restrictions with secure, auditable, and role-based access control."
+            "Enhanced and implemented an Export Control Compliance system in Mendix to automate regulatory validations.",
+            "Refactored ECCN logic into a configuration-driven design to make ECCN and COO rules easier to understand, modify, and maintain.",
+            "Built dynamic validation microflows for export restrictions with secure, auditable, role-based access control.",
+            "Converted rigid business logic into a configuration-driven architecture, improving maintainability and reducing manual effort."
           ],
           "technologies": []
         },
@@ -372,9 +533,21 @@
           "title": "Resource & Industrials \u2013 Dangerous Goods Transport Management System (R&I DG TMS)",
           "bullet_points": [
             "Developed a customer-facing Mendix application for booking dangerous goods transport slots.",
-            "Implemented: Time-slot booking & approval workflows, Role-based access for customers, schedulers, and admins, In-app and email notifications, Authentication and user management",
+            "Implemented time-slot booking, approval workflows, role-based access for customers, schedulers, and admins, in-app and email notifications, authentication, and user management.",
             "Built scalable domain models, microflow-driven workflows, and secure entity access.",
-            "Delivered as a Hackathon MVP in 1 day, later expanded into a production-ready system with"
+            "Delivered the initial Hackathon MVP in one day and expanded it toward a production-ready system.",
+            "Implemented real-time notifications and approval pipelines."
+          ],
+          "technologies": []
+        },
+        {
+          "title": "AI-Powered Investment Insights System",
+          "bullet_points": [
+            "Designed LLM-based pipelines to generate structured investment reports.",
+            "Implemented prompt engineering and response validation for consistent and reliable outputs.",
+            "Built multi-step AI workflows using LangGraph.",
+            "Built dynamic frontend components to render API-driven AI responses.",
+            "Integrated AI-generated insights into applications for real-time user consumption."
           ],
           "technologies": []
         }
@@ -382,30 +555,47 @@
     },
     {
       "company": "BITCS | DigitalFlow | KnockOnce",
-      "role": "Software Developer (Backend & React)",
+      "role": "Software Developer (Backend & Full-Stack)",
       "location": "Remote",
       "start_date": "Jun 2021",
       "end_date": "Oct 2022",
       "responsibilities": [
-        "Built scalable full-stack features using Node.js, Express.js, and MongoDB, handling complex CRUD operations and relational data modeling.",
-        "Designed and consumed RESTful APIs, enabling seamless communication between frontend and backend services.",
-        "Implemented JWT-based authentication and authorization, ensuring secure access control across applications.",
-        "Developed responsive React and Next.js components from Figma designs using Tailwind CSS.",
-        "Improved application performance through API optimizations, efficient state management, and MongoDB indexing.",
-        "Ensured cross-browser and mobile compatibility, resolving UI/UX bottlenecks."
+        "Built scalable backend services using Node.js, Express.js, and MongoDB, designing modular REST APIs with validation and error handling.",
+        "Designed and consumed RESTful APIs for communication between frontend and backend services.",
+        "Implemented JWT-based authentication and authorization for secure access control.",
+        "Developed responsive React and Next.js components using Tailwind CSS.",
+        "Optimized frontend state management, component reuse, data fetching, and caching using React, Redux Toolkit, and TanStack Query.",
+        "Reduced unnecessary re-renders and improved UI responsiveness.",
+        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design.",
+        "Ensured cross-browser and mobile compatibility and resolved UI/UX bottlenecks.",
+        "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
+        "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
+        "Optimized frontend performance using: Efficient state management and component reusability (React, Redux Toolkit).",
+        "Data fetching and caching strategies (TanStack Query).",
+        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design",
+        "Built real-time communication features using event-driven architecture (Socket.IO)",
+        "Developed modular frontend systems with optimized data fetching & caching",
+        "Optimized frontend performance using efficient state management and component reusability (React, Redux Toolkit).",
+        "Optimized frontend performance using data fetching and caching strategies (TanStack Query)."
       ],
       "projects": [
         {
           "title": "Expense Tracker",
           "bullet_points": [
-            "Built a React Native expense-sharing application with secure REST APIs, transaction-safe updates, and analytics dashboards."
+            "Designed and developed a production-grade expense management system handling multi-user financial transactions.",
+            "Implemented transaction-safe balance updates to maintain data consistency across users.",
+            "Implemented real-time expense tracking and settlement logic.",
+            "Designed optimized data models and aggregation pipelines for analytics and reporting.",
+            "Enhanced performance using compound indexes for high-frequency queries.",
+            "Built the system with a focus on scalability, concurrency handling, and data integrity."
           ],
           "technologies": []
         },
         {
           "title": "Jira Clone",
           "bullet_points": [
-            "Developed Kanban workflows, reusable UI components, and optimized data fetching using TanStack Query."
+            "Developed Kanban workflows and reusable UI components.",
+            "Optimized data fetching using TanStack Query."
           ],
           "technologies": []
         },
@@ -413,6 +603,26 @@
           "title": "Real-Time Chat",
           "bullet_points": [
             "Implemented Socket.IO-based group messaging with real-time user presence."
+          ],
+          "technologies": []
+        },
+        {
+          "title": "Additional Systems Built",
+          "bullet_points": [
+            "Built real-time communication features using event-driven architecture and Socket.IO.",
+            "Developed modular frontend systems with optimized data fetching and caching."
+          ],
+          "technologies": []
+        },
+        {
+          "title": "Expense management system",
+          "bullet_points": [
+            "Designed and developed a production-grade expense management system handling multi-user financial transactions",
+            "Transaction-safe balance updates ensuring data consistency across users",
+            "Real-time expense tracking and settlement logic",
+            "Designed optimized data models and aggregation pipelines for analytics and reporting",
+            "Enhanced performance using compound indexes for high-frequency queries",
+            "Built the system with focus on scalability, concurrency handling, and data integrity"
           ],
           "technologies": []
         }
@@ -428,11 +638,17 @@
         "Designed and developed enterprise-scale applications across backend and frontend, optimizing state management, data flow, and UI performance for complex workflows.",
         "Architected backend integrations and REST API layers for scalable communication across services",
         "Built systems with role-based access control (RBAC), auditability, and secure data flows.",
-        "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership."
+        "Owned features end-to-end, from requirement design and development to production deployment and post-release ownership.",
+        "Implemented: Azure AD SSO integration",
+        "Implemented: CI/CD pipelines with Azure DevOps",
+        "Implemented: Production monitoring & issue resolution (SPOC role)",
+        "Azure AD SSO integration",
+        "CI/CD pipelines with Azure DevOps",
+        "Production monitoring & issue resolution (SPOC role)"
       ],
       "projects": [
         {
-          "title": "ShareSpace",
+          "title": "document management system (ShareSpace)",
           "bullet_points": [
             "Hierarchical file storage with optimized data modeling",
             "Secure upload/download pipelines with access control",
@@ -467,40 +683,6 @@
           "technologies": []
         }
       ]
-    },
-    {
-      "company": "BITCS | DigitalFlow | KnockOnce",
-      "role": "Software Developer (Backend & Full-Stack)",
-      "location": null,
-      "start_date": "Jun 2021",
-      "end_date": "Oct 2022",
-      "responsibilities": [
-        "Built scalable backend services using Node.js, Express, and MongoDB, designing modular REST APIs with validation and error handling.",
-        "Developed frontend systems using Next.js and Redux Toolkit, implementing optimized state management and efficient data fetching.",
-        "Optimized frontend performance using: - Efficient state management and component reusability (React, Redux Toolkit). - Data fetching and caching strategies (TanStack Query). - Reduced unnecessary re-renders and improved UI responsiveness.",
-        "Improved system performance through MongoDB indexing, query optimization, and efficient schema design"
-      ],
-      "projects": [
-        {
-          "title": "Expense management system",
-          "bullet_points": [
-            "Designed and developed a production-grade expense management system handling multi-user financial transactions",
-            "Implemented: o Transaction-safe balance updates ensuring data consistency across users o Real-time expense tracking and settlement logic",
-            "Designed optimized data models and aggregation pipelines for analytics and reporting",
-            "Enhanced performance using compound indexes for high-frequency queries",
-            "Built the system with focus on scalability, concurrency handling, and data integrity"
-          ],
-          "technologies": []
-        },
-        {
-          "title": "Additional Systems Built",
-          "bullet_points": [
-            "Built real-time communication features using event-driven architecture (Socket.IO)",
-            "Developed modular frontend systems with optimized data fetching & caching"
-          ],
-          "technologies": []
-        }
-      ]
     }
   ],
   "certifications": [
@@ -527,13 +709,9 @@
   ],
   "resume_versions": [
     {
-      "filename": "uploads\\ONKAR KOTULE-mendix-accenture.pdf",
-      "uploaded_at": "2026-08-08T06:44:11.737536"
-    },
-    {
       "filename": "uploads\\ONKAR KOTULE-april SDE2.pdf",
-      "uploaded_at": "2026-08-23T13:36:33.221381"
+      "uploaded_at": "2026-08-23T20:45:41.602628"
     }
   ],
-  "updated_at": "2026-08-23T13:45:28.138274"
+  "updated_at": "2026-08-24T12:43:40.894590"
 }

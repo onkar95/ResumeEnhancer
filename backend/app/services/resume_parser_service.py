@@ -20,7 +20,8 @@ from app.schemas.resume import (
 )
 
 
-from app.services.groq_service import GroqService as LLMService
+# from app.services.models.groq_service import GroqService as LLMService
+from app.services.models.gemini_service import GeminiService as LLMService
 
 
 from app.utils.json_utils import (
@@ -67,13 +68,6 @@ class ResumeParserService:
             )
             logger.info("Resume parsing prompt generated")
 
-            # print("=" * 100)
-            # print("",prompt[:200])  # Print the last 3000 characters
-            # print("=" * 100)
-
-            # prompt = RESUME_PARSER_PROMPT.format(
-            #     resume_text=resume_text
-            # )
 
             llm_response = await self.llm_service.generate_json(
                 prompt
@@ -83,10 +77,18 @@ class ResumeParserService:
             parsed_json = parse_llm_json(
                 llm_response
             )
+            
+            print("RAW:", repr(llm_response))
 
-            print("llm response for resume parsing into json ", "=" * 100)
-            print("", parsed_json)  # Print the last 3000 characters
-            print("=" * 100)
+            parsed_json = parse_llm_json(llm_response)
+            print("PARSED:", repr(parsed_json))
+
+            normalized_json = normalize_resume(parsed_json)
+            print("NORMALIZED:", repr(normalized_json))
+
+            # print("llm response for resume parsing into json ", "=" * 100)
+            # print("", parsed_json)  # Print the last 3000 characters
+            # print("=" * 100)
 
             normalized_json = normalize_resume(
                 parsed_json

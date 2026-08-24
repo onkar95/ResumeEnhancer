@@ -186,6 +186,7 @@ def list_runs() -> list[dict]:
             {
                 "run_id": 1,
                 "created_at": 1,
+                 "user_id": 1,  
                 "finalized": 1,
                 "resume_name": 1,
                 "parsed_jd.job_details.title": 1,
@@ -208,6 +209,7 @@ def list_runs() -> list[dict]:
         runs.append(
             {
                 "run_id": doc.get("run_id"),
+                "user_id": doc.get("user_id"), 
                 "created_at": doc.get("created_at"),
                 "finalized": doc.get("finalized", False),
                 "resume_name": doc.get("resume_name"),

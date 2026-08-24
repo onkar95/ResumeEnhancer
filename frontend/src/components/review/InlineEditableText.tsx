@@ -112,6 +112,7 @@ interface Props {
   value: string;
   originalValue?: string;
   onSaved: () => void;
+  showChanges?: boolean;
   multiline?: boolean;
   className?: string;
   as?: "span" | "p" | "div";
@@ -122,16 +123,16 @@ export default function InlineEditableText({
   runId,
   path,
   value,
-  originalValue = "",
+  showChanges = false,
   onSaved,
   multiline,
+  originalValue,
   className,
   as = "span",
   serialize,
 }: Props) {
-
-   const { user } = useAuth();
-
+  const { user } = useAuth();
+  console.log("originalValue", originalValue.length);
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(value);
   const [saving, setSaving] = useState(false);
@@ -146,7 +147,7 @@ export default function InlineEditableText({
     try {
       const payload = serialize ? serialize(draft) : draft;
 
-      await editSection(runId, path,user.user_id, payload);
+      await editSection(runId, path, user.user_id, payload);
 
       onSaved();
 
@@ -210,10 +211,15 @@ export default function InlineEditableText({
       onClick={() => setEditing(true)}
       title="Click to edit"
     >
-      <HighlightText
-        original={originalValue}
-        current={value}
-      />
+      {showChanges && originalValue !== undefined ? (
+        <HighlightText
+          diff={showChanges && originalValue !== undefined}
+          original={originalValue}
+          current={value}
+        />
+      ) : (
+        value
+      )}
 
       <span className="opacity-0 group-hover:opacity-100 text-xs text-blue-500 ml-1">
         ✎

@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 from app.core.DB import get_db
 
-FREE_LIMIT = 2
+FREE_LIMIT = 10
 WINDOW_HOURS = 24
 
 

@@ -364,10 +364,11 @@ interface Props {
   resume: any;
   originalResume?: any;
   onEdited: () => void;
+  showChanges?: boolean;
 }
 
 const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
-  ({ runId, resume, originalResume, onEdited }, ref) => {
+  ({ runId, resume, originalResume, onEdited, showChanges=false }, ref) => {
     if (!resume) {
       return null;
     }
@@ -396,6 +397,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
 
           <div className="mt-2 flex justify-center">
             <InlineEditableText
+              showChanges={showChanges}
               runId={runId}
               path="headline"
               value={resume.headline || ""}
@@ -416,6 +418,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
 
         <ResumeSection title="Professional Summary">
           <InlineEditableText
+            showChanges={showChanges}
             runId={runId}
             path="professional_summary.content"
             value={resume.professional_summary?.content || ""}
@@ -439,6 +442,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
                   <div key={category.category}>
                     <span className="font-semibold">{category.category}:</span>{" "}
                     <InlineEditableText
+                      showChanges={showChanges}
                       runId={runId}
                       path={`technical_skills.categories.${ci}.skills`}
                       value={category.skills.join(", ")}
@@ -471,6 +475,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
                   <div>
                     <h3 className="font-bold text-base">
                       <InlineEditableText
+                        showChanges={showChanges}
                         runId={runId}
                         path={`professional_experience.${ei}.role`}
                         value={exp.role || ""}
@@ -481,6 +486,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
 
                     <div className="text-gray-600">
                       <InlineEditableText
+                        showChanges={showChanges}
                         runId={runId}
                         path={`professional_experience.${ei}.company`}
                         value={exp.company || ""}
@@ -492,6 +498,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
 
                   <div className="text-gray-500 text-xs">
                     <InlineEditableText
+                      showChanges={showChanges}
                       runId={runId}
                       path={`professional_experience.${ei}.duration`}
                       value={`${exp.start_date} - ${exp.end_date}`}
@@ -513,6 +520,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
                   {exp.responsibilities?.map((point: string, ri: number) => (
                     <li key={ri}>
                       <InlineEditableText
+                        showChanges={showChanges}
                         runId={runId}
                         path={`professional_experience.${ei}.responsibilities.${ri}`}
                         value={point}
@@ -536,6 +544,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
                         <div key={pi} className="mb-4">
                           <h4 className="font-semibold">
                             <InlineEditableText
+                              showChanges={showChanges}
                               runId={runId}
                               path={`professional_experience.${ei}.projects.${pi}.title`}
                               value={project.title || ""}
@@ -549,6 +558,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
                               (bullet: string, bi: number) => (
                                 <li key={bi}>
                                   <InlineEditableText
+                                    showChanges={showChanges}
                                     runId={runId}
                                     path={`professional_experience.${ei}.projects.${pi}.bullet_points.${bi}`}
                                     value={bullet}
@@ -575,6 +585,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
             {resume.certifications?.map((cert: any, index: number) => (
               <li key={index}>
                 <InlineEditableText
+                  showChanges={showChanges}
                   runId={runId}
                   path={`certifications.${index}.name`}
                   value={cert.name || ""}
@@ -596,6 +607,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
               <div key={index} className="mb-4">
                 <div className="font-semibold">
                   <InlineEditableText
+                    showChanges={showChanges}
                     runId={runId}
                     path={`education.${index}.degree`}
                     value={edu.degree || ""}
@@ -606,6 +618,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
 
                 <div>
                   <InlineEditableText
+                    showChanges={showChanges}
                     runId={runId}
                     path={`education.${index}.institution`}
                     value={edu.institution || ""}
@@ -616,6 +629,7 @@ const EditableResumeRenderer = forwardRef<HTMLDivElement, Props>(
 
                 <div className="text-gray-500 text-sm">
                   <InlineEditableText
+                    showChanges={showChanges}
                     runId={runId}
                     path={`education.${index}.duration`}
                     value={`${edu.start_year} - ${edu.end_year}`}

@@ -30,7 +30,7 @@ from app.services.user_context_service import extract_user_context
 from app.schemas.candidate_suggestion import CandidateSuggestion
 from app.schemas.resume import ResumeDocument
 from app.services.resume_revision_service import regenerate_tailored_resume
-from app.services.runStore_service import apply_dot_path, clear_all_runs, delete_run, load_run, save_run, list_runs
+from app.services.DB_service import apply_dot_path, clear_all_runs, delete_run, load_run, save_run, list_runs
 
 from app.dependencies import get_current_user
 

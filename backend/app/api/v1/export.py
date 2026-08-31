@@ -4,7 +4,7 @@ from fastapi.responses import Response
 from app.schemas.resume import ResumeDocument
 from app.services.pdf_export_service import generate_resume_pdf
 from app.services.docx_export_service import generate_resume_docx
-from app.services.runStore_service import load_run
+from app.services.DB_service import load_run
 
 router = APIRouter(prefix="/api/v1/review", tags=["Export"])
 

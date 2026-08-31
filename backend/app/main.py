@@ -1,22 +1,22 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from starlette.middleware.sessions import SessionMiddleware
 from app.core.DB import ensure_indexes
+
 from app.api.tailor import router as tailor_router
 from app.api.parse_jd import router as jd_router
-from app.core.config import settings
 from app.api.v1.resume_workflow import (
     router as workflow_router
 )
 from app.api.v1.review import router as review_router
 from app.api.v1.approval import router as approval_router
 from app.api.v1.export import router as export_router
+from app.api.v1.auth import router as auth_router
 
 from app.core.config import settings
 import os
-from starlette.middleware.sessions import SessionMiddleware
 
-from app.api.v1.auth import router as auth_router
 from app.services.user_service import ensure_user_indexes
 from app.services.usage_service import ensure_usage_indexes
 
@@ -58,7 +58,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth_router)
 
 @app.on_event("startup")
 def on_startup():
@@ -66,39 +65,14 @@ def on_startup():
     ensure_user_indexes()
     ensure_usage_indexes()
     
-
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(
-    review_router
-)
+#Routes 
+app.include_router(auth_router)
+app.include_router(review_router)
 app.include_router(export_router)
-
-app.include_router(
-    approval_router
-)
-
-app.include_router(
-    workflow_router
-)
-
-app.include_router(
-    tailor_router,
-    prefix="/api"
-)
-app.include_router(
-    jd_router,
-    prefix="/jd"
-)
+app.include_router(approval_router)
+app.include_router(workflow_router)
+app.include_router(tailor_router,prefix="/api")
+app.include_router(jd_router,prefix="/jd")
 
 
 @app.get("/")

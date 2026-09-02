@@ -8,7 +8,7 @@ from app.schemas.candidate_suggestion import (
     CandidateSuggestion
 )
 
-from app.services.DB_service import (
+from app.services.database.DB_service import (
 
     load_run,
     save_run,

@@ -18,7 +18,7 @@ from app.core.config import settings
 import os
 
 from app.services.user_service import ensure_user_indexes
-from app.services.usage_service import ensure_usage_indexes
+from app.services.database.usage_service import ensure_usage_indexes
 
 
 os.environ["LANGSMITH_TRACING"] = str(

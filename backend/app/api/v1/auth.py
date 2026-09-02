@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse
 from app.core.config import settings
 from app.core.security import create_access_token
 from app.dependencies import get_current_user
-from app.services.usage_service import remaining_quota
+from app.services.database.usage_service import remaining_quota
 from app.services.user_service import upsert_google_user
 
 router = APIRouter(prefix="/api/v1/auth", tags=["Auth"])

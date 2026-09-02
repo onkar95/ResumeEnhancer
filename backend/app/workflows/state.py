@@ -99,30 +99,3 @@ class ResumeTailorState(
     error: Optional[str]
 
 
-# from typing import Optional
-# from typing_extensions import TypedDict
-
-# from app.schemas.resume import ResumeDocument
-# from app.schemas.job_description import JobDescription
-
-
-# class ResumeTailorState(TypedDict):
-
-#     resume_pdf_path: str
-#     jd_text: str
-
-#     parsed_resume: Optional[ResumeDocument]
-
-#     parsed_jd: Optional[JobDescription]
-
-#     gap_analysis: Optional[dict]
-
-#     tailored_resume: Optional[ResumeDocument]
-
-#     validation_result: Optional[dict]
-
-#     comparison_data: Optional[dict]
-
-#     retry_count: int
-
-#     error: Optional[str]

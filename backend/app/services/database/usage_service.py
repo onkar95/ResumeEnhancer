@@ -6,10 +6,8 @@ to keep this simple and protect LLM token spend.
 
 from datetime import datetime, timedelta
 
+from app.core.constants import WINDOW_HOURS,FREE_LIMIT
 from app.core.DB import get_db
-
-FREE_LIMIT = 10
-WINDOW_HOURS = 24
 
 
 def get_usage_collection():

@@ -22,14 +22,14 @@ from app.workflows.resume_tailor_graph import (
     resume_tailor_graph
 )
 
-from app.services.DB_service import (
+from app.services.database.DB_service import (
 
     save_run
 )
 from fastapi import Depends, HTTPException
 
 from app.dependencies import get_current_user
-from app.services.usage_service import (
+from app.services.database.usage_service import (
     has_quota,
     record_generation,
     remaining_quota,
@@ -54,7 +54,7 @@ async def resume_workflow(
     resume_file: UploadFile = File(...),
     jd_text: str = Form(...),
     user_instructions: str = Form(""),
-     current_user: dict = Depends(get_current_user),
+    current_user: dict = Depends(get_current_user),
 ):
     if not has_quota(current_user["user_id"]):
         raise HTTPException(

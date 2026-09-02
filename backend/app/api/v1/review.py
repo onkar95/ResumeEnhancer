@@ -30,7 +30,7 @@ from app.services.user_context_service import extract_user_context
 from app.schemas.candidate_suggestion import CandidateSuggestion
 from app.schemas.resume import ResumeDocument
 from app.services.resume_revision_service import regenerate_tailored_resume
-from app.services.DB_service import apply_dot_path, clear_all_runs, delete_run, load_run, save_run, list_runs
+from app.services.database.DB_service import apply_dot_path, clear_all_runs, delete_run, load_run, save_run, list_runs
 
 from app.dependencies import get_current_user
 
@@ -161,9 +161,9 @@ class SectionEditRequest(BaseModel):
 
 
 @router.post("/{run_id}/section-edit")
-def edit_section(run_id: str, request: SectionEditRequest):
+def edit_section(run_id: str, current_user: dict = Depends(get_current_user)):
 
-    run = _get_run_or_404(run_id,request.user_id)
+    run = _get_run_or_404(run_id,current_user["user_id"])
 
     resume_dict = run.get("tailored_resume")
 

@@ -55,3 +55,9 @@ SECTION_CERTIFICATION = "certification"
 SECTION_EDUCATION = "education"
 
 SECTION_ACHIEVEMENT = "achievement"
+
+
+#
+
+FREE_LIMIT = 10
+WINDOW_HOURS = 24

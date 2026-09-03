@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { clearAllRuns, deleteRun, fetchRunHistory } from "../services/api";
 import LoadingScreen from "../components/layout/LoadingScreen";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   mode?: "history" | "versions";
@@ -9,39 +10,30 @@ interface Props {
 
 export default function HistoryPage({ mode = "history" }: Props) {
   const navigate = useNavigate();
-  const [history, setHistory] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
 
+  const queryClient = useQueryClient();
+
+  const { data: history = [], isLoading } = useQuery({
+    queryKey: ["runHistory"],
+    queryFn: fetchRunHistory,
+  });
   const isVersions = mode === "versions";
 
-  const load = async () => {
-    try {
-      setLoading(true);
-      setHistory(await fetchRunHistory());
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    load();
-  }, []);
+ 
 
   async function remove(id: string) {
     if (!confirm("Delete this draft?")) return;
     await deleteRun(id);
-    setHistory((h) => h.filter((x) => x.run_id !== id));
+    queryClient.invalidateQueries({ queryKey: ["runHistory"] });
   }
 
   async function clear() {
     if (!confirm("Clear all saved drafts? This cannot be undone.")) return;
     await clearAllRuns();
-    setHistory([]);
+    queryClient.invalidateQueries({ queryKey: ["runHistory"] });
   }
 
-  if (loading) {
+  if (isLoading) {
     return <LoadingScreen message={isVersions ? "Loading resume versions..." : "Loading history..."} />;
   }
 

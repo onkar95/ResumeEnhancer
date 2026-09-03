@@ -48,9 +48,6 @@ export default function Sidebar({ onNavigate }: Props) {
         <NavLink to="/history" onClick={onNavigate} className={({ isActive }) => itemClass(isActive)}>
           History
         </NavLink>
-        <NavLink to="/versions" onClick={onNavigate} className={({ isActive }) => itemClass(isActive)}>
-          Resume versions
-        </NavLink>
       </nav>
 
       {inReview && runId && (

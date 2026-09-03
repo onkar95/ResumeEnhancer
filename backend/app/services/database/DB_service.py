@@ -47,26 +47,29 @@ def load_run(run_id: str) -> Optional[dict[str, Any]]:
     return doc
 
 
-def list_runs() -> list[dict]:
+def list_runs(user_id=None, limit=20, offset=0) -> list[dict]:
+    query = {"user_id": user_id} if user_id else {}
 
     cursor = (
         get_runs_collection()
         .find(
-            {},
+            query,
             {
                 "run_id": 1,
                 "created_at": 1,
-                 "user_id": 1,  
+                "user_id": 1,
                 "finalized": 1,
                 "resume_name": 1,
                 "parsed_jd.job_details.title": 1,
                 "parsed_jd.job_details.company": 1,
-                "comparison_data.ats_before": 1,
+                "comparison_data.ats_before": 1, 
                 "comparison_data.ats_after": 1,
-                "_id": 0,
+                "_id": 0
             },
         )
         .sort("created_at", -1)
+        .skip(offset)
+        .limit(limit)
     )
 
     runs = []
@@ -79,7 +82,7 @@ def list_runs() -> list[dict]:
         runs.append(
             {
                 "run_id": doc.get("run_id"),
-                "user_id": doc.get("user_id"), 
+                "user_id": doc.get("user_id"),
                 "created_at": doc.get("created_at"),
                 "finalized": doc.get("finalized", False),
                 "resume_name": doc.get("resume_name"),
@@ -91,7 +94,6 @@ def list_runs() -> list[dict]:
         )
 
     return runs
-
 
 def update_run(run_id: str, patch: dict[str, Any]) -> dict[str, Any]:
 

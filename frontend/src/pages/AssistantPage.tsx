@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchRun } from "../services/api";
+import { fetchRun, finalizeRun } from "../services/api";
 import LoadingScreen from "../components/layout/LoadingScreen";
 import SuggestionsList from "../components/assistant/SuggestionsList";
 import ChatResumeThread from "../components/assistant/ChatResumeThread";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { clearRunId, getRunId, saveRunId } from "../utils/storage";
 
 type Tab = "suggestions" | "chat";
 
@@ -11,28 +13,50 @@ export default function AssistantPage() {
   const { runId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const [run, setRun] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const resolved = runId || getRunId();
+  const queryClient = useQueryClient();
 
   const tab: Tab = location.pathname.endsWith("/chat") ? "chat" : "suggestions";
 
-  async function load() {
-    if (!runId) return;
-    try {
-      setLoading(true);
-      setRun(await fetchRun(runId));
-    } finally {
-      setLoading(false);
-    }
-  }
+  const {
+    data: run,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["run", resolved],
+    queryFn: () => fetchRun(resolved!),
+    enabled: !!resolved,
+  });
 
   useEffect(() => {
-    load();
-  }, [runId]);
+    if (isError) {
+      clearRunId();
+      navigate("/");
+    }
+  }, [isError]);
 
-  if (loading) return <LoadingScreen message="Loading AI assistant..." />;
+  useEffect(() => {
+    if (resolved) saveRunId(resolved);
+  }, [resolved]);
+
+  async function refresh() {
+    // used after edits/approvals/chat — force a real refetch, don't just rely on staleTime
+    await queryClient.invalidateQueries({ queryKey: ["run", resolved] });
+  }
+
+  async function finalize() {
+    if (!resolved) return;
+    await finalizeRun(resolved);
+    await refresh();
+  }
+
+  if (isLoading) return <LoadingScreen message="Loading AI assistant..." />;
   if (!run) {
-    return <div className="flex min-h-full items-center justify-center text-sm text-gray-500">Resume run not found.</div>;
+    return (
+      <div className="flex min-h-full items-center justify-center text-sm text-gray-500">
+        Resume run not found.
+      </div>
+    );
   }
 
   const suggestions = run.candidate_suggestions?.suggestions || [];
@@ -54,8 +78,12 @@ export default function AssistantPage() {
             ← <span className="hidden sm:inline">Back to review</span>
           </button>
           <div className="min-w-0 text-center">
-            <h1 className="truncate text-base font-bold text-gray-950 sm:text-lg">AI Resume Assistant</h1>
-            <p className="truncate text-xs text-gray-500">{run.tailored_resume?.name || "Current draft"}</p>
+            <h1 className="truncate text-base font-bold text-gray-950 sm:text-lg">
+              AI Resume Assistant
+            </h1>
+            <p className="truncate text-xs text-gray-500">
+              {run.tailored_resume?.name || "Current draft"}
+            </p>
           </div>
           <span className="shrink-0 rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 text-[11px] font-semibold text-brand-700">
             Draft v{Math.max(1, revisionCount + 1)}
@@ -70,17 +98,23 @@ export default function AssistantPage() {
             <span className="inline-flex items-center gap-2">
               Suggestions
               {pending > 0 && (
-                <span className="rounded-full bg-brand-100 px-2 py-0.5 text-[10px]">{pending}</span>
+                <span className="rounded-full bg-brand-100 px-2 py-0.5 text-[10px]">
+                  {pending}
+                </span>
               )}
             </span>
-            {tab === "suggestions" && <span className="absolute inset-x-0 bottom-0 h-0.5 bg-brand-600" />}
+            {tab === "suggestions" && (
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-brand-600" />
+            )}
           </button>
           <button
             onClick={() => goToTab("chat")}
             className={`relative h-12 text-sm font-semibold ${tab === "chat" ? "text-brand-700" : "text-gray-500 hover:text-gray-800"}`}
           >
             Chat & Resume
-            {tab === "chat" && <span className="absolute inset-x-0 bottom-0 h-0.5 bg-brand-600" />}
+            {tab === "chat" && (
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-brand-600" />
+            )}
           </button>
         </nav>
       </header>
@@ -89,7 +123,11 @@ export default function AssistantPage() {
         {tab === "suggestions" ? (
           <div className="h-full overflow-y-auto">
             <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
-              <SuggestionsList runId={runId!} suggestions={suggestions} onChanged={load} />
+              <SuggestionsList
+                runId={runId!}
+                suggestions={suggestions}
+                onChanged={refresh}
+              />
             </div>
           </div>
         ) : (
@@ -98,7 +136,7 @@ export default function AssistantPage() {
             chatHistory={run.chat_history || []}
             resume={run.tailored_resume}
             revisionCount={revisionCount}
-            onRevised={load}
+            onRevised={refresh}
           />
         )}
       </main>

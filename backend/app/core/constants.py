@@ -29,6 +29,7 @@ SUPPORTED_MIME_TYPES = [
 # ==========================================================
 # Upload Limits
 # ==========================================================
+ALLOWED_EXTENSIONS = {".pdf", ".docx"}
 
 MAX_UPLOAD_SIZE = 10 * 1024 * 1024
 MAX_CHAT_REVISIONS = 5

@@ -16,7 +16,6 @@ export default function App() {
       <Route path="/" element={<DashboardPage />} />
       <Route path="/generate" element={<GeneratePage />} />
       <Route path="/history" element={<HistoryPage />} />
-      <Route path="/versions" element={<HistoryPage mode="versions" />} />
       <Route path="/review/:runId" element={<ReviewPage />} />
       <Route path="/review/:runId/assistant" element={<AssistantPage />} />
       <Route path="/review/:runId/assistant/suggestions" element={<AssistantPage />} />

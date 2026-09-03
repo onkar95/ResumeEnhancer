@@ -27,3 +27,5 @@ def ensure_indexes() -> None:
     runs = get_runs_collection()
     runs.create_index("run_id", unique=True)
     runs.create_index("created_at")
+    runs.create_index("user_id")          # <-- add this
+    runs.create_index([("user_id", 1), ("created_at", -1)])  # composite, for the sorted-by-user quer

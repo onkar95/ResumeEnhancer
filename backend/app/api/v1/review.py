@@ -40,19 +40,26 @@ router = APIRouter(
 )
 
 
-
 def _get_run_or_404(run_id: str, user_id: str) -> dict[str, Any]:
     run = load_run(run_id)
     if run is None:
-        raise HTTPException(status_code=404, detail=f"No stored run found for run_id={run_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No stored run found for run_id={run_id}")
     if run.get("user_id") and run["user_id"] != user_id:
-        raise HTTPException(status_code=403, detail="You don't have access to this run.")
+        raise HTTPException(
+            status_code=403, detail="You don't have access to this run.")
     return run
 
+
 @router.get("/runs")
-def get_runs(current_user: dict = Depends(get_current_user)):
-    return [r for r in list_runs() if r.get("user_id") == current_user["user_id"]]
-    # (or push the filter into list_runs() as a mongo query — cheaper at scale)
+def get_runs(
+    limit: int = 20,
+    offset: int = 0,
+    current_user: dict = Depends(get_current_user),
+):
+    return list_runs(user_id=current_user["user_id"], limit=limit, offset=offset)
+# (or push the filter into list_runs() as a mongo query — cheaper at scale)
+
 
 @router.get("/{run_id}")
 def get_run(run_id: str, current_user: dict = Depends(get_current_user)):
@@ -63,9 +70,9 @@ def get_run(run_id: str, current_user: dict = Depends(get_current_user)):
 
 
 @router.post("/{run_id}/chat")
-def chat_revise(run_id: str, request: ChatReviseRequest,current_user: dict = Depends(get_current_user),):
+def chat_revise(run_id: str, request: ChatReviseRequest, current_user: dict = Depends(get_current_user),):
 
-    run = _get_run_or_404(run_id,current_user["user_id"])
+    run = _get_run_or_404(run_id, current_user["user_id"])
 
     message = request.message.strip()
 
@@ -157,13 +164,13 @@ def chat_revise(run_id: str, request: ChatReviseRequest,current_user: dict = Dep
 class SectionEditRequest(BaseModel):
     path: str
     value: Any
-    user_id:str
+    user_id: str
 
 
 @router.post("/{run_id}/section-edit")
 def edit_section(run_id: str, current_user: dict = Depends(get_current_user)):
 
-    run = _get_run_or_404(run_id,current_user["user_id"])
+    run = _get_run_or_404(run_id, current_user["user_id"])
 
     resume_dict = run.get("tailored_resume")
 
@@ -199,7 +206,7 @@ def edit_section(run_id: str, current_user: dict = Depends(get_current_user)):
 
 
 @router.post("/{run_id}/revise")
-def revise_resume(run_id: str,current_user: dict = Depends(get_current_user)):
+def revise_resume(run_id: str, current_user: dict = Depends(get_current_user)):
 
     run = _get_run_or_404(run_id, current_user["user_id"])
 
@@ -267,7 +274,7 @@ def revise_resume(run_id: str,current_user: dict = Depends(get_current_user)):
 
 
 @router.post("/{run_id}/finalize")
-def finalize_run(run_id: str,current_user: dict = Depends(get_current_user)):
+def finalize_run(run_id: str, current_user: dict = Depends(get_current_user)):
 
     run = _get_run_or_404(run_id, current_user["user_id"])
 
@@ -286,9 +293,7 @@ def clear_history():
 
 
 @router.delete("/{run_id}")
-def delete_single_run(run_id: str,current_user: dict = Depends(get_current_user)):
+def delete_single_run(run_id: str, current_user: dict = Depends(get_current_user)):
     _get_run_or_404(run_id, current_user["user_id"])  # 404 if it doesn't exist
     delete_run(run_id)
     return {"deleted": True, "run_id": run_id}
-
-

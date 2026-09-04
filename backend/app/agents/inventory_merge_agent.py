@@ -387,7 +387,7 @@ def inventory_merge_node(
     }
 
     current_file = normalize(
-        state["resume_pdf_path"]
+        state["resume_file_path"]
     )
 
     if (
@@ -398,7 +398,7 @@ def inventory_merge_node(
         inventory.resume_versions.append(
             ResumeVersion(
                 filename=state[
-                    "resume_pdf_path"
+                    "resume_file_path"
                 ],
                 uploaded_at=datetime.utcnow()
             )

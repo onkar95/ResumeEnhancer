@@ -1,15 +1,16 @@
+from app.services.resume_file_service import ResumeFileService
 from app.services import ResumeParserService, PDFExtractionService
 from app.core.logger import logger
 
 async def resume_parser_node(state):
 
-    pdf_service = PDFExtractionService()
+    file_service = ResumeFileService()
     parser = ResumeParserService()
 
     logger.info("Starting Resume parsing-agent")
 
-    text = pdf_service.extract_text(state["resume_pdf_path"])
-    links = pdf_service.extract_hyperlinks(state["resume_pdf_path"])
+    text = file_service.extract_text(state["resume_file_path"])
+    links = file_service.extract_hyperlinks(state["resume_file_path"])
 
     parsed_resume = await parser.parse_resume(text)
 

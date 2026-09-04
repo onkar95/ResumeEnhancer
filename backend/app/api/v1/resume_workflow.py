@@ -14,7 +14,7 @@ from app.core.constants import (
 )
 
 from app.api.tailor import (
-    validate_pdf,
+    validate_resume_file,
     save_upload_file,
 )
 
@@ -66,7 +66,7 @@ async def resume_workflow(
         )
 
 
-    validate_pdf(
+    validate_resume_file(
         resume_file
     )
 
@@ -81,7 +81,7 @@ async def resume_workflow(
             {
                 "run_id": run_id,
 
-                "resume_pdf_path":
+                "resume_file_path":
                     str(file_path),
 
                 "jd_text":
@@ -155,7 +155,7 @@ async def resume_workflow(
         run_id,
         {
             "user_id": current_user["user_id"],
-            "resume_pdf_path": str(file_path),
+            "resume_file_path": str(file_path),
             "jd_text": jd_text,
             "chat_history": initial_chat_history,
             "revision_count": 0,

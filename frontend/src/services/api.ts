@@ -105,12 +105,10 @@ export async function reviseResume(runId: string) {
 export async function editSection(
   runId: string,
   path: string,
-  user_id:string,
   value: unknown
 ) {
   const response = await api.post(`/api/v1/review/${runId}/section-edit`, {
     path,
-    user_id,
     value,
   });
   return response.data;

@@ -6,6 +6,7 @@ Provides singleton service instances.
 
 from functools import lru_cache
 
+from app.services.resume_file_service import ResumeFileService
 from app.services.models.groq_service import (
     GroqService,
 )
@@ -26,6 +27,10 @@ from app.services.user_service import get_user_by_id
 @lru_cache
 def get_pdf_service() -> PDFExtractionService:
     return PDFExtractionService()
+
+@lru_cache
+def get_resume_file_service() -> ResumeFileService:
+    return ResumeFileService()
 
 
 @lru_cache

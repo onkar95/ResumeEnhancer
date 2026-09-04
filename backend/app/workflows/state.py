@@ -48,7 +48,7 @@ class ResumeTailorState(
 ):
     run_id: str
 
-    resume_pdf_path: str
+    resume_file_path: str
 
     jd_text: str
 

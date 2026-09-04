@@ -164,11 +164,10 @@ def chat_revise(run_id: str, request: ChatReviseRequest, current_user: dict = De
 class SectionEditRequest(BaseModel):
     path: str
     value: Any
-    user_id: str
 
 
 @router.post("/{run_id}/section-edit")
-def edit_section(run_id: str, current_user: dict = Depends(get_current_user)):
+def edit_section(run_id: str,request: SectionEditRequest, current_user: dict = Depends(get_current_user)):
 
     run = _get_run_or_404(run_id, current_user["user_id"])
 

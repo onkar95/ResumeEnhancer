@@ -17,8 +17,10 @@ import uuid
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 
 # Centralized Imports
+from app.services.database.usage_service import has_quota
+from app.services.resume_file_service import ResumeFileService
 from app.core.constants import ALLOWED_EXTENSIONS, MAX_UPLOAD_SIZE, SUPPORTED_EXTENSIONS, UPLOAD_DIR
-from app.dependencies import get_pdf_service, get_resume_parser
+from app.dependencies import get_current_user, get_pdf_service, get_resume_file_service, get_resume_parser
 from app.schemas import APIResponse, TailorResumeRequest, ResumeDocument, JobDescription
 from app.services import PDFExtractionService, ResumeParserService, ResumeTailorService
 
@@ -33,23 +35,20 @@ router = APIRouter(
 # ==========================================================
 
 
-def validate_pdf(file: UploadFile) -> None:
+def validate_resume_file(file: UploadFile) -> None:
     """
     Validate uploaded resume.
     """
 
     if not file.filename:
-        raise HTTPException(
-            status_code=400,
-            detail="Filename is missing.",
-        )
+        raise HTTPException(status_code=400, detail="Filename is missing.")
 
     extension = Path(file.filename).suffix.lower()
 
-    if extension not in SUPPORTED_EXTENSIONS:
+    if extension not in ALLOWED_EXTENSIONS:
         raise HTTPException(
             status_code=400,
-            detail="Only PDF files are supported.",
+            detail="Only PDF and DOCX files are supported.",
         )
 
 
@@ -69,6 +68,9 @@ def validate_pdf(file: UploadFile) -> None:
 
 #     return file_path
 
+PDF_MAGIC = b"%PDF-"
+DOCX_MAGIC = b"PK\x03\x04"  # docx is a zip archive
+
 
 async def save_upload_file(file: UploadFile) -> Path:
     """
@@ -86,6 +88,14 @@ async def save_upload_file(file: UploadFile) -> Path:
             detail="Only PDF and DOCX files are supported.",
         )
 
+    header = await file.read(8)
+    await file.seek(0)
+    
+    if ext == ".pdf" and not header.startswith(PDF_MAGIC):
+        raise HTTPException(status_code=400, detail="File does not look like a valid PDF.")
+    if ext == ".docx" and not header.startswith(DOCX_MAGIC):
+        raise HTTPException(status_code=400, detail="File does not look like a valid DOCX.")
+    
     safe_name = f"{uuid.uuid4()}{ext}"
 
     file_path = UPLOAD_DIR / safe_name
@@ -135,21 +145,21 @@ async def save_upload_file(file: UploadFile) -> Path:
 )
 async def upload_resume(
     resume: UploadFile = File(...),
-    pdf_service: PDFExtractionService = Depends(
-        get_pdf_service
+    resume_service: ResumeFileService = Depends(
+        get_resume_file_service
     ),
 ):
     """
     Upload resume and extract raw text.
     """
 
-    validate_pdf(resume)
+    validate_resume_file(resume)
 
     file_path = await save_upload_file(
         resume
     )
 
-    extracted_text = pdf_service.extract_text(
+    extracted_text = resume_service.extract_text(
         str(file_path)
     )
 
@@ -174,26 +184,29 @@ async def upload_resume(
 )
 async def parse_resume(
     resume: UploadFile = File(...),
-    pdf_service: PDFExtractionService = Depends(
-        get_pdf_service
+    resume_service: ResumeFileService = Depends(
+        get_resume_file_service
     ),
     parser: ResumeParserService = Depends(
         get_resume_parser
     ),
+     current_user: dict = Depends(get_current_user),
 ):
     """
     Upload resume, extract text,
     parse it using Groq and return
     ResumeDocument JSON.
     """
-
-    validate_pdf(resume)
+    if not has_quota(current_user["user_id"]):
+        raise HTTPException(status_code=429, detail="Generation limit reached.")
+    
+    validate_resume_file(resume)
 
     file_path = await save_upload_file(
         resume
     )
 
-    resume_text = pdf_service.extract_text(
+    resume_text = resume_service.extract_text(
         str(file_path)
     )
 

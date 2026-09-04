@@ -4,6 +4,9 @@ Application Constants
 
 from pathlib import Path
 
+
+LLM_PROVIDER: str = "gemini"  # "gemini" | "groq" | "openai"
+
 # ==========================================================
 # Directories
 # ==========================================================

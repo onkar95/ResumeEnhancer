@@ -110,7 +110,7 @@ export default function HomePage() {
 
         <input
           type="file"
-          accept=".pdf"
+          accept=".pdf , .docx"
           className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-brand-50 file:text-brand-700 file:font-medium hover:file:bg-brand-100 cursor-pointer"
           onChange={(e) => setResumeFile(e.target.files?.[0] || null)}
         />

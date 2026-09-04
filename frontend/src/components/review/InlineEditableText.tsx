@@ -45,7 +45,7 @@ export default function InlineEditableText({
     try {
       const payload = serialize ? serialize(draft) : draft;
 
-      await editSection(runId, path, user.user_id, payload);
+      await editSection(runId, path, payload);
 
       onSaved();
 

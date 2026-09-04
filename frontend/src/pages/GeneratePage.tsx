@@ -44,7 +44,7 @@ export default function GeneratePage() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-lg shadow-sm">↑</span>
                 <span className="mt-3 text-sm font-semibold text-gray-800">{resumeFile ? resumeFile.name : "Choose a PDF resume"}</span>
                 <span className="mt-1 text-xs text-gray-500">Drag & drop or browse from your computer</span>
-                <input type="file" accept=".pdf" className="hidden" onChange={(e) => setResumeFile(e.target.files?.[0] || null)} />
+                <input type="file"  accept=".pdf , .docx" className="hidden" onChange={(e) => setResumeFile(e.target.files?.[0] || null)} />
               </label>
             </div>
 

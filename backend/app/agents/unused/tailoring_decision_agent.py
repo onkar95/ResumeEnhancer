@@ -2,7 +2,7 @@ from app.workflows.state import (
     ResumeTailorState
 )
 
-from app.schemas.tailoring_decision import (
+from ResumeEnhancer.backend.app.schemas.unused.tailoring_decision import (
     TailoringDecision
 )
 

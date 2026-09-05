@@ -22,16 +22,8 @@ from app.schemas.enhancement_plan import (
     EnhancementPlan
 )
 
-from app.schemas.inventory_reasoning import (
-    InventoryReasoning
-)
-
-from app.schemas.tailoring_context import (
+from app.schemas.unused.tailoring_context import (
     TailoringContext
-)
-
-from app.schemas.tailoring_decision import (
-    TailoringDecision
 )
 
 from app.schemas.validation_result import (

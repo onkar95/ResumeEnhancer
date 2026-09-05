@@ -30,9 +30,6 @@ from app.agents.enhancement_plan_agent import (
     enhancement_plan_node
 )
 
-from app.agents.tailoring_context_agent import (
-    tailoring_context_node
-)
 
 from app.agents.resume_tailor_agent import (
     resume_tailor_node

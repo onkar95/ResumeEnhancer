@@ -1,4 +1,4 @@
-from app.agents.inventory_update_agent import (
+from ResumeEnhancer.backend.app.agents.unused.inventory_update_agent import (
     update_inventory_from_approvals
 )
 

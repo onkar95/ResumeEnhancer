@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, logger
 from fastapi.middleware.cors import CORSMiddleware
 
 from starlette.middleware.sessions import SessionMiddleware
-from app.services.pdf_export_service import get_browser
+from app.services.pdf_export_service import close_browser, get_browser
 from app.core.DB import ensure_indexes
 
 from app.api.tailor import router as tailor_router
@@ -83,13 +83,17 @@ def on_startup():
 #         logger.exception("Failed to initialize Playwright: %s", e)
 
 
+# @app.on_event("shutdown")
+# async def on_shutdown():
+#     global _browser, _playwright
+#     if _browser:
+#         await _browser.close()
+#     if _playwright:
+#         await _playwright.stop()
+
 @app.on_event("shutdown")
 async def on_shutdown():
-    global _browser, _playwright
-    if _browser:
-        await _browser.close()
-    if _playwright:
-        await _playwright.stop()
+    await close_browser()
 
 # Routes
 app.include_router(auth_router)

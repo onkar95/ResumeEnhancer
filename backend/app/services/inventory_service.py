@@ -238,29 +238,3 @@ def add_evidence(
     )
 
     return inventory
-#
-# from app.services.inventory_storage_service import (
-#     InventoryStorageService
-# )
-
-
-# class InventoryService:
-
-#     @staticmethod
-#     def get_skill(skill_name):
-
-#         inventory = (
-#             InventoryStorageService
-#             .InventoryStorageService.load_inventory()
-#         )
-
-#         for skill in inventory.skills:
-
-#             if (
-#                 skill.name.lower()
-#                 ==
-#                 skill_name.lower()
-#             ):
-#                 return skill
-
-#         return None

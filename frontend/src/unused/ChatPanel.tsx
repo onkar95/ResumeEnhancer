@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { chatRevise } from "../../services/api";
+import { chatRevise } from "../services/api";
 
 interface ChatMessage {
   role: "user" | "assistant";

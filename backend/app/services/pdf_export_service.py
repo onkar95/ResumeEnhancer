@@ -11,7 +11,15 @@ _browser: Browser | None = None
 TEMPLATE_DIR = Path(__file__).resolve().parent.parent / "templates"
 _env = Environment(loader=FileSystemLoader(str(TEMPLATE_DIR)))
 
-
+async def close_browser():
+    global _browser, _playwright
+    if _browser:
+        await _browser.close()
+        _browser = None
+    if _playwright:
+        await _playwright.stop()
+        _playwright = None
+        
 async def get_browser() -> Browser:
     global _playwright, _browser
     if _browser is None:

@@ -2,7 +2,7 @@ from app.workflows.state import (
     ResumeTailorState
 )
 
-from app.schemas.tailoring_context import (
+from ResumeEnhancer.backend.app.schemas.unused.tailoring_context import (
     TailoringContext
 )
 

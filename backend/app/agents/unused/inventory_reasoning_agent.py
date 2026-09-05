@@ -2,7 +2,7 @@ from app.workflows.state import (
     ResumeTailorState
 )
 
-from app.schemas.inventory_reasoning import (
+from ResumeEnhancer.backend.app.schemas.unused.inventory_reasoning import (
     InventoryReasoning,
     RelatedSkill
 )

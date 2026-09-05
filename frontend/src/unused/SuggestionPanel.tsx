@@ -4,7 +4,7 @@ import {
   approveSuggestions,
   rejectSuggestions,
   reviseResume,
-} from "../../services/api";
+} from "../services/api";
 
 interface Suggestion {
   suggestion_id: string;
